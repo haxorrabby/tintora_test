@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-label="Gorra Trucker Vintage">
+  <rect width="800" height="600" fill="#F4EFE6"/>
+  <!-- Cap Shadow -->
+  <ellipse cx="400" cy="460" rx="180" ry="25" fill="#0D0F14" opacity="0.1"/>
+  <!-- Visor -->
+  <path d="M240 380 Q400 450 560 380 L520 350 Q400 410 280 350 Z" fill="#0D0F14"/>
+  <!-- Crown / Front Panel -->
+  <path d="M280 350 C290 200 510 200 520 350 Z" fill="#FAF7F2" stroke="#D5D7DF" stroke-width="2"/>
+  <!-- Mesh Back -->
+  <path d="M330 220 C340 180 460 180 470 220" fill="none" stroke="#737788" stroke-width="4" stroke-dasharray="4,4"/>
+  <!-- Sublimated Patch -->
+  <rect x="340" y="240" width="120" height="70" rx="6" fill="#0D0F14" stroke="#C9A96A" stroke-width="2"/>
+  <text x="360" y="275" font-family="'Bodoni Moda', serif" font-size="14" font-weight="bold" fill="#F4EFE6">TINTORA</text>
+  <text x="365" y="295" font-family="'JetBrains Mono', monospace" font-size="9" fill="#E8392B">GETAFE 28902</text>
+</svg>

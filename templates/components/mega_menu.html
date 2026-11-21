@@ -1,0 +1,204 @@
+{% load i18n static core_tags %}
+<!-- Mega Menu Overlay (populated from real catalog category slugs + DB prices) -->
+<div x-show="$store.nav.megaMenuOpen" 
+     @mouseleave="$store.nav.closeMega()"
+     x-transition:enter="transition ease-out duration-200"
+     x-transition:enter-start="opacity-0 -translate-y-2"
+     x-transition:enter-end="opacity-100 translate-y-0"
+     x-transition:leave="transition ease-in duration-150"
+     x-transition:leave-start="opacity-100 translate-y-0"
+     x-transition:leave-end="opacity-0 -translate-y-2"
+     class="absolute left-0 top-full w-full glass-mega z-30 hidden lg:block"
+     style="display: none;">
+
+  {% category_min_price 'tarjetas-de-visita' as precio_tarjetas %}
+  {% category_min_price 'flyers-y-folletos' as precio_flyers %}
+  {% category_min_price 'tazas-personalizadas' as precio_tazas %}
+  {% category_min_price 'gorras-y-accesorios' as precio_gorras %}
+  
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="grid grid-cols-12 gap-8">
+      
+      <!-- Left Column: Department Switcher Tabs -->
+      <div class="col-span-3 border-r border-ink/10 dark:border-paper/10 pr-6 space-y-2">
+        <p class="text-[11px] font-mono uppercase tracking-widest text-ink-400 dark:text-paper-500 mb-4">{% trans "Áreas de Negocio" %}</p>
+
+        <button @mouseenter="$store.nav.activeTab = 'print'"
+                :class="$store.nav.activeTab === 'print' ? 'bg-ink text-paper dark:bg-paper dark:text-ink font-semibold' : 'text-ink-700 dark:text-paper-300 hover:bg-ink/5 dark:hover:bg-paper/5'"
+                class="w-full text-left px-4 py-3 text-sm flex items-center justify-between transition-colors">
+          <span class="flex items-center space-x-2">
+            <span class="font-mono text-xs opacity-60">01</span>
+            <span>{% trans "Impresión Profesional" %}</span>
+          </span>
+          <span class="text-xs">&rarr;</span>
+        </button>
+        <button @mouseenter="$store.nav.activeTab = 'sublimation'"
+                :class="$store.nav.activeTab === 'sublimation' ? 'bg-ink text-paper dark:bg-paper dark:text-ink font-semibold' : 'text-ink-700 dark:text-paper-300 hover:bg-ink/5 dark:hover:bg-paper/5'"
+                class="w-full text-left px-4 py-3 text-sm flex items-center justify-between transition-colors">
+          <span class="flex items-center space-x-2">
+            <span class="font-mono text-xs opacity-60">02</span>
+            <span>{% trans "Sublimación & Merch" %}</span>
+          </span>
+          <span class="text-xs">&rarr;</span>
+        </button>
+        <button @mouseenter="$store.nav.activeTab = 'latin'"
+                :class="$store.nav.activeTab === 'latin' ? 'bg-ink text-paper dark:bg-paper dark:text-ink font-semibold' : 'text-ink-700 dark:text-paper-300 hover:bg-ink/5 dark:hover:bg-paper/5'"
+                class="w-full text-left px-4 py-3 text-sm flex items-center justify-between transition-colors">
+          <span class="flex items-center space-x-2">
+            <span class="font-mono text-xs opacity-60">03</span>
+            <span>{% trans "Productos Latinos" %}</span>
+          </span>
+          <span class="text-xs">&rarr;</span>
+        </button>
+        <button @mouseenter="$store.nav.activeTab = 'web'"
+                :class="$store.nav.activeTab === 'web' ? 'bg-ink text-paper dark:bg-paper dark:text-ink font-semibold' : 'text-ink-700 dark:text-paper-300 hover:bg-ink/5 dark:hover:bg-paper/5'"
+                class="w-full text-left px-4 py-3 text-sm flex items-center justify-between transition-colors">
+          <span class="flex items-center space-x-2">
+            <span class="font-mono text-xs opacity-60">04</span>
+            <span>{% trans "Desarrollo Web & IT" %}</span>
+          </span>
+          <span class="text-xs">&rarr;</span>
+        </button>
+      </div>
+
+      <!-- Center Column: Subcategories & Product Links -->
+      <div class="col-span-6 px-4">
+        
+        <!-- Tab 01: IMPRESIÓN -->
+        <div x-show="$store.nav.activeTab === 'print'" class="space-y-6">
+          <div class="border-b border-ink/10 dark:border-paper/10 pb-3">
+            <h3 class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Impresión de Alta Fidelidad" %}</h3>
+            <p class="text-xs text-ink-500 dark:text-paper-400 mt-1">{% trans "Papelería corporativa, gran formato y acabados de lujo (stamping oro, barniz selectivo, plastificado soft-touch)." %}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            <a href="{% url 'catalog:category_detail' 'tarjetas-de-visita' %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Tarjetas de Visita Premium" %}</span>
+              {% if precio_tarjetas %}<span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{% trans "desde" %} {{ precio_tarjetas }}€</span>{% endif %}
+            </a>
+            <a href="{% url 'catalog:category_detail' 'flyers-y-folletos' %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Flyers & Folletos" %}</span>
+              {% if precio_flyers %}<span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{% trans "desde" %} {{ precio_flyers }}€</span>{% endif %}
+            </a>
+            <a href="{% url 'catalog:category_detail' 'carpetas-corporativas' %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Carpetas Corporativas" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{% trans "con solapa" %}</span>
+            </a>
+            <a href="{% url 'catalog:index' %}?area=impresion" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Pegatinas & Etiquetas" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{% trans "corte troquelado" %}</span>
+            </a>
+            <a href="{% url 'catalog:category_detail' 'rollups-y-gran-formato' %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Roll-ups & Banners" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{% trans "ferias & eventos" %}</span>
+            </a>
+            <a href="{% url 'catalog:index' %}?area=impresion" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Ver todo el catálogo" %}</span>
+              <span class="text-xs font-mono text-vermilion">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 02: SUBLIMACIÓN -->
+        <div x-show="$store.nav.activeTab === 'sublimation'" class="space-y-6" style="display:none;">
+          <div class="border-b border-ink/10 dark:border-paper/10 pb-3">
+            <h3 class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Sublimación & Artículos Personalizados" %}</h3>
+            <p class="text-xs text-ink-500 dark:text-paper-400 mt-1">{% trans "Termotransferencia nítida con colores vibrantes, máxima resistencia a lavados." %}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            <a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Tazas de Cerámica y Mágicas" %}</span>
+              {% if precio_tazas %}<span class="text-xs font-mono text-ink-400 dark:text-paper-500">{% trans "desde" %} {{ precio_tazas }}€</span>{% endif %}
+            </a>
+            <a href="{% url 'catalog:category_detail' 'textil-y-camisetas' %}" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Camisetas Técnicas & Algodón" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500">{% trans "unisex & kids" %}</span>
+            </a>
+            <a href="{% url 'catalog:category_detail' 'gorras-y-accesorios' %}" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Gorras Trucker & Clásicas" %}</span>
+              {% if precio_gorras %}<span class="text-xs font-mono text-ink-400 dark:text-paper-500">{% trans "desde" %} {{ precio_gorras }}€</span>{% endif %}
+            </a>
+            <a href="{% url 'catalog:index' %}?area=sublimacion" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Cojines & Puzzles" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500">{% trans "regalo original" %}</span>
+            </a>
+            <a href="{% url 'catalog:index' %}?area=sublimacion" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Fundas Móvil Antigolpes" %}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500">{% trans "iPhone & Galaxy" %}</span>
+            </a>
+            <a href="{% url 'catalog:index' %}?area=sublimacion" class="flex items-baseline justify-between py-1.5 hover:text-gold transition-colors">
+              <span class="font-medium">{% trans "Ver todo el catálogo" %}</span>
+              <span class="text-xs font-mono text-gold-dark">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 03: PRODUCTOS LATINOS -->
+        <div x-show="$store.nav.activeTab === 'latin'" class="space-y-6" style="display:none;">
+          <div class="border-b border-ink/10 dark:border-paper/10 pb-3">
+            <h3 class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Despensa y Delicias Latinas" %}</h3>
+            <p class="text-xs text-ink-500 dark:text-paper-400 mt-1"><span class="font-semibold text-ink dark:text-paper">{{ LATIN_PRODUCT_COUNT }}</span> {% trans "productos importados, con ficha completa y compra online." %}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            {% for cat in LATIN_CATEGORIES %}
+            <a href="{% url 'latin_products:entry' cat.slug %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{{ cat.name }}</span>
+              <span class="text-xs font-mono text-ink-400 dark:text-paper-500 group-hover:text-vermilion">{{ cat.count }}</span>
+            </a>
+            {% endfor %}
+            <a href="{% url 'latin_products:index' %}" class="group flex items-baseline justify-between py-1.5 hover:text-vermilion transition-colors">
+              <span class="font-medium">{% trans "Ver todo el catálogo" %}</span>
+              <span class="text-xs font-mono text-vermilion">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 04: DESARROLLO WEB -->
+        <div x-show="$store.nav.activeTab === 'web'" class="space-y-6" style="display:none;">
+          <div class="border-b border-ink/10 dark:border-paper/10 pb-3">
+            <h3 class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Ingeniería Web & Soluciones Digitales" %}</h3>
+            <p class="text-xs text-ink-500 dark:text-paper-400 mt-1">{% trans "Diseño editorial de ultra alta gama, desarrollo a medida y optimización SEO en Madrid." %}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            <a href="{% url 'quotes:development' %}#paquetes" class="block py-1.5 hover:text-gold transition-colors">
+              <div class="font-medium">{% trans "Paquetes y precios" %}</div>
+              <div class="text-xs text-ink-500 dark:text-paper-400">{% trans "Alcance gestionado por el estudio" %}</div>
+            </a>
+            <a href="{% url 'quotes:development' %}#comparativa" class="block py-1.5 hover:text-gold transition-colors">
+              <div class="font-medium">{% trans "Comparar características" %}</div>
+              <div class="text-xs text-ink-500 dark:text-paper-400">{% trans "Compara lo que incluye cada opción" %}</div>
+            </a>
+            <a href="{% url 'quotes:development' %}#portfolio" class="block py-1.5 hover:text-gold transition-colors">
+              <div class="font-medium">{% trans "Proyectos seleccionados" %}</div>
+              <div class="text-xs text-ink-500 dark:text-paper-400">{% trans "Trabajo real del estudio" %}</div>
+            </a>
+            <a href="{% url 'quotes:development' %}#solicitar-presupuesto" class="block py-1.5 hover:text-gold transition-colors">
+              <div class="font-medium">{% trans "Solicitar presupuesto" %}</div>
+              <div class="text-xs text-ink-500 dark:text-paper-400">{% trans "Cuéntanos el alcance" %}</div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Editorial Highlight Card -->
+      <div class="col-span-3 bg-surface-cardLight dark:bg-surface-cardDark p-5 border border-ink/10 dark:border-paper/10 flex flex-col justify-between">
+        <div>
+          <span class="badge-gold">{% trans "Madrid Taller Propio" %}</span>
+          <div class="font-serif text-lg font-bold mt-3 text-ink dark:text-paper">{% trans "Muestra de Papeles & Acabados" %}</div>
+          <p class="text-xs text-ink-600 dark:text-paper-400 mt-2 leading-relaxed">
+            {% trans "¿Dudas entre estucado mate, offset táctil o papel kraft verjurado? Solicita nuestro muestrario físico con envío gratuito a Madrid." %}
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-ink/10 dark:border-paper/10 space-y-2">
+          <a href="https://wa.me/{{ COMPANY.WHATSAPP|cut:' '|cut:'+' }}?text=Hola%20Tintora%2C%20quiero%20pedir%20el%20muestrario%20de%20papeles%20y%20acabados." target="_blank" rel="noopener" class="btn-vermilion btn-sm w-full text-center">
+            {% trans "Pedir Muestrario Gratis" %}
+          </a>
+          <a href="{% url 'catalog:index' %}" class="btn-outline btn-sm w-full text-center">
+            {% trans "Ver Catálogo Completo" %}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

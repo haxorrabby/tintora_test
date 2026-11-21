@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Redirigiendo al TPV…" %} · Tintora{% endblock %}
+
+{% block content %}
+<div class="min-h-[50vh] flex items-center justify-center px-6 py-20">
+  <div class="max-w-md text-center space-y-6">
+    <p class="font-mono text-xs uppercase tracking-[0.25em] text-vermilion">{% trans "Pasarela bancaria" %}</p>
+    <h1 class="font-serif text-3xl font-bold text-ink dark:text-paper">
+      {% trans "Conectando con Redsys…" %}
+    </h1>
+    <p class="text-sm text-ink-500 dark:text-paper-400">
+      {% trans "Serás redirigido automáticamente a la pasarela segura de tu banco. No cierres esta ventana." %}
+    </p>
+    <form id="redsys-form" method="POST" action="{{ form.action }}">
+      <input type="hidden" name="Ds_SignatureVersion" value="{{ form.Ds_SignatureVersion }}">
+      <input type="hidden" name="Ds_MerchantParameters" value="{{ form.Ds_MerchantParameters }}">
+      <input type="hidden" name="Ds_Signature" value="{{ form.Ds_Signature }}">
+      <noscript>
+        <button type="submit" class="btn-vermilion">{% trans "Continuar al pago" %}</button>
+      </noscript>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  document.getElementById('redsys-form')?.submit();
+</script>
+{% endblock %}

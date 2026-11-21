@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-label="Café Juan Valdez Huila">
+  <rect width="800" height="600" fill="#F4EFE6"/>
+  <!-- Coffee Bag Shadow -->
+  <ellipse cx="400" cy="480" rx="120" ry="20" fill="#0D0F14" opacity="0.12"/>
+  <!-- Coffee Pouch Body -->
+  <rect x="300" y="160" width="200" height="300" rx="6" fill="#8D2B23" stroke="#661C16" stroke-width="2"/>
+  <!-- Gold seal on top -->
+  <rect x="300" y="160" width="200" height="24" fill="#C9A96A"/>
+  <!-- Seal stamp -->
+  <rect x="330" y="220" width="140" height="150" fill="#FAF7F2" stroke="#C9A96A" stroke-width="2"/>
+  <text x="350" y="260" font-family="'Bodoni Moda', serif" font-size="16" font-weight="bold" fill="#8D2B23">JUAN VALDEZ</text>
+  <text x="370" y="285" font-family="'DM Sans', sans-serif" font-size="11" font-weight="bold" fill="#0D0F14">HUILA</text>
+  <text x="345" y="310" font-family="'Bodoni Moda', serif" font-size="10" font-style="italic" fill="#6A6E7B">Café de Colombia</text>
+  <circle cx="400" cy="335" r="8" fill="#C9A96A"/>
+  <text x="360" y="420" font-family="'JetBrains Mono', monospace" font-size="12" fill="#F4EFE6">250g &#183; MOLIDO</text>
+</svg>

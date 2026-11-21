@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Editar Perfil · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-8">
+    <nav class="text-xs uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-3">
+      <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi Área" %}</a>
+      <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+      <span class="text-ink dark:text-paper font-medium">{% trans "Editar Perfil" %}</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-2">{% trans "Editar perfil" %}</h1>
+    <p class="text-sm text-ink-600 dark:text-paper-400">{% trans "Actualiza tus datos personales y fiscales con precisión de taller" %}</p>
+  </div>
+
+  <!-- Profile Form -->
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-6 sm:p-8">
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+      
+      <!-- Customer Type Toggle -->
+      <div class="p-4 border border-ink/10 dark:border-paper/10 bg-ink/[0.02] dark:bg-paper/[0.02]">
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-3">{% trans "Tipo de cliente" %}</label>
+        <div class="flex gap-6">
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="customer_type" value="individual" 
+              {% if form.customer_type.value == 'individual' %}checked{% endif %}
+              class="w-4 h-4 accent-vermilion focus:ring-vermilion">
+            <span class="ml-2.5 text-sm text-ink dark:text-paper font-medium">{% trans "Particular" %}</span>
+          </label>
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="customer_type" value="business"
+              {% if form.customer_type.value == 'business' %}checked{% endif %}
+              class="w-4 h-4 accent-vermilion focus:ring-vermilion">
+            <span class="ml-2.5 text-sm text-ink dark:text-paper font-medium">{% trans "Empresa / Autónomo" %}</span>
+          </label>
+        </div>
+      </div>
+      
+      <!-- Personal Info -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Nombre" %}</label>
+          {{ form.first_name }}
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Apellidos" %}</label>
+          {{ form.last_name }}
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Correo electrónico" %}</label>
+        {{ form.email }}
+        <p class="mt-1 text-xs text-ink-500 dark:text-paper-500">{% trans "El correo electrónico no se puede modificar desde el formulario" %}</p>
+      </div>
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Teléfono" %}</label>
+        {{ form.phone }}
+      </div>
+      
+      <!-- Business Info (shown if business type) -->
+      <div id="business-fields" class="space-y-6 pt-4 border-t border-ink/10 dark:border-paper/10 {% if form.customer_type.value != 'business' %}hidden{% endif %}">
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Razón Social / Empresa" %}</label>
+          {{ form.company_name }}
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "NIF / CIF / NIE" %}</label>
+          {{ form.nif_cif }}
+          <p class="mt-1 text-xs text-ink-500 dark:text-paper-500">{% trans "Obligatorio para la emisión de facturas oficiales con IVA desglosado" %}</p>
+        </div>
+      </div>
+      
+      <!-- Address -->
+      <div class="space-y-6 pt-4 border-t border-ink/10 dark:border-paper/10">
+        <h3 class="text-base font-serif font-medium text-ink dark:text-paper pb-2 border-b border-ink/10 dark:border-paper/10">{% trans "Dirección principal" %}</h3>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Dirección" %}</label>
+          {{ form.address }}
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Código Postal" %}</label>
+            {{ form.postal_code }}
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Ciudad" %}</label>
+            {{ form.city }}
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Provincia" %}</label>
+            {{ form.province }}
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "País" %}</label>
+          {{ form.country }}
+        </div>
+      </div>
+      
+      <!-- Preferences -->
+      <div class="space-y-4 pt-4 border-t border-ink/10 dark:border-paper/10">
+        <h3 class="text-base font-serif font-medium text-ink dark:text-paper pb-2 border-b border-ink/10 dark:border-paper/10">{% trans "Preferencias de comunicación" %}</h3>
+        
+        <label class="flex items-center cursor-pointer">
+          {{ form.newsletter_subscribed }}
+          <span class="ml-3 text-sm text-ink dark:text-paper">{% trans "Suscribirse a la Gaceta Tintora (novedades de taller, papeles y ofertas exclusivas)" %}</span>
+        </label>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 pt-6 border-t border-ink/10 dark:border-paper/10">
+        <button type="submit" class="bg-vermilion hover:bg-vermilion-dark text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% trans "Guardar cambios" %}
+        </button>
+        <a href="{% url 'customer:dashboard' %}" class="border border-ink/20 dark:border-paper/20 hover:border-ink dark:hover:border-paper text-ink dark:text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% trans "Cancelar" %}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Toggle business fields based on customer type
+document.querySelectorAll('input[name="customer_type"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    const businessFields = document.getElementById('business-fields');
+    if (businessFields) {
+      if (this.value === 'business') {
+        businessFields.classList.remove('hidden');
+      } else {
+        businessFields.classList.add('hidden');
+      }
+    }
+  });
+});
+</script>
+{% endblock %}

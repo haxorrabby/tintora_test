@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Cesta de Compra" %} &middot; Tintora Madrid{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+  
+  <!-- Breadcrumb -->
+  <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-6 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'catalog:index' %}" class="hover:text-vermilion">{% trans "Catálogo" %}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{% trans "Cesta de Compra" %}</span>
+  </nav>
+
+  <!-- Editorial Heading -->
+  <div class="border-b border-ink/10 dark:border-paper/10 pb-6 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div>
+      <span class="badge-vermilion">{% trans "Presupuesto en Tiempo Real" %}</span>
+      <h1 class="font-serif text-2xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">
+        {% trans "Cesta de Compra" %}
+      </h1>
+    </div>
+    
+    <div class="text-xs font-mono text-ink-500 dark:text-paper-400 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+      <span>{% trans "Taller activo en Madrid · Pedidos enviados en 24/48h" %}</span>
+    </div>
+  </div>
+
+  <!-- Dynamic Cart Container rendered via HTMX partial -->
+  {% include 'components/cart_items_partial.html' %}
+
+</div>
+{% endblock %}

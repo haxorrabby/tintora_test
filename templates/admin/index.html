@@ -1,0 +1,33 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="space-y-8">
+	<section>
+		<p class="text-xs font-semibold uppercase tracking-widest text-red-700">Tintora · Madrid</p>
+		<h1 class="mt-2 text-3xl font-semibold">{% trans "Resumen del taller y la tienda" %}</h1>
+	</section>
+	{% if can_view_analytics %}
+	<section class="grid gap-4 sm:grid-cols-3" aria-label="{% trans 'Ingresos' %}">
+		<article class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><p class="text-sm text-gray-500">{% trans "Hoy" %}</p><p class="mt-2 text-3xl font-semibold">{{ revenue_today|floatformat:2 }} €</p></article>
+		<article class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><p class="text-sm text-gray-500">{% trans "Esta semana" %}</p><p class="mt-2 text-3xl font-semibold">{{ revenue_week|floatformat:2 }} €</p></article>
+		<article class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><p class="text-sm text-gray-500">{% trans "Este mes" %}</p><p class="mt-2 text-3xl font-semibold">{{ revenue_month|floatformat:2 }} €</p></article>
+	</section>
+	<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
+		<h2 class="text-lg font-semibold">{% trans "Ingresos · últimos 14 días" %}</h2>
+		<div class="mt-6 grid h-40 grid-cols-14 items-end gap-2" role="img" aria-label="{% trans 'Gráfico de ingresos por día' %}">
+			{% for point in chart %}<div class="flex h-full flex-col items-center justify-end gap-2"><div class="w-full rounded-t bg-red-700" style="height: {{ point.height }}%" title="{{ point.day|date:'d/m' }}: {{ point.revenue|floatformat:2 }} €"></div><span class="text-[10px] text-gray-500">{{ point.day|date:"d" }}</span></div>{% endfor %}
+		</div>
+	</section>
+	{% endif %}
+	<div class="grid gap-6 xl:grid-cols-2">
+		{% if can_view_orders %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Pedidos por estado" %}</h2><div class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">{% for status in status_counts %}<div class="flex justify-between py-2 text-sm"><span>{{ status.label }}</span><strong>{{ status.count }}</strong></div>{% endfor %}</div></section>{% endif %}
+		{% if can_view_analytics %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Productos con más ventas" %}</h2><div class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">{% for product in top_products %}<div class="flex justify-between gap-4 py-2 text-sm"><span>{% blocktrans with name=product.product_name units=product.units %}{{ name }} · {{ units }} unidades{% endblocktrans %}</span><strong>{{ product.revenue|floatformat:2 }} €</strong></div>{% empty %}<p class="py-2 text-sm text-gray-500">{% trans "Aún no hay ventas pagadas." %}</p>{% endfor %}</div></section>{% endif %}
+		{% if can_view_inventory %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Stock bajo" %}</h2><div class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">{% for product in low_stock %}<div class="flex justify-between gap-4 py-2 text-sm"><span>{{ product.name }}</span><strong>{{ product.stock }} {% trans "unidades" %}</strong></div>{% empty %}<p class="py-2 text-sm text-gray-500">{% trans "No hay alertas de stock." %}</p>{% endfor %}</div></section>{% endif %}
+		{% if can_view_analytics %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Nuevas solicitudes de presupuesto" %}</h2><div class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">{% for quote in new_quotes %}<a href="{% url 'admin:quotes_quoterequest_change' quote.pk %}" class="block py-2 text-sm hover:text-red-700">{{ quote.full_name }} · {{ quote.get_service_type_display }} <span class="text-gray-500">{{ quote.created_at|date:"d/m H:i" }}</span></a>{% empty %}<p class="py-2 text-sm text-gray-500">{% trans "No hay solicitudes nuevas." %}</p>{% endfor %}</div></section>{% endif %}
+	</div>
+	{% if can_view_orders and recent_orders %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Pedidos recientes" %}</h2><div class="mt-4 overflow-x-auto"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-200 text-gray-500"><th class="py-2">{% trans "Pedido" %}</th><th>{% trans "Cliente" %}</th><th>{% trans "Estado" %}</th><th class="text-right">{% trans "Total" %}</th></tr></thead><tbody>{% for order in recent_orders %}<tr class="border-b border-gray-100 dark:border-gray-800"><td class="py-2"><a class="text-red-700 hover:underline" href="{% url 'admin:orders_order_change' order.pk %}">{{ order.order_number }}</a></td><td>{{ order.full_name }}</td><td>{{ order.get_status_display }}</td><td class="text-right">{{ order.total|floatformat:2 }} €</td></tr>{% endfor %}</tbody></table></div></section>{% endif %}
+	{% if can_view_analytics %}<section class="rounded border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"><h2 class="text-lg font-semibold">{% trans "Actividad administrativa reciente" %}</h2><div class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">{% for event in recent_activity %}<div class="flex flex-wrap justify-between gap-2 py-2 text-sm"><span>{{ event.get_action_display }} · {{ event.object_repr }}</span><span class="text-gray-500">{% if event.actor %}{{ event.actor }}{% else %}{% trans "Sistema" %}{% endif %} · {{ event.created_at|date:"d/m H:i" }}</span></div>{% empty %}<p class="py-2 text-sm text-gray-500">{% trans "Todavía no hay actividad registrada." %}</p>{% endfor %}</div></section>{% endif %}
+	<section><h2 class="mb-4 text-lg font-semibold">{% trans "Aplicaciones" %}</h2>{% include "admin/app_list.html" with app_list=available_apps show_changelinks=True %}</section>
+</div>
+{% endblock %}

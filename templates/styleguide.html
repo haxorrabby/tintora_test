@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Guía de Estilo & Tokens &middot; Tintora Madrid{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+  <!-- Header -->
+  <div class="border-b border-ink/15 dark:border-paper/15 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <span class="badge-vermilion">Fase 0 &middot; Sistema de Diseño</span>
+      <h1 class="font-serif text-4xl md:text-6xl font-bold mt-3 text-ink dark:text-paper">
+        Tokens & Componentes Tintora
+      </h1>
+      <p class="text-sm text-ink-600 dark:text-paper-400 mt-2 max-w-2xl">
+        Catálogo vivo de diseño editorial para la plataforma Tintora Madrid. Todos los elementos utilizan variables CSS nativas sincronizadas con Tailwind CSS y soportan modo claro y oscuro sin parpadeos.
+      </p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button @click="$store.theme.toggle()" class="btn-outline btn-sm">
+        <span x-text="$store.theme.dark ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro'"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR TOKENS -->
+  <section class="space-y-6">
+    <div class="flex items-center space-x-2">
+      <span class="font-mono text-xs text-gold">01.</span>
+      <h2 class="font-serif text-2xl font-bold">Paleta de Color de Marca</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      
+      <!-- Ink Black -->
+      <div class="p-6 bg-ink text-paper border border-ink-800 shadow-md">
+        <div class="h-16 w-full rounded-none mb-4 bg-ink border border-paper/20"></div>
+        <p class="font-serif font-bold text-lg">Ink Black</p>
+        <p class="font-mono text-xs opacity-75">#0D0F14</p>
+        <p class="text-[11px] opacity-60 mt-2">Base editorial oscura, texto principal en fondo claro.</p>
+      </div>
+
+      <!-- Paper -->
+      <div class="p-6 bg-paper text-ink border border-ink/20 shadow-md">
+        <div class="h-16 w-full rounded-none mb-4 bg-paper border border-ink/20"></div>
+        <p class="font-serif font-bold text-lg">Paper</p>
+        <p class="font-mono text-xs opacity-75">#F4EFE6</p>
+        <p class="text-[11px] opacity-60 mt-2">Tono cálido de papel de alta gramaje, fondo claro.</p>
+      </div>
+
+      <!-- Vermilion -->
+      <div class="p-6 bg-vermilion text-paper border border-vermilion-dark shadow-md">
+        <div class="h-16 w-full rounded-none mb-4 bg-vermilion"></div>
+        <p class="font-serif font-bold text-lg">Vermilion</p>
+        <p class="font-mono text-xs opacity-75">#E8392B</p>
+        <p class="text-[11px] opacity-90 mt-2">Gota de tinta viva, botón de compra, alertas y acentos.</p>
+      </div>
+
+      <!-- Gold Foil -->
+      <div class="p-6 bg-surface-cardDark text-paper border border-gold/40 shadow-md">
+        <div class="h-16 w-full rounded-none mb-4 bg-gold"></div>
+        <p class="font-serif font-bold text-lg text-gold">Gold Foil</p>
+        <p class="font-mono text-xs text-gold-light">#C9A96A</p>
+        <p class="text-[11px] opacity-60 mt-2">Estampado oro caliente, acabados premium y prestigio.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. TYPOGRAPHY SCALE -->
+  <section class="space-y-6">
+    <div class="flex items-center space-x-2">
+      <span class="font-mono text-xs text-gold">02.</span>
+      <h2 class="font-serif text-2xl font-bold">Escala Tipográfica</h2>
+    </div>
+    
+    <div class="p-8 card-editorial space-y-8">
+      <div>
+        <span class="font-mono text-xs text-ink-400 dark:text-paper-500">Display 2XL (clamp 72px - 200px) &middot; Bodoni Moda Bold</span>
+        <div class="font-serif font-extrabold text-display-2xl text-ink dark:text-paper mt-1">
+          Tintora.
+        </div>
+      </div>
+
+      <div class="hairline-t pt-6">
+        <span class="font-mono text-xs text-ink-400 dark:text-paper-500">Display Lg &middot; Bodoni Moda SemiBold</span>
+        <div class="font-serif font-semibold text-display-lg text-ink dark:text-paper mt-1">
+          Tinta que deja huella en Madrid
+        </div>
+      </div>
+
+      <div class="hairline-t pt-6">
+        <span class="font-mono text-xs text-ink-400 dark:text-paper-500">Heading 1 &middot; Bodoni Moda</span>
+        <div class="font-serif font-bold text-heading-1 text-ink dark:text-paper mt-1">
+          Papelería de Autor & Gran Formato
+        </div>
+      </div>
+
+      <div class="hairline-t pt-6">
+        <span class="font-mono text-xs text-ink-400 dark:text-paper-500">Body Large (18px) &middot; DM Sans</span>
+        <p class="text-body-lg text-ink-800 dark:text-paper-200 mt-1 max-w-3xl leading-relaxed">
+          Nuestros procesos de impresión offset y digital cuentan con calibración Fogra39 certificada. Cada pliego de papel verjurado, estucado o kraft es sometido a un estricto control de densidad y sangrado.
+        </p>
+      </div>
+
+      <div class="hairline-t pt-6">
+        <span class="font-mono text-xs text-ink-400 dark:text-paper-500">Monospace Specs & SKU &middot; JetBrains Mono</span>
+        <p class="font-mono text-sm text-vermilion mt-1">
+          REF-MAD-2026-FOGRA39 &middot; FACTURA ES-B88776655-2026-00492 &middot; 21% IVA INCLUIDO
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BUTTONS & ACTIONS -->
+  <section class="space-y-6">
+    <div class="flex items-center space-x-2">
+      <span class="font-mono text-xs text-gold">03.</span>
+      <h2 class="font-serif text-2xl font-bold">Botones y Estados de Interacción</h2>
+    </div>
+
+    <div class="p-8 card-editorial space-y-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <button class="btn-vermilion">.btn-vermilion (Primario)</button>
+        <button class="btn-ink">.btn-ink (Editorial)</button>
+        <button class="btn-outline">.btn-outline (Secundario)</button>
+        <button class="btn-gold">.btn-gold (Premium)</button>
+        <button class="btn-vermilion" disabled>Deshabilitado</button>
+      </div>
+
+      <div class="hairline-t pt-4 flex flex-wrap items-center gap-4">
+        <button class="btn-vermilion btn-sm">Botón Pequeño (btn-sm)</button>
+        <button class="btn-ink btn-sm">Botón Pequeño (btn-sm)</button>
+        <button class="btn-vermilion btn-lg">Botón Grande (btn-lg)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FORM ELEMENTS -->
+  <section class="space-y-6">
+    <div class="flex items-center space-x-2">
+      <span class="font-mono text-xs text-gold">04.</span>
+      <h2 class="font-serif text-2xl font-bold">Formularios & Entradas Editoriales</h2>
+    </div>
+
+    <div class="p-8 card-editorial">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="label-editorial">Nombre de la Empresa o Particular</label>
+          <input type="text" class="input-editorial" placeholder="Ej. Estudio Gráfico S.L.">
+        </div>
+        <div>
+          <label class="label-editorial">NIF / CIF (Obligatorio para Factura)</label>
+          <input type="text" class="input-editorial" placeholder="Ej. B-88776655">
+        </div>
+        <div>
+          <label class="label-editorial">Zona de Envío</label>
+          <select class="input-editorial">
+            <option>Madrid Local (Recogida o Express 24h)</option>
+            <option>Península Ibérica (Correos / SEUR / MRW)</option>
+            <option>Baleares / Canarias</option>
+            <option>Unión Europea (EU Shipping)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. LOGOS & BRAND ASSETS -->
+  <section class="space-y-6">
+    <div class="flex items-center space-x-2">
+      <span class="font-mono text-xs text-gold">05.</span>
+      <h2 class="font-serif text-2xl font-bold">Activos Vectoriales de Marca (SVGs)</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Light Logo -->
+      <div class="p-8 bg-paper text-ink border border-ink/15 text-center">
+        <p class="font-mono text-[11px] uppercase tracking-wider text-ink-500 mb-6">Logo Fondo Claro (Paper)</p>
+        <img src="{% static 'images/brand/tintora-logo-light.svg' %}" alt="Logo Light" class="h-10 mx-auto">
+        <p class="font-mono text-[10px] text-ink-400 mt-6">tintora-logo-light.svg</p>
+      </div>
+
+      <!-- Dark Logo -->
+      <div class="p-8 bg-ink text-paper border border-paper/15 text-center">
+        <p class="font-mono text-[11px] uppercase tracking-wider text-paper-400 mb-6">Logo Fondo Oscuro (Ink)</p>
+        <img src="{% static 'images/brand/tintora-logo-dark.svg' %}" alt="Logo Dark" class="h-10 mx-auto">
+        <p class="font-mono text-[10px] text-paper-500 mt-6">tintora-logo-dark.svg</p>
+      </div>
+
+      <!-- Mono Logo & Favicon -->
+      <div class="p-8 bg-surface-cardLight dark:bg-surface-cardDark text-ink dark:text-paper border border-ink/15 dark:border-paper/15 text-center flex flex-col justify-between">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-4">Monocromo & Favicon</p>
+          <div class="flex items-center justify-center space-x-6 my-2">
+            <img src="{% static 'images/brand/favicon.svg' %}" alt="Favicon" class="h-10 w-10">
+            <img src="{% static 'images/brand/tintora-logo-mono.svg' %}" alt="Logo Mono" class="h-8">
+          </div>
+        </div>
+        <p class="font-mono text-[10px] text-ink-400 dark:text-paper-500 mt-6">favicon.svg & tintora-logo-mono.svg</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

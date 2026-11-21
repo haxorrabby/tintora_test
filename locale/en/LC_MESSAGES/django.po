@@ -1,0 +1,4481 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tintora Madrid\n"
+"Report-Msgid-Bugs-To: hola@tintora.es\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid ""
+"\"No somos una imprenta industrial sin rostro. Revisamos cada archivo, "
+"comprobamos perfiles Fogra39 y cuidamos que cada producto hable con orgullo "
+"de tu marca.\""
+msgstr ""
+"\"We are not a faceless industrial printer. We review every file, check "
+"Fogra39 profiles and make sure every product speaks proudly of your brand.\""
+
+msgid "\"Tinta que deja huella.\""
+msgstr "\"Ink that leaves a mark.\""
+
+msgid ""
+"%(desc)s · Descubre productos de %(name)s con envío en Madrid, España y la "
+"Unión Europea."
+msgstr ""
+"%(desc)s · Discover products from %(name)s with shipping to Madrid, Spain "
+"and the European Union."
+
+msgid "%(name)s · Catálogo Tintora Madrid"
+msgstr "%(name)s · Tintora Madrid Catalogue"
+
+msgid "%(qty)s uds &middot; %(price)s&euro;/ud"
+msgstr "%(qty)s units &middot; %(price)s&euro;/unit"
+
+msgid "&bull; Otras categorías:"
+msgstr "&bull; Other categories:"
+
+msgid "+ Nueva dirección"
+msgstr "+ New address"
+
+msgid ". El enlace estará activo durante 24 horas."
+msgstr ". The link will be active for 24 hours."
+
+msgid ". Esta acción no se puede deshacer."
+msgstr ". This action cannot be undone."
+
+msgid "0 para usos ilimitados"
+msgstr "0 for unlimited uses"
+
+msgid "01 &middot; Impresión"
+msgstr "01 &middot; Printing"
+
+msgid "01 / Alcance y precio"
+msgstr "01 / Scope and pricing"
+
+msgid "01. Impresión"
+msgstr "01. Printing"
+
+msgid "02 &middot; Sublimación"
+msgstr "02 &middot; Sublimation"
+
+msgid "02 / Comparativa"
+msgstr "02 / Comparison"
+
+msgid "02. Sublimación"
+msgstr "02. Sublimation"
+
+msgid "03 &middot; Latinos"
+msgstr "03 &middot; Latin"
+
+msgid "03 / Trabajo seleccionado"
+msgstr "03 / Selected work"
+
+msgid "03. Despensa"
+msgstr "03. Pantry"
+
+msgid "03. Productos Latinos"
+msgstr "03. Latin Products"
+
+msgid "04 / Brief inicial"
+msgstr "04 / Initial brief"
+
+msgid "04 / Desarrollo Web · Madrid"
+msgstr "04 / Web Development · Madrid"
+
+msgid "04. Desarrollo Web"
+msgstr "04. Web Development"
+
+msgid "05 / Dudas habituales"
+msgstr "05 / FAQs"
+
+msgid "21% IVA español incluido"
+msgstr "Spanish VAT 21% included"
+
+msgid "300 DPI"
+msgstr "300 DPI"
+
+msgid "A medida / todavía no lo sé"
+msgstr "Custom / not sure yet"
+
+msgid "Acceso no autorizado"
+msgstr "Unauthorized access"
+
+msgid "Accesorios"
+msgstr "Accessories"
+
+msgid "Acción"
+msgstr "Action"
+
+msgid ""
+"Aceptamos archivos en PDF / X-1a, AI, PSD y SVG. Recuerda incluir 3 mm de "
+"sangrado perimetral, mantener textos a más de 4 mm del corte y trabajar en "
+"perfil de color CMYK a 300 DPI."
+msgstr ""
+"We accept PDF / X-1a, AI, PSD and SVG files. Remember to include a 3 mm "
+"bleed all around, keep text at least 4 mm from the cut line and work in a "
+"CMYK colour profile at 300 DPI."
+
+msgid "Aceptar Todas"
+msgstr "Accept All"
+
+msgid "Activa"
+msgstr "Active"
+
+msgid "Activo"
+msgstr "Active"
+
+msgid "Activo en la web"
+msgstr "Active on the site"
+
+msgid "Actualiza tus datos personales y fiscales"
+msgstr "Update your personal and tax details"
+
+msgid "Actualizado"
+msgstr "Updated"
+
+msgid "Actualizando presupuesto..."
+msgstr "Updating quote..."
+
+msgid "Adjuntar briefing (opcional)"
+msgstr "Attach a brief (optional)"
+
+msgid "Adjuntos: PDF, Word, ZIP, JPG o PNG; máximo 10 MB."
+msgstr "Attachments: PDF, Word, ZIP, JPG or PNG; maximum 10 MB."
+
+msgid "Agotado temporalmente"
+msgstr "Temporarily out of stock"
+
+msgid "Alcance gestionado por el estudio"
+msgstr "Scope managed by the studio"
+
+msgid "Alerta de stock bajo"
+msgstr "Low stock alert"
+
+msgid "Algo ha fallado de nuestra parte"
+msgstr "Something went wrong on our side"
+
+msgid "Alternar tema claro y oscuro"
+msgstr "Toggle light and dark theme"
+
+msgid "Anterior"
+msgstr "Previous"
+
+msgid "Antes de empezar"
+msgstr "Before we start"
+
+msgid "Apellidos"
+msgstr "Last name"
+
+msgid "Aplicación"
+msgstr "Application"
+
+msgid "Aplicar"
+msgstr "Apply"
+
+msgid "Aprobada"
+msgstr "Approved"
+
+msgid "Aprobado"
+msgstr "Approved"
+
+msgid "Aprobar prueba"
+msgstr "Approve proof"
+
+msgid "Archivado"
+msgstr "Archived"
+
+msgid "Archivado / Descartado"
+msgstr "Archived / Discarded"
+
+msgid "Archivo adjunto / Briefing"
+msgstr "Attachment / Brief"
+
+msgid "Archivo de arte"
+msgstr "Artwork file"
+
+msgid "Archivo de diseño subido"
+msgstr "Design file uploaded"
+
+msgid "Archivo de imagen"
+msgstr "Image file"
+
+msgid "Archivos de arte"
+msgstr "Artwork files"
+
+msgid "Arte gráfico subido"
+msgstr "Artwork uploaded"
+
+msgid "Arte subido"
+msgstr "Artwork uploaded"
+
+msgid "Artículo"
+msgstr "Item"
+
+msgid "Artículos"
+msgstr "Items"
+
+msgid "Artículos del Encargo"
+msgstr "Order items"
+
+msgid "Artículos del pedido"
+msgstr "Order items"
+
+msgid "Artículos relacionados"
+msgstr "Related products"
+
+msgid "Atención personalizada"
+msgstr "Personal service"
+
+msgid "Aumentar cantidad"
+msgstr "Increase quantity"
+
+msgid "Autor"
+msgstr "Author"
+
+msgid "Aviso Legal"
+msgstr "Legal Notice"
+
+msgid "Ayuda"
+msgstr "Help"
+
+msgid "Añadir"
+msgstr "Add"
+
+msgid "Añadir a la Cesta"
+msgstr "Add to Cart"
+
+msgid "Añadir a la cesta"
+msgstr "Add to cart"
+
+msgid "Añadir a la lista de deseos"
+msgstr "Add to wishlist"
+
+msgid "Añadir al Carrito"
+msgstr "Add to Cart"
+
+msgid "Añadir dirección"
+msgstr "Add address"
+
+msgid ""
+"Aún no has añadido ningún producto. Descubre nuestra imprenta editorial, "
+"merchandising sublimado y alimentación tradicional con envíos a toda España."
+msgstr ""
+"You haven't added any products yet. Discover our editorial print shop, "
+"sublimated merchandise and traditional food with shipping across Spain."
+
+msgid "Aún no hay archivos asociados a tus pedidos"
+msgstr "There are no files associated with your orders yet"
+
+msgid "Aún no tienes direcciones guardadas"
+msgstr "You have no saved addresses yet"
+
+msgid "Aún no tienes pedidos"
+msgstr "You have no orders yet"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid "Baleares, Canarias, Ceuta y Melilla"
+msgstr "Balearic Islands, Canary Islands, Ceuta and Melilla"
+
+msgid "Banco Santander · La producción comienza tras recibir el justificante"
+msgstr ""
+"Banco Santander · Production starts once we receive the payment confirmation"
+
+msgid "Banner promocional activo"
+msgstr "Promotional banner active"
+
+msgid "Barra de anuncio activa"
+msgstr "Announcement bar active"
+
+msgid "Base"
+msgstr "Base"
+
+msgid "Base Imponible"
+msgstr "Taxable Base"
+
+msgid "Base Imponible (€)"
+msgstr "Taxable Base (€)"
+
+msgid "Base imponible"
+msgstr "Taxable base"
+
+msgid "Bienvenido a tu área de cliente"
+msgstr "Welcome to your customer area"
+
+msgid "Bizum"
+msgstr "Bizum"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Blog Tintora"
+msgstr "Tintora Blog"
+
+msgid "Blog · Tintora Madrid"
+msgstr "Blog · Tintora Madrid"
+
+msgid "Borrador"
+msgstr "Draft"
+
+msgid "Breve descripción para listados"
+msgstr "Short description for listings"
+
+msgid "Buscar en las preguntas"
+msgstr "Search the FAQ"
+
+msgid "Buscar por nombre, marca o subcategoría…"
+msgstr "Search by name, brand or subcategory…"
+
+msgid "Buscar productos"
+msgstr "Search products"
+
+msgid "Buscar tarjetas, tazas, café, harina, roll-ups..."
+msgstr "Search business cards, mugs, coffee, flour, roll-ups..."
+
+msgid "Búsqueda en Catálogo"
+msgstr "Catalog Search"
+
+msgid "CIF"
+msgstr "CIF"
+
+msgid "CMYK"
+msgstr "CMYK"
+
+msgid "Calle, número y portal"
+msgstr "Street, number and building"
+
+msgid "Cambios solicitados por el cliente"
+msgstr "Changes requested by the customer"
+
+msgid "Camisetas"
+msgstr "T-shirts"
+
+msgid "Camisetas & Textil"
+msgstr "T-shirts & Textiles"
+
+msgid "Camisetas Técnicas & Algodón"
+msgstr "Technical & Cotton T-shirts"
+
+msgid "Campos modificados"
+msgstr "Changed fields"
+
+msgid "Cancelado"
+msgstr "Cancelled"
+
+msgid "Cancelar"
+msgstr "Cancel"
+
+msgid "Cantidad"
+msgstr "Quantity"
+
+msgid "Cantidad / Tirada"
+msgstr "Quantity / Run"
+
+msgid "Cantidad de unidades"
+msgstr "Number of units"
+
+msgid "Cargo"
+msgstr "Position"
+
+msgid "Carlos Martínez"
+msgstr "Carlos Martínez"
+
+msgid "Carpetas"
+msgstr "Folders"
+
+msgid "Carpetas Corporativas"
+msgstr "Corporate Folders"
+
+msgid "Carrito"
+msgstr "Cart"
+
+msgid "Carrito de compra"
+msgstr "Shopping cart"
+
+msgid "Carrito y Envíos"
+msgstr "Cart and Shipping"
+
+msgid "Carritos de compra"
+msgstr "Shopping carts"
+
+msgid "Carteles"
+msgstr "Posters"
+
+msgid "Casos de estudio"
+msgstr "Case studies"
+
+msgid "Categoría"
+msgstr "Category"
+
+msgid "Categoría superior (opcional)"
+msgstr "Parent category (optional)"
+
+msgid "Categorías"
+msgstr "Categories"
+
+msgid "Categorías Coincidentes"
+msgstr "Matching Categories"
+
+msgid "Catálogo"
+msgstr "Catalog"
+
+msgid "Catálogo & Producción"
+msgstr "Catalog & Production"
+
+msgid "Catálogo &amp; Servicios"
+msgstr "Catalog &amp; Services"
+
+msgid "Catálogo 2026"
+msgstr "2026 Catalog"
+
+msgid "Catálogo Completo &middot; Tintora Madrid"
+msgstr "Full Catalog &middot; Tintora Madrid"
+
+msgid "Catálogo General"
+msgstr "General Catalog"
+
+msgid "Catálogo Goya 2026"
+msgstr "Goya 2026 Catalog"
+
+msgid "Catálogo de Productos"
+msgstr "Product Catalog"
+
+msgid "Catálogo latino Goya 2026 en Tintora Madrid."
+msgstr "Goya 2026 Latin catalog at Tintora Madrid."
+
+msgid "Cerrar"
+msgstr "Close"
+
+msgid "Cerrar cesta"
+msgstr "Close basket"
+
+msgid "Cerrar sesión"
+msgstr "Log out"
+
+msgid "Cerámica"
+msgstr "Ceramic"
+
+msgid "Cesta"
+msgstr "Basket"
+
+msgid "Cesta Vacía"
+msgstr "Empty Basket"
+
+msgid "Cesta de Compra"
+msgstr "Shopping Basket"
+
+msgid "Cesta de Compra · Tintora Madrid"
+msgstr "Shopping Basket · Tintora Madrid"
+
+msgid "Cesta de compra"
+msgstr "Shopping basket"
+
+msgid "Ciudad"
+msgstr "City"
+
+msgid "Ciudad / Localidad"
+msgstr "City / Town"
+
+msgid "Clave de sesión"
+msgstr "Session key"
+
+msgid "Cliente"
+msgstr "Customer"
+
+msgid "Cliente / marca"
+msgstr "Customer / brand"
+
+msgid "Clientes & Permisos"
+msgstr "Customers & Permissions"
+
+msgid "Clientes de Tintora"
+msgstr "Tintora Customers"
+
+msgid "Clientes y Usuarios"
+msgstr "Customers and Users"
+
+msgid "Cobertura geográfica"
+msgstr "Geographic coverage"
+
+msgid "Cobrada"
+msgstr "Charged"
+
+msgid "Cojines"
+msgstr "Cushions"
+
+msgid "Cojines & Puzzles"
+msgstr "Cushions & Puzzles"
+
+msgid "Compara lo que incluye cada opción"
+msgstr "Compare what each option includes"
+
+msgid "Comparar características"
+msgstr "Compare features"
+
+msgid "Comparar opciones"
+msgstr "Compare options"
+
+msgid ""
+"Completa el formulario o escríbenos directamente por WhatsApp. Un ingeniero "
+"senior revisará tu proyecto y te responderá en menos de 24 horas hábiles con"
+" una propuesta detallada."
+msgstr ""
+"Fill in the form or message us directly on WhatsApp. A senior engineer will "
+"review your project and reply within 24 working hours with a detailed "
+"proposal."
+
+msgid "Completado"
+msgstr "Completed"
+
+msgid "Compra por categoría"
+msgstr "Shop by category"
+
+msgid "Comprar"
+msgstr "Shop"
+
+msgid "Comprar ahora"
+msgstr "Buy now"
+
+msgid "Comprar productos latinos"
+msgstr "Shop Latin products"
+
+msgid "Concepto"
+msgstr "Reference"
+
+msgid "Condiciones de Venta"
+msgstr "Terms of Sale"
+
+msgid "Condiciones de venta"
+msgstr "Terms of sale"
+
+msgid "Conectando con Redsys…"
+msgstr "Connecting to Redsys…"
+
+msgid "Configurable en vivo"
+msgstr "Configurable live"
+
+msgid "Configuración"
+msgstr "Configuration"
+
+msgid "Configuración de Cookies"
+msgstr "Cookie Settings"
+
+msgid "Configurar"
+msgstr "Configure"
+
+msgid "Confirma tu correo"
+msgstr "Confirm your email"
+
+msgid "Confirma tu correo para acceder al seguimiento de tus pedidos."
+msgstr "Confirm your email to access the tracking of your orders."
+
+msgid "Confirma tu correo · Tintora Madrid"
+msgstr "Confirm your email · Tintora Madrid"
+
+msgid "Confirmación de Pedido %(num)s · Tintora Madrid"
+msgstr "Order Confirmation %(num)s · Tintora Madrid"
+
+msgid ""
+"Confirmación del pedido %(num)s en Tintora Madrid. Descarga tu factura "
+"oficial y consulta el estado de tu encargo de impresión."
+msgstr ""
+"Order %(num)s confirmation from Tintora Madrid. Download your official "
+"invoice and check the status of your print job."
+
+msgid ""
+"Consejos de impresión, tendencias de diseño y noticias del mundo de las "
+"artes gráficas"
+msgstr "Printing tips, design trends and news from the world of graphic arts"
+
+msgid ""
+"Conservaremos las facturas y los datos fiscales que debamos guardar por "
+"obligación legal. La información de contacto de los pedidos se anonimizará y"
+" sus enlaces de acceso dejarán de funcionar. Esta acción no se puede "
+"deshacer."
+msgstr ""
+"We will keep the invoices and tax data we are legally required to retain. "
+"Order contact information will be anonymised and its access links will stop "
+"working. This action cannot be undone."
+
+msgid "Consulta disponibilidad directamente por WhatsApp."
+msgstr "Check availability directly on WhatsApp."
+
+msgid "Consulta tus pedidos, pruebas y archivos de arte."
+msgstr "Check your orders, proofs and artwork files."
+
+msgid "Consultar este paquete"
+msgstr "View this package"
+
+msgid "Contactado por Asesor"
+msgstr "Contacted by advisor"
+
+msgid "Contactar"
+msgstr "Contact"
+
+msgid "Contactar por WhatsApp con Tintora Madrid"
+msgstr "Contact Tintora Madrid on WhatsApp"
+
+msgid "Contacto"
+msgstr "Contact"
+
+msgid "Contacto Comercial"
+msgstr "Sales Contact"
+
+msgid "Contenido"
+msgstr "Content"
+
+msgid "Contenido de la portada"
+msgstr "Homepage content"
+
+msgid "Continuar al pago"
+msgstr "Continue to payment"
+
+msgid "Contraseña"
+msgstr "Password"
+
+msgid "Contraseña actual"
+msgstr "Current password"
+
+msgid "Contraseña actualizada"
+msgstr "Password updated"
+
+msgid "Contraseña actualizada · Tintora Madrid"
+msgstr "Password updated · Tintora Madrid"
+
+msgid "Cookies"
+msgstr "Cookies"
+
+msgid "Cookies Analíticas"
+msgstr "Analytics Cookies"
+
+msgid "Cookies Publicitarias / Marketing"
+msgstr "Advertising / Marketing Cookies"
+
+msgid "Cookies Técnicas Necesarias"
+msgstr "Necessary Technical Cookies"
+
+msgid "Correo Electrónico"
+msgstr "Email Address"
+
+msgid "Correo electrónico"
+msgstr "Email address"
+
+msgid "Correo electrónico de contacto"
+msgstr "Contact email address"
+
+msgid "Correos / SEUR / MRW / GLS"
+msgstr "Correos / SEUR / MRW / GLS"
+
+msgid "Correos Express"
+msgstr "Correos Express"
+
+msgid "Coste de prueba física (€)"
+msgstr "Physical proof cost (€)"
+
+msgid "Creado"
+msgstr "Created"
+
+msgid "Crear cuenta"
+msgstr "Create account"
+
+msgid "Crear cuenta y enviar confirmación"
+msgstr "Create account and send confirmation"
+
+msgid "Crear cuenta · Tintora Madrid"
+msgstr "Create account · Tintora Madrid"
+
+msgid "Crear una cuenta"
+msgstr "Create an account"
+
+msgid "Cuando envíes un original o recibas una prueba, aparecerá aquí."
+msgstr "When you send an original or receive a proof, it will appear here."
+
+msgid "Cuatro disciplinas. Un solo estándar."
+msgstr "Four disciplines. One single standard."
+
+msgid "Cuenta creada"
+msgstr "Account created"
+
+msgid "Cuenta eliminada · Tintora Madrid"
+msgstr "Account deleted · Tintora Madrid"
+
+msgid "Cuentas y Clientes"
+msgstr "Accounts and Customers"
+
+msgid "Cuota IVA (21%)"
+msgstr "VAT amount (21%)"
+
+msgid "Cuota IVA (€)"
+msgstr "VAT amount (€)"
+
+msgid "Cupones de descuento"
+msgstr "Discount coupons"
+
+msgid "Cupón"
+msgstr "Coupon"
+
+msgid "Cupón '%(code)s' aplicado correctamente."
+msgstr "Coupon '%(code)s' applied successfully."
+
+msgid "Cupón aplicado"
+msgstr "Coupon applied"
+
+msgid "Cupón canjeado"
+msgstr "Coupon redeemed"
+
+msgid "Cupón de descuento"
+msgstr "Discount coupon"
+
+msgid "Cupón retirado."
+msgstr "Coupon removed."
+
+msgid "Cuéntanos el alcance"
+msgstr "Tell us the scope"
+
+msgid "Cuéntanos el proyecto"
+msgstr "Tell us about the project"
+
+msgid ""
+"Cuéntanos qué necesitas: te respondemos en horario laboral y te enviamos "
+"presupuesto sin compromiso."
+msgstr ""
+"Tell us what you need: we reply during business hours and send you a no-"
+"obligation quote."
+
+msgid ""
+"Cuéntanos tu proyecto, la funcionalidad principal, si tienes referentes "
+"visuales y el presupuesto aproximado..."
+msgstr ""
+"Tell us about your project, the core functionality, whether you have visual "
+"references and the approximate budget..."
+
+msgid "Código Postal"
+msgstr "Postal Code"
+
+msgid "Código de zona"
+msgstr "Zone code"
+
+msgid "Código del cupón"
+msgstr "Coupon code"
+
+msgid "Darse de baja"
+msgstr "Unsubscribe"
+
+msgid "Datos de Facturación"
+msgstr "Billing Details"
+
+msgid "Datos de facturación"
+msgstr "Billing details"
+
+msgid "Datos del Cliente & Facturación Oficial"
+msgstr "Customer Details & Official Billing"
+
+msgid "Datos del Contacto & Empresa"
+msgstr "Contact & Company Details"
+
+msgid "Datos fiscales del emisor"
+msgstr "Issuer tax details"
+
+msgid "Datos fiscales del receptor"
+msgstr "Recipient tax details"
+
+msgid "Datos personales y fiscales"
+msgstr "Personal and tax details"
+
+msgid "Decoración"
+msgstr "Decoration"
+
+msgid "Dejar vacío si no aplica envío gratuito para este servicio"
+msgstr "Leave empty if free shipping does not apply to this service"
+
+msgid "Derecho a la limitación del tratamiento"
+msgstr "Right to restriction of processing"
+
+msgid "Derecho a la portabilidad de los datos"
+msgstr "Right to data portability"
+
+msgid "Derecho de acceso a tus datos personales"
+msgstr "Right to access your personal data"
+
+msgid "Derecho de oposición"
+msgstr "Right to object"
+
+msgid "Derecho de rectificación de datos inexactos"
+msgstr "Right to rectification of inaccurate data"
+
+msgid "Derecho de supresión (\"derecho al olvido\")"
+msgstr "Right to erasure (\"right to be forgotten\")"
+
+msgid "Desarrollo"
+msgstr "Development"
+
+msgid "Desarrollo Web"
+msgstr "Web Development"
+
+msgid "Desarrollo Web & IT"
+msgstr "Web Development & IT"
+
+msgid "Desarrollo Web & Leads"
+msgstr "Web Development & Leads"
+
+msgid "Desarrollo Web en Madrid · Tintora"
+msgstr "Web Development in Madrid · Tintora"
+
+msgid ""
+"Descarga un archivo ZIP con tus datos de perfil, direcciones, lista de "
+"deseos, carritos, pedidos, facturas y archivos de arte disponibles."
+msgstr ""
+"Download a ZIP file with your profile data, addresses, wishlist, carts, "
+"orders, invoices and available artwork files."
+
+msgid "Descargar Factura PDF"
+msgstr "Download Invoice PDF"
+
+msgid "Descargar mis datos"
+msgstr "Download my data"
+
+msgid "Descargar original"
+msgstr "Download original"
+
+msgid "Descargar prueba"
+msgstr "Download proof"
+
+msgid "Describe los ajustes que debemos realizar"
+msgstr "Describe the changes we need to make"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Descripción & Consejos de Consumo"
+msgstr "Description & Serving Tips"
+
+msgid "Descripción SEO"
+msgstr "SEO Description"
+
+msgid "Descripción accesible de la fotografía (para lectores de pantalla)."
+msgstr "Accessible description of the photograph (for screen readers)."
+
+msgid "Descripción completa & Especificaciones"
+msgstr "Full description & Specifications"
+
+msgid "Descripción corta"
+msgstr "Short description"
+
+msgid "Descripción del Proyecto"
+msgstr "Project Description"
+
+msgid "Descripción del proyecto / requerimientos"
+msgstr "Project description / requirements"
+
+msgid "Descripción editorial"
+msgstr "Editorial description"
+
+msgid "Descuento"
+msgstr "Discount"
+
+msgid "Descuento (€)"
+msgstr "Discount (€)"
+
+msgid "Descuento aplicado"
+msgstr "Applied discount"
+
+msgid "Descuento cupón"
+msgstr "Coupon discount"
+
+msgid "Desde"
+msgstr "From"
+
+msgid "Deseo"
+msgstr "Wish"
+
+msgid ""
+"Despensa latina del catálogo Goya 2026: busca, filtra por categoría o marca "
+"y consulta disponibilidad por WhatsApp."
+msgstr ""
+"Latin pantry from the Goya 2026 catalog: search, filter by category or brand"
+" and check availability on WhatsApp."
+
+msgid ""
+"Despensa latina del catálogo Goya 2026: congelados, refrigerados, granos, "
+"harinas y fideos, especias y sazones, conservas, productos mexicanos, "
+"chifles y snacks, galletas y dulces, lácteos y frutos secos, bebidas y "
+"refrescos, infusiones y velas. Consulta disponibilidad por WhatsApp."
+msgstr ""
+"Latin pantry from the Goya 2026 catalog: frozen and chilled goods, grains, "
+"flours and noodles, spices and seasonings, preserves, Mexican products, "
+"chifles and snacks, biscuits and sweets, dairy and nuts, drinks and soft "
+"drinks, infusions and candles. Check availability on WhatsApp."
+
+msgid "Despensa y Delicias Latinas"
+msgstr "Latin Pantry & Delicacies"
+
+msgid "Destacado"
+msgstr "Featured"
+
+msgid "Destacado en Portada"
+msgstr "Featured on Homepage"
+
+msgid "Destacados"
+msgstr "Featured"
+
+msgid "Detalles del Pedido"
+msgstr "Order details"
+
+msgid "Detalles del Proyecto"
+msgstr "Project Details"
+
+msgid "Devoluciones"
+msgstr "Returns"
+
+msgid "Direcciones guardadas"
+msgstr "Saved addresses"
+
+msgid "Dirección"
+msgstr "Address"
+
+msgid "Dirección IP"
+msgstr "IP Address"
+
+msgid "Dirección de Entrega"
+msgstr "Delivery Address"
+
+msgid "Dirección de Facturación & Envío"
+msgstr "Billing & Shipping Address"
+
+msgid "Dirección de envío"
+msgstr "Shipping address"
+
+msgid "Dirección guardada"
+msgstr "Saved address"
+
+msgid "Dirección línea 1"
+msgstr "Address line 1"
+
+msgid "Dirección línea 2"
+msgstr "Address line 2"
+
+msgid "Dirección línea 2 (opcional)"
+msgstr "Address line 2 (optional)"
+
+msgid "Dirección por defecto"
+msgstr "Default address"
+
+msgid "Dirección principal"
+msgstr "Main address"
+
+msgid ""
+"Diseñamos y construimos sitios rápidos, claros y fáciles de mantener. Cada "
+"propuesta parte de tus objetivos, no de una plantilla cerrada."
+msgstr ""
+"We design and build fast, clear websites that are easy to maintain. Every "
+"proposal starts from your goals, not from a rigid template."
+
+msgid "Diseñar / enviar más tarde"
+msgstr "Design / send later"
+
+msgid "Diseñar más tarde"
+msgstr "Design later"
+
+msgid ""
+"Diseño editorial de alta gama en Python/Django, Tailwind y Alpine.js. Pago "
+"Stripe + Bizum."
+msgstr ""
+"High-end editorial design in Python/Django, Tailwind and Alpine.js. Payment "
+"via Stripe + Bizum."
+
+msgid ""
+"Diseño editorial de ultra alta gama, desarrollo a medida y optimización SEO "
+"en Madrid."
+msgstr ""
+"Ultra high-end editorial design, custom development and SEO optimisation in "
+"Madrid."
+
+msgid ""
+"Diseño y desarrollo web a medida en Madrid. Consulta paquetes, proyectos y "
+"solicita una propuesta para tu negocio."
+msgstr ""
+"Bespoke web design and development in Madrid. Browse packages and projects, "
+"and request a proposal for your business."
+
+msgid "Diseños"
+msgstr "Designs"
+
+msgid "Disminuir cantidad"
+msgstr "Decrease quantity"
+
+msgid "Documentación Fiscal"
+msgstr "Tax Documentation"
+
+msgid "Documento PDF oficial"
+msgstr "Official PDF document"
+
+msgid "Dudas Frecuentes"
+msgstr "Frequently Asked Questions"
+
+msgid ""
+"Dudas sobre pedidos, impresión, envíos, diseños, pagos y devoluciones. Si no"
+" encuentras tu respuesta, escríbenos por WhatsApp o por email."
+msgstr ""
+"Questions about orders, printing, shipping, designs, payments and returns. "
+"If you can't find your answer, message us on WhatsApp or by email."
+
+msgid "Duplicar"
+msgstr "Duplicate"
+
+msgid "Duplicar esta configuración"
+msgstr "Duplicate this configuration"
+
+msgid "ESC"
+msgstr "ESC"
+
+msgid "Editar"
+msgstr "Edit"
+
+msgid "Editar Perfil"
+msgstr "Edit Profile"
+
+msgid "Editar Perfil · Tintora Madrid"
+msgstr "Edit Profile · Tintora Madrid"
+
+msgid "Editar perfil"
+msgstr "Edit profile"
+
+msgid "Ej. 3º Izquierda"
+msgstr "e.g. 3rd floor, left"
+
+msgid "Ej. 50, 100, 250, 500, 1000"
+msgstr "e.g. 50, 100, 250, 500, 1000"
+
+msgid "Ej. B-88776655 o 12345678Z"
+msgstr "e.g. B-88776655 or 12345678Z"
+
+msgid "Ej. Calle de Alcalá 120"
+msgstr "e.g. Calle de Alcalá 120"
+
+msgid "Ej. Colombia, México, Venezuela, Perú, España"
+msgstr "e.g. Colombia, Mexico, Venezuela, Peru, Spain"
+
+msgid "Ej. Dejar en conserjería si no estamos en horario comercial..."
+msgstr "e.g. Leave with the concierge if we are not open..."
+
+msgid "Ej. Estudio Creativo Alcalá S.L."
+msgstr "e.g. Estudio Creativo Alcalá S.L."
+
+msgid "Ej. Gómez Méndez"
+msgstr "e.g. Gómez Méndez"
+
+msgid "Ej. Laura"
+msgstr "e.g. Laura"
+
+msgid "Ej. MADRID10"
+msgstr "e.g. MADRID10"
+
+msgid "Ej. Tarjetas con stamping en oro · 400 g/m²"
+msgstr "e.g. Gold-stamped business cards · 400 gsm"
+
+msgid "Ej. desde 490€ (+ IVA) o Consultar a medida"
+msgstr "e.g. from €490 (+ VAT) or Ask for a custom quote"
+
+msgid "Ej. tamano, papel, caras, acabado"
+msgstr "e.g. size, paper, sides, finish"
+
+msgid "Ej.: envíos, IVA, pruebas de impresión…"
+msgstr "e.g. shipping, VAT, print proofs…"
+
+msgid "Ej: Oficina, Casa, Almacén"
+msgstr "e.g. Office, Home, Warehouse"
+
+msgid "El NIF/CIF/NIE es obligatorio para emitir factura."
+msgstr "The NIF/CIF/NIE is required to issue an invoice."
+
+msgid "El correo electrónico no se puede modificar"
+msgstr "The email address cannot be changed"
+
+msgid "El cupón"
+msgstr "The coupon"
+
+msgid "El cupón '%(code)s' no existe o no es válido."
+msgstr "The coupon '%(code)s' does not exist or is not valid."
+
+msgid "El enlace ha caducado o no es válido"
+msgstr "The link has expired or is not valid"
+
+msgid ""
+"El error queda registrado. Vuelve a intentarlo en unos segundos o escríbenos"
+" si persiste."
+msgstr ""
+"The error has been logged. Please try again in a few seconds or contact us "
+"if it persists."
+
+msgid ""
+"El formato del NIF/CIF/NIE no es válido. Ejemplos: 12345678Z, B88776655, "
+"X1234567L."
+msgstr ""
+"The NIF/CIF/NIE format is invalid. Examples: 12345678Z, B88776655, "
+"X1234567L."
+
+msgid "El pedido está en máquina. Sin posibilidad de cambios en arte."
+msgstr "The order is on the press. No further artwork changes possible."
+
+msgid "El pedido mínimo para aplicar este cupón es de %(min)s€."
+msgstr "The minimum order to apply this coupon is %(min)s€."
+
+msgid ""
+"El precio que ves es el precio que pagas. Factura española con IVA 21% "
+"desglosado."
+msgstr ""
+"The price you see is the price you pay. Spanish invoice with 21% VAT broken "
+"down."
+
+msgid "El singleton de portada no se puede eliminar."
+msgstr "The homepage singleton cannot be deleted."
+
+msgid "Elige"
+msgstr "Choose"
+
+msgid ""
+"Elige tu producto en el catálogo, configura el formato y añádelo al carrito "
+"con el precio con IVA visible."
+msgstr ""
+"Pick your product from the catalog, configure the format and add it to the "
+"cart with the VAT-inclusive price visible."
+
+msgid "Elige una contraseña nueva"
+msgstr "Choose a new password"
+
+msgid "Eliminado"
+msgstr "Deleted"
+
+msgid "Eliminar"
+msgstr "Delete"
+
+msgid "Eliminar Dirección"
+msgstr "Delete Address"
+
+msgid "Eliminar Dirección · Tintora Madrid"
+msgstr "Delete Address · Tintora Madrid"
+
+msgid "Eliminar definitivamente mi cuenta"
+msgstr "Permanently delete my account"
+
+msgid "Eliminar del carrito"
+msgstr "Remove from cart"
+
+msgid "Eliminar dirección"
+msgstr "Delete address"
+
+msgid "Eliminar mi cuenta"
+msgstr "Delete my account"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email de confirmación enviado"
+msgstr "Confirmation email sent"
+
+msgid "Email verificado"
+msgstr "Email verified"
+
+msgid "Empresa / Autónomo"
+msgstr "Company / Sole trader"
+
+msgid "Empresa / Marca"
+msgstr "Company / Brand"
+
+msgid "Empresa / Proyecto"
+msgstr "Company / Project"
+
+msgid "Empresa / Sociedad"
+msgstr "Company / Business"
+
+msgid "Empresa / Sociedad (CIF)"
+msgstr "Company / Business (CIF)"
+
+msgid "Empresa / proyecto"
+msgstr "Company / project"
+
+msgid "En Estudio Técnico"
+msgstr "In Technical Review"
+
+msgid "En Producción"
+msgstr "In Production"
+
+msgid "En producción"
+msgstr "In production"
+
+msgid "En stock"
+msgstr "In stock"
+
+msgid "En stock en Madrid"
+msgstr "In stock in Madrid"
+
+msgid "English"
+msgstr "English"
+
+msgid "Enlace de tracking"
+msgstr "Tracking link"
+
+msgid "Enlace no válido · Tintora Madrid"
+msgstr "Invalid link · Tintora Madrid"
+
+msgid "Entrar"
+msgstr "Sign in"
+
+msgid "Entrega 24h o recogida gratuita en"
+msgstr "24h delivery or free pickup in"
+
+msgid "Entrega en"
+msgstr "Delivery to"
+
+msgid "Entrega estimada en Madrid"
+msgstr "Estimated delivery in Madrid"
+
+msgid "Entregado"
+msgstr "Delivered"
+
+msgid "Entregado a"
+msgstr "Delivered to"
+
+msgid "Enviada"
+msgstr "Sent"
+
+msgid "Enviado"
+msgstr "Sent"
+
+msgid ""
+"Enviamos en 24/48h por Correos, SEUR, MRW y GLS. Recogida gratuita en el "
+"taller."
+msgstr ""
+"We ship within 24/48h via Correos, SEUR, MRW and GLS. Free pickup at our "
+"workshop."
+
+msgid "Enviar Solicitud de Presupuesto"
+msgstr "Send Quote Request"
+
+msgid "Enviar email"
+msgstr "Send email"
+
+msgid "Enviar enlace"
+msgstr "Send link"
+
+msgid "Enviar solicitud"
+msgstr "Send request"
+
+msgid "Envío"
+msgstr "Shipping"
+
+msgid "Envío España"
+msgstr "Shipping Spain"
+
+msgid "Envío en 24/48h por Correos / SEUR / MRW."
+msgstr "Shipping within 24/48h via Correos / SEUR / MRW."
+
+msgid "Envío gratis"
+msgstr "Free shipping"
+
+msgid "Envío gratuito a partir de (€)"
+msgstr "Free shipping from (€)"
+
+msgid "Envíos"
+msgstr "Shipping"
+
+msgid "Envíos & Devoluciones"
+msgstr "Shipping & Returns"
+
+msgid "Envíos 24/48h a España"
+msgstr "24/48h shipping to Spain"
+
+msgid "Envíos a toda España"
+msgstr "Shipping across Spain"
+
+msgid "Envíos y devoluciones"
+msgstr "Shipping and returns"
+
+msgid "Error del servidor"
+msgstr "Server error"
+
+msgid "Escribe ELIMINAR para confirmar"
+msgstr "Type ELIMINAR to confirm"
+
+msgid "Escribe al menos 2 caracteres para buscar en el catálogo de Madrid..."
+msgstr "Type at least 2 characters to search the Madrid catalog..."
+
+msgid "Escribir al equipo"
+msgstr "Write to the team"
+
+msgid "Escribir por WhatsApp"
+msgstr "Message on WhatsApp"
+
+msgid "Espacio Color"
+msgstr "Colour Space"
+
+msgid "España Peninsular"
+msgstr "Mainland Spain"
+
+msgid "Español"
+msgstr "Spanish"
+
+msgid "Esta página no existe"
+msgstr "This page does not exist"
+
+msgid "Establecer como dirección por defecto"
+msgstr "Set as default address"
+
+msgid "Establecer por defecto"
+msgstr "Set as default"
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "Estado de la prueba"
+msgstr "Proof status"
+
+msgid "Estado de la transacción"
+msgstr "Transaction status"
+
+msgid "Estado de tu Pedido"
+msgstr "Your Order Status"
+
+msgid "Estado del Lead"
+msgstr "Lead Status"
+
+msgid "Estado del arte"
+msgstr "Artwork status"
+
+msgid "Estado del lead"
+msgstr "Lead status"
+
+msgid "Estado del pago"
+msgstr "Payment status"
+
+msgid "Estado del pedido"
+msgstr "Order status"
+
+msgid "Estadísticas"
+msgstr "Statistics"
+
+msgid ""
+"Estamos preparando esta selección. Mientras tanto, podemos enseñarte "
+"trabajos relevantes para tu sector durante la primera conversación."
+msgstr ""
+"We are preparing this selection. In the meantime, we can show you relevant "
+"work for your sector during the first conversation."
+
+msgid ""
+"Estamos preparando nuevas modalidades. Cuéntanos qué necesitas y te "
+"enviaremos una propuesta a medida."
+msgstr ""
+"We are preparing new options. Tell us what you need and we will send you a "
+"bespoke proposal."
+
+msgid "Este cupón aún no está disponible."
+msgstr "This coupon is not available yet."
+
+msgid "Este cupón ha alcanzado el límite de usos."
+msgstr "This coupon has reached its usage limit."
+
+msgid "Este cupón ha caducado."
+msgstr "This coupon has expired."
+
+msgid "Este cupón no se encuentra activo."
+msgstr "This coupon is not active."
+
+msgid "Este enlace ya se ha utilizado o ha caducado."
+msgstr "This link has already been used or has expired."
+
+msgid "Estudio Creativo S.L."
+msgstr "Estudio Creativo S.L."
+
+msgid ""
+"Estudio de artes gráficas, sublimación avanzada, tienda de productos "
+"nostálgicos e ingeniería de software en Madrid. Cuidamos cada milímetro de "
+"papel y cada píxel de código con rigor editorial."
+msgstr ""
+"Graphic arts studio, advanced sublimation, nostalgic products shop and "
+"software engineering in Madrid. We take care of every millimetre of paper "
+"and every pixel of code with editorial rigour."
+
+msgid ""
+"Estudio de impresión editorial, sublimación técnica y desarrollo web en "
+"Madrid."
+msgstr ""
+"Editorial printing studio, technical sublimation and web development in "
+"Madrid."
+
+msgid "Etiqueta"
+msgstr "Label"
+
+msgid "Etiqueta del enlace del anuncio"
+msgstr "Announcement link label"
+
+msgid "Evento de auditoría"
+msgstr "Audit event"
+
+msgid ""
+"Explora nuestra selección de imprenta editorial, artículos sublimados y "
+"despensa latina con precios transparentes y 21% de IVA incluido."
+msgstr ""
+"Explore our selection of editorial print, sublimated products and Latin "
+"pantry with transparent prices and 21% VAT included."
+
+msgid "Explora nuestro catálogo y añade productos que te interesen"
+msgstr "Browse our catalogue and add products you like"
+
+msgid "Explora nuestro catálogo y realiza tu primer pedido"
+msgstr "Browse our catalogue and place your first order"
+
+msgid "Explorar Catálogo de Tintora"
+msgstr "Explore the Tintora Catalog"
+
+msgid "Explorar catálogo"
+msgstr "Browse catalogue"
+
+msgid "Explorar sublimación"
+msgstr "Explore sublimation"
+
+msgid "Exportar mis datos"
+msgstr "Export my data"
+
+msgid "Extracto"
+msgstr "Excerpt"
+
+msgid "Factura Oficial %(num)s"
+msgstr "Official Invoice %(num)s"
+
+msgid "Factura Ordinaria — RD 1619/2012"
+msgstr "Ordinary Invoice — RD 1619/2012"
+
+msgid "Factura con CIF empresarial"
+msgstr "Invoice with company CIF"
+
+msgid "Factura con DNI / NIE"
+msgstr "Invoice with DNI / NIE"
+
+msgid "Factura con NIF/CIF"
+msgstr "Invoice with NIF/CIF"
+
+msgid "Factura conforme RD 1619/2012 AEAT"
+msgstr "Invoice compliant with RD 1619/2012 AEAT"
+
+msgid "Factura no encontrada para este pedido."
+msgstr "Invoice not found for this order."
+
+msgid "Factura oficial"
+msgstr "Official invoice"
+
+msgid "Factura oficial española con NIF/CIF"
+msgstr "Official Spanish invoice with NIF/CIF"
+
+msgid "Facturas oficiales"
+msgstr "Official invoices"
+
+msgid "Fallido"
+msgstr "Failed"
+
+msgid "Fecha de consentimiento"
+msgstr "Consent date"
+
+msgid "Fecha de creación"
+msgstr "Creation date"
+
+msgid "Fecha de emisión"
+msgstr "Issue date"
+
+msgid "Fecha de envío de prueba"
+msgstr "Proof dispatch date"
+
+msgid "Fecha de publicación"
+msgstr "Publication date"
+
+msgid "Fecha de registro"
+msgstr "Registration date"
+
+msgid "Fechas Importantes"
+msgstr "Important Dates"
+
+msgid "Ficha Técnica del Taller"
+msgstr "Workshop Data Sheet"
+
+msgid "Filtrar por categoría"
+msgstr "Filter by category"
+
+msgid "Filtrar por marca"
+msgstr "Filter by brand"
+
+msgid "Filtro en tiempo real con HTMX"
+msgstr "Real-time filter with HTMX"
+
+msgid "Finalizar Compra"
+msgstr "Checkout"
+
+msgid "Finalizar Pedido · Tintora Madrid"
+msgstr "Complete Order · Tintora Madrid"
+
+msgid "Finalizar compra"
+msgstr "Checkout"
+
+msgid "Flyers"
+msgstr "Flyers"
+
+msgid "Flyers & Folletos"
+msgstr "Flyers & Leaflets"
+
+msgid ""
+"Formatos aceptados: PDF, AI, EPS, PSD, TIFF, JPG, PNG. Tamaño máximo: 50MB."
+msgstr ""
+"Accepted formats: PDF, AI, EPS, PSD, TIFF, JPG, PNG. Maximum size: 50MB."
+
+msgid "Formatos admitidos: PDF/X, AI, PSD, SVG, PNG (300 DPI recomendados)"
+msgstr "Accepted formats: PDF/X, AI, PSD, SVG, PNG (300 DPI recommended)"
+
+msgid "Fotografía del trabajo"
+msgstr "Photo of the job"
+
+msgid "Fundas"
+msgstr "Cases"
+
+msgid "Fundas Móvil Antigolpes"
+msgstr "Shockproof Phone Cases"
+
+msgid "GLS"
+msgstr "GLS"
+
+msgid "GRATIS"
+msgstr "FREE"
+
+msgid "Gaceta Tintora"
+msgstr "Tintora Gazette"
+
+msgid "Ganado / Proyecto en Marcha"
+msgstr "Won / Project Underway"
+
+msgid "Garantía de Importación Tintora Madrid"
+msgstr "Tintora Madrid Import Guarantee"
+
+msgid "Garantías de compra"
+msgstr "Purchase guarantees"
+
+msgid "Gasto mínimo (€)"
+msgstr "Minimum spend (€)"
+
+msgid "Gastos de envío"
+msgstr "Shipping costs"
+
+msgid "Gestión de Pedidos y Facturación"
+msgstr "Order Management and Billing"
+
+msgid "Gestión de tus datos personales conforme al RGPD"
+msgstr "Management of your personal data in accordance with the GDPR"
+
+msgid "Gorras"
+msgstr "Caps"
+
+msgid "Gorras & Accesorios"
+msgstr "Caps & Accessories"
+
+msgid "Gorras Trucker & Clásicas"
+msgstr "Trucker & Classic Caps"
+
+msgid "Gracias. Ya tenemos el brief."
+msgstr "Thank you. We have your brief."
+
+msgid "Gratis"
+msgstr "Free"
+
+msgid "Grupo"
+msgstr "Group"
+
+msgid "Grupo de opciones de producto"
+msgstr "Product option group"
+
+msgid "Grupo de opción"
+msgstr "Option group"
+
+msgid "Grupos de Rol"
+msgstr "Role Groups"
+
+msgid "Grupos de opciones de producto"
+msgstr "Product option groups"
+
+msgid "Guarda tus direcciones para agilizar el proceso de checkout"
+msgstr "Save your addresses to speed up checkout"
+
+msgid "Guardar Preferencias"
+msgstr "Save Preferences"
+
+msgid "Guardar cambios"
+msgstr "Save changes"
+
+msgid "Guardar contraseña"
+msgstr "Save password"
+
+msgid "Guardar dirección"
+msgstr "Save address"
+
+msgid "Habilita carga y validación de archivos PDF/AI/PSD/SVG"
+msgstr "Enables upload and validation of PDF/AI/PSD/SVG files"
+
+msgid ""
+"Habilita el configurador interactivo con opciones de papel, tamaños y "
+"escalado por volumen"
+msgstr ""
+"Enables the interactive configurator with paper options, sizes and volume "
+"pricing"
+
+msgid "Hablar por WhatsApp"
+msgstr "Chat on WhatsApp"
+
+msgid "Hablemos"
+msgstr "Let's talk"
+
+msgid "Harina PAN & Café"
+msgstr "Harina PAN & Coffee"
+
+msgid "He leído y acepto la"
+msgstr "I have read and accept the"
+
+msgid "He leído y acepto los"
+msgstr "I have read and accept the"
+
+msgid ""
+"Hemos eliminado tu perfil y los datos asociados a la cuenta. Los pedidos y "
+"facturas que debemos conservar por obligación legal permanecen archivados; "
+"los datos de contacto de los pedidos se han anonimizado."
+msgstr ""
+"We have deleted your profile and the data associated with the account. The "
+"orders and invoices we must keep for legal reasons remain archived; the "
+"order contact details have been anonymised."
+
+msgid "Hemos enviado un enlace de confirmación a"
+msgstr "We have sent a confirmation link to"
+
+msgid ""
+"Hemos enviado una confirmación a tu correo. El equipo revisará el proyecto y"
+" te responderá en un día laborable."
+msgstr ""
+"We have sent a confirmation to your email. The team will review the project "
+"and reply within one working day."
+
+msgid "Hemos enviado una prueba de impresión para tu aprobación."
+msgstr "We have sent a print proof for your approval."
+
+msgid "Hero: CTA primaria"
+msgstr "Hero: primary CTA"
+
+msgid "Hero: CTA primaria URL"
+msgstr "Hero: primary CTA URL"
+
+msgid "Hero: CTA secundaria"
+msgstr "Hero: secondary CTA"
+
+msgid "Hero: CTA secundaria URL"
+msgstr "Hero: secondary CTA URL"
+
+msgid "Hero: antetítulo"
+msgstr "Hero: eyebrow"
+
+msgid "Hero: texto de apoyo"
+msgstr "Hero: supporting text"
+
+msgid "Hero: titular"
+msgstr "Hero: headline"
+
+msgid "Historial completo y estado actual"
+msgstr "Full history and current status"
+
+msgid "Hola Tintora, me interesa información sobre:"
+msgstr "Hello Tintora, I'm interested in information about:"
+
+msgid "Hola,"
+msgstr "Hello,"
+
+msgid "IBAN"
+msgstr "IBAN"
+
+msgid "IVA"
+msgstr "VAT"
+
+msgid "IVA (%(pct)s%%)"
+msgstr "VAT (%(pct)s%%)"
+
+msgid "IVA (%)"
+msgstr "VAT (%)"
+
+msgid "IVA 21%"
+msgstr "21% VAT"
+
+msgid "IVA 21% incluido"
+msgstr "21% VAT included"
+
+msgid "IVA aplicable (%)"
+msgstr "Applicable VAT (%)"
+
+msgid "IVA incl."
+msgstr "VAT incl."
+
+msgid "IVA incl. · Envío calculado en el carrito"
+msgstr "VAT incl. · Shipping calculated in the cart"
+
+msgid "IVA incluido"
+msgstr "VAT included"
+
+msgid "IVA incluido siempre"
+msgstr "VAT always included"
+
+msgid "Identificador"
+msgstr "Identifier"
+
+msgid "Identificador de transacción / Pago"
+msgstr "Transaction / Payment identifier"
+
+msgid "Identificador técnico"
+msgstr "Technical identifier"
+
+msgid "Idioma"
+msgstr "Language"
+
+msgid "Imagen de la prueba"
+msgstr "Proof image"
+
+msgid "Imagen de portada"
+msgstr "Cover image"
+
+msgid "Imagen de producto"
+msgstr "Product image"
+
+msgid "Imagen del proyecto"
+msgstr "Project image"
+
+msgid "Imagen destacada"
+msgstr "Featured image"
+
+msgid "Imagen principal"
+msgstr "Main image"
+
+msgid "Importación"
+msgstr "Import"
+
+msgid "Importe"
+msgstr "Amount"
+
+msgid "Importe adicional con IVA incluido"
+msgstr "Additional amount VAT included"
+
+msgid "Importe cobrado (€)"
+msgstr "Amount charged (€)"
+
+msgid "Importe fijo (€)"
+msgstr "Fixed amount (€)"
+
+msgid ""
+"Imprescindibles para la autenticación, carrito de la compra y seguridad del "
+"pago."
+msgstr "Essential for authentication, shopping cart and payment security."
+
+msgid "Impresión"
+msgstr "Printing"
+
+msgid "Impresión &middot; Sublimación &middot; Latinos"
+msgstr "Printing &middot; Sublimation &middot; Latin"
+
+msgid "Impresión 360°"
+msgstr "360° printing"
+
+msgid "Impresión Profesional"
+msgstr "Professional Printing"
+
+msgid "Impresión a Medida / Gran Tirada"
+msgstr "Custom Printing / Large Runs"
+
+msgid "Impresión de Alta Fidelidad"
+msgstr "High-Fidelity Printing"
+
+msgid "Impresión profesional"
+msgstr "Professional printing"
+
+msgid ""
+"Impresión profesional para empresas y proyectos creativos. Tarjetas, "
+"packaging, textil personalizado y productos latinos — todo desde nuestro "
+"taller en Madrid."
+msgstr ""
+"Professional printing for businesses and creative projects. Business cards, "
+"packaging, custom textiles and Latin products — all from our workshop in "
+"Madrid."
+
+msgid "Impresión profesional: tarjetas y packaging premium"
+msgstr "Professional printing: premium cards and packaging"
+
+msgid ""
+"Impresión, sublimación o desarrollo web: cuéntanos el proyecto y te "
+"respondemos con una propuesta detallada."
+msgstr ""
+"Printing, sublimation or web development: tell us about the project and "
+"we'll reply with a detailed proposal."
+
+msgid "Imágenes de producto"
+msgstr "Product images"
+
+msgid "Incluida y Gratuita"
+msgstr "Included and Free"
+
+msgid "Incluido"
+msgstr "Included"
+
+msgid "Información Básica"
+msgstr "Basic Information"
+
+msgid "Información Personal / Empresa"
+msgstr "Personal / Company Information"
+
+msgid "Información legal"
+msgstr "Legal information"
+
+msgid "Ingeniería Digital a Medida"
+msgstr "Custom Digital Engineering"
+
+msgid "Ingeniería Web & Soluciones Digitales"
+msgstr "Web Engineering & Digital Solutions"
+
+msgid "Ingeniería digital, con una voz propia."
+msgstr "Digital engineering, with a voice of its own."
+
+msgid "Inicia sesión"
+msgstr "Sign in"
+
+msgid "Inicial del avatar"
+msgstr "Avatar initial"
+
+msgid "Iniciar sesión"
+msgstr "Log in"
+
+msgid "Iniciar sesión · Tintora Madrid"
+msgstr "Log in · Tintora Madrid"
+
+msgid "Inicio"
+msgstr "Home"
+
+msgid "Instrucciones de Transferencia Bancaria"
+msgstr "Bank Transfer Instructions"
+
+msgid "Instrucciones de entrega / notas del cliente"
+msgstr "Delivery instructions / customer notes"
+
+msgid "Ir a iniciar sesión"
+msgstr "Go to log in"
+
+msgid "Ir al inicio"
+msgstr "Go to homepage"
+
+msgid ""
+"La factura se está generando. Recibirás una copia por correo electrónico en "
+"breve."
+msgstr ""
+"The invoice is being generated. You will receive a copy by email shortly."
+
+msgid "Las preguntas frecuentes estarán disponibles muy pronto."
+msgstr "Frequently asked questions will be available very soon."
+
+msgid "Latino"
+msgstr "Latin"
+
+msgid "Latinos"
+msgstr "Latin"
+
+msgid "Leer Política de Cookies"
+msgstr "Read Cookie Policy"
+
+msgid "Legal & Ayuda"
+msgstr "Legal & Help"
+
+msgid "Limpiar filtros"
+msgstr "Clear filters"
+
+msgid "Lista JSON con las ventajas del paquete"
+msgstr "JSON list with the package benefits"
+
+msgid "Lista de Deseos"
+msgstr "Wishlist"
+
+msgid "Lista de Deseos · Tintora Madrid"
+msgstr "Wishlist · Tintora Madrid"
+
+msgid "Lista de características incluidas"
+msgstr "List of included features"
+
+msgid "Lista de deseos"
+msgstr "Wishlist"
+
+msgid "Lo que dicen nuestros clientes"
+msgstr "What our customers say"
+
+msgid "Logística & Stock (Productos Latinos y Merch)"
+msgstr "Logistics & Stock (Latin Products and Merch)"
+
+msgid "Los favoritos de nuestros clientes"
+msgstr "Our customers' favourites"
+
+msgid "Línea de carrito"
+msgstr "Cart line"
+
+msgid "Línea duplicada con la misma configuración."
+msgstr "Line duplicated with the same configuration."
+
+msgid "Líneas de carrito"
+msgstr "Cart lines"
+
+msgid "MRW"
+msgstr "MRW"
+
+msgid "Madrid"
+msgstr "Madrid"
+
+msgid "Madrid Local"
+msgstr "Local Madrid"
+
+msgid "Madrid Local (Capital & M-30/M-40)"
+msgstr "Local Madrid (City & M-30/M-40)"
+
+msgid "Taller de Getafe"
+msgstr "Getafe Workshop"
+
+msgid "Madrid Taller Propio"
+msgstr "Madrid Own Workshop"
+
+msgid "Marca"
+msgstr "Brand"
+
+msgid "Menos de 1.000€"
+msgstr "Under €1,000"
+
+msgid "Mensaje de error"
+msgstr "Error message"
+
+msgid "Menú móvil"
+msgstr "Mobile menu"
+
+msgid "Merchandising / Sublimación Corporativa"
+msgstr "Merchandising / Corporate Sublimation"
+
+msgid "Mi cuenta"
+msgstr "My account"
+
+msgid "Mi Área"
+msgstr "My Area"
+
+msgid "Mi Área · Tintora Madrid"
+msgstr "My Area · Tintora Madrid"
+
+msgid "Mi área"
+msgstr "My area"
+
+msgid "Mis Direcciones"
+msgstr "My Addresses"
+
+msgid "Mis Direcciones · Tintora Madrid"
+msgstr "My Addresses · Tintora Madrid"
+
+msgid "Mis Pedidos"
+msgstr "My Orders"
+
+msgid "Mis Pedidos · Tintora Madrid"
+msgstr "My Orders · Tintora Madrid"
+
+msgid "Mis archivos de arte"
+msgstr "My artwork files"
+
+msgid "Mis archivos de arte · Tintora Madrid"
+msgstr "My artwork files · Tintora Madrid"
+
+msgid "Modelo"
+msgstr "Model"
+
+msgid "Modificado"
+msgstr "Modified"
+
+msgid "Modificar artículos en la cesta"
+msgstr "Edit items in the basket"
+
+msgid "Moneda"
+msgstr "Currency"
+
+msgid "Muestra de Papeles & Acabados"
+msgstr "Paper & Finish Sample"
+
+msgid ""
+"Muestran anuncios relevantes sobre nuestras ofertas de impresión y "
+"promociones."
+msgstr "Show relevant ads about our printing offers and promotions."
+
+msgid "Mugs, textil &amp; más"
+msgstr "Mugs, textiles &amp; more"
+
+msgid "Más Elegido"
+msgstr "Most Chosen"
+
+msgid "Más de 6.000€"
+msgstr "Over €6,000"
+
+msgid "Método de Entrega"
+msgstr "Delivery Method"
+
+msgid "Método de Pago Seguro"
+msgstr "Secure Payment Method"
+
+msgid "Método de envío"
+msgstr "Shipping method"
+
+msgid "Método de envío seleccionado"
+msgstr "Selected shipping method"
+
+msgid "Método de pago"
+msgstr "Payment method"
+
+msgid ""
+"Método de pago no válido. Elige Bizum, Redsys o transferencia bancaria."
+msgstr "Invalid payment method. Choose Bizum, Redsys or bank transfer."
+
+msgid "Métodos de envío"
+msgstr "Shipping methods"
+
+msgid "NIF"
+msgstr "NIF"
+
+msgid "NIF / CIF"
+msgstr "NIF / CIF"
+
+msgid "NIF / CIF (opcional)"
+msgstr "NIF / CIF (optional)"
+
+msgid "NIF / CIF / NIE"
+msgstr "NIF / CIF / NIE"
+
+msgid "NIF/CIF"
+msgstr "NIF/CIF"
+
+msgid "Navegación móvil"
+msgstr "Mobile navigation"
+
+msgid "Navegación principal"
+msgstr "Main navigation"
+
+msgid "Navegador"
+msgstr "Browser"
+
+msgid "Necesario para el cálculo de tarifas de envío por peso"
+msgstr "Needed to calculate weight-based shipping rates"
+
+msgid "Necesita revisión"
+msgstr "Needs review"
+
+msgid "Newsletter: texto"
+msgstr "Newsletter: text"
+
+msgid "Newsletter: titular"
+msgstr "Newsletter: headline"
+
+msgid "Ninguna pregunta coincide con tu búsqueda."
+msgstr "No question matches your search."
+
+msgid "No hay artículos en esta categoría aún"
+msgstr "There are no articles in this category yet"
+
+msgid "No hay artículos publicados aún"
+msgstr "No articles have been published yet"
+
+msgid "No hay productos en esta selección"
+msgstr "There are no products in this selection"
+
+msgid ""
+"No hemos encontrado artículos que coincidan exactamente con tu búsqueda. "
+"Puedes explorar las categorías principales en el menú superior."
+msgstr ""
+"We couldn't find items that exactly match your search. You can explore the "
+"main categories in the top menu."
+
+msgid ""
+"No hemos podido enviar el correo ahora mismo. Puedes solicitar otro enlace "
+"desde el acceso a tu cuenta."
+msgstr ""
+"We could not send the email right now. You can request another link from the"
+" account login."
+
+msgid "No incluido"
+msgstr "Not included"
+
+msgid "No rellenar"
+msgstr "Do not fill in"
+
+msgid "No se encontraron resultados para"
+msgstr "No results found for"
+
+msgid ""
+"No se ha podido procesar el pago. Inténtalo de nuevo o elige otro método."
+msgstr ""
+"We couldn't process the payment. Please try again or choose another method."
+
+msgid "No solicitada"
+msgstr "Not requested"
+
+msgid "No suscrito"
+msgstr "Not subscribed"
+
+msgid "No tienes acceso a esta sección"
+msgstr "You don't have access to this section"
+
+msgid "No tienes permiso para descargar esta factura."
+msgstr "You don't have permission to download this invoice."
+
+msgid "No tienes permiso para ver este pedido."
+msgstr "You don't have permission to view this order."
+
+msgid "Nombre"
+msgstr "Name"
+
+msgid "Nombre / Razón Social"
+msgstr "Name / Company Name"
+
+msgid "Nombre Completo"
+msgstr "Full Name"
+
+msgid "Nombre alfabético"
+msgstr "Alphabetical name"
+
+msgid "Nombre de la categoría"
+msgstr "Category name"
+
+msgid "Nombre de la opción"
+msgstr "Option name"
+
+msgid "Nombre de la zona"
+msgstr "Zone name"
+
+msgid "Nombre del paquete"
+msgstr "Package name"
+
+msgid "Nombre del producto"
+msgstr "Product name"
+
+msgid "Nombre del servicio"
+msgstr "Service name"
+
+msgid "Nombre y apellidos"
+msgstr "First and last name"
+
+msgid "Nombre: A – Z"
+msgstr "Name: A – Z"
+
+msgid "Nombre: Z – A"
+msgstr "Name: Z – A"
+
+msgid ""
+"Nos permiten entender cómo interactúan los usuarios con nuestra web para "
+"mejorar la navegación."
+msgstr ""
+"They allow us to understand how users interact with our site so we can "
+"improve navigation."
+
+msgid "Notas"
+msgstr "Notes"
+
+msgid "Notas de entrega / Observaciones para taller"
+msgstr "Delivery notes / Workshop observations"
+
+msgid "Notas de producción / taller"
+msgstr "Production / workshop notes"
+
+msgid "Notas internas de taller"
+msgstr "Internal workshop notes"
+
+msgid "Notas internas del equipo de producción"
+msgstr "Internal notes from the production team"
+
+msgid "Notas personales sobre este producto"
+msgstr "Personal notes about this product"
+
+msgid "Nuestro equipo de taller en"
+msgstr "Our workshop team at"
+
+msgid ""
+"Nuestro equipo de taller está disponible de lunes a viernes de 09:30 a "
+"19:30."
+msgstr "Our workshop team is available Monday to Friday from 09:30 to 19:30."
+
+msgid "Nueva"
+msgstr "New"
+
+msgid "Nueva contraseña · Tintora Madrid"
+msgstr "New password · Tintora Madrid"
+
+msgid "Nuevo Lead"
+msgstr "New Lead"
+
+msgid "Nuevo pedido"
+msgstr "New order"
+
+msgid "Núcleo del Sistema"
+msgstr "System Core"
+
+msgid "Número de factura"
+msgstr "Invoice number"
+
+msgid "Número de pedido"
+msgstr "Order number"
+
+msgid "Número de seguimiento"
+msgstr "Tracking number"
+
+msgid "Objeto"
+msgstr "Subject"
+
+msgid "Obligatorias"
+msgstr "Required"
+
+msgid "Obligatorio"
+msgstr "Required"
+
+msgid "Obligatorio conforme al RD 1619/2012 de facturación"
+msgstr "Required under invoicing regulation RD 1619/2012"
+
+msgid "Obligatorio para la emisión de facturas oficiales"
+msgstr "Required for issuing official invoices"
+
+msgid "Obligatorio para la emisión de facturas oficiales en España"
+msgstr "Required to issue official invoices in Spain"
+
+msgid "Ocio"
+msgstr "Leisure"
+
+msgid "Oferta de bienvenida"
+msgstr "Welcome offer"
+
+msgid "Ofrece opción de"
+msgstr "Offers the option of"
+
+msgid ""
+"Ofrece opción de \"Pide una prueba digital o física\" antes de tirada "
+"completa"
+msgstr ""
+"Offers the option of \"Request a digital or physical proof\" before the full"
+" run"
+
+msgid "Opciones de Configuración"
+msgstr "Configuration Options"
+
+msgid "Opciones de Configuración e Imprenta"
+msgstr "Configuration and Print Options"
+
+msgid "Opciones seleccionadas"
+msgstr "Selected options"
+
+msgid "Orden"
+msgstr "Order"
+
+msgid "Orden de visualización"
+msgstr "Display order"
+
+msgid "Orden del catálogo"
+msgstr "Catalog order"
+
+msgid "Ordenados por unidades reales en pedidos no cancelados."
+msgstr "Sorted by actual units in non-cancelled orders."
+
+msgid "Ordenar"
+msgstr "Sort"
+
+msgid "Ordenar por"
+msgstr "Sort by"
+
+msgid "Ordenar productos"
+msgstr "Sort products"
+
+msgid "Origen"
+msgstr "Origin"
+
+msgid "Originales enviados y pruebas asociadas a tus pedidos."
+msgstr "Originals sent and proofs associated with your orders."
+
+msgid "Originales enviados y pruebas recibidas"
+msgstr "Originals sent and proofs received"
+
+msgid "Pagado"
+msgstr "Paid"
+
+msgid "Pagar y Confirmar Pedido"
+msgstr "Pay and Confirm Order"
+
+msgid "Paginación del catálogo"
+msgstr "Catalog pagination"
+
+msgid "Pago"
+msgstr "Payment"
+
+msgid ""
+"Pago 100% seguro con Stripe, Bizum o Redsys &middot; Factura oficial "
+"española con CIF"
+msgstr ""
+"100% secure payment with Stripe, Bizum or Redsys &middot; Official Spanish "
+"invoice with CIF"
+
+msgid ""
+"Pago Bizum confirmado con el número %(phone)s. Tu pedido pasa directamente a"
+" taller."
+msgstr ""
+"Bizum payment confirmed with number %(phone)s. Your order goes straight to "
+"the workshop."
+
+msgid "Pago móvil instantáneo sin comisiones"
+msgstr "Instant mobile payment with no fees"
+
+msgid "Pago seguro · Stripe · Bizum"
+msgstr "Secure payment · Stripe · Bizum"
+
+msgid "Pago verificado a través de la pasarela Redsys (simulación)."
+msgstr "Payment verified through the Redsys gateway (simulation)."
+
+msgid "Pagos"
+msgstr "Payments"
+
+msgid "Pagos seguros con Stripe, Bizum y Redsys"
+msgstr "Secure payments with Stripe, Bizum and Redsys"
+
+msgid "Panel y Seguridad"
+msgstr "Panel and Security"
+
+msgid ""
+"Papelería corporativa, gran formato y acabados de lujo (stamping oro, barniz"
+" selectivo, plastificado soft-touch)."
+msgstr ""
+"Corporate stationery, large format and luxury finishes (gold stamping, spot "
+"UV, soft-touch lamination)."
+
+msgid "Paquete de Desarrollo Web"
+msgstr "Web Development Package"
+
+msgid "Paquete de interés"
+msgstr "Package of interest"
+
+msgid "Paquete destacado / Más popular"
+msgstr "Featured / Most popular package"
+
+msgid "Paquete entregado al transportista. Consulta el número de seguimiento."
+msgstr "Package handed to the carrier. Check the tracking number."
+
+msgid "Paquetes de Desarrollo Web"
+msgstr "Web Development Packages"
+
+msgid "Paquetes de Servicios Web"
+msgstr "Web Service Packages"
+
+msgid "Paquetes para empezar con claridad"
+msgstr "Packages to start with clarity"
+
+msgid "Paquetes web"
+msgstr "Web packages"
+
+msgid "Paquetes y precios"
+msgstr "Packages and pricing"
+
+msgid ""
+"Para ejercer estos derechos, también puedes contactarnos directamente en"
+msgstr "To exercise these rights, you can also contact us directly at"
+
+msgid "Para facturación de empresa es obligatorio indicar la razón social."
+msgstr "For company invoicing, the company name is required."
+
+msgid "Para pedidos, facturas y protección de datos."
+msgstr "For orders, invoices and data protection."
+
+msgid ""
+"Para poner tu pedido en producción, realiza una transferencia bancaria por "
+"el importe indicado:"
+msgstr ""
+"To put your order into production, please make a bank transfer for the "
+"amount indicated:"
+
+msgid "Particular"
+msgstr "Individual"
+
+msgid "Particular / Autónomo"
+msgstr "Individual / Sole trader"
+
+msgid "Pasarela bancaria"
+msgstr "Bank gateway"
+
+msgid "Pasarela de pago"
+msgstr "Payment gateway"
+
+msgid "Pasarela oficial bancaria española"
+msgstr "Official Spanish banking gateway"
+
+msgid "Pasarela segura con encriptación SSL 256-bit"
+msgstr "Secure gateway with 256-bit SSL encryption"
+
+msgid "Pasarelas de Pago"
+msgstr "Payment Gateways"
+
+msgid "País"
+msgstr "Country"
+
+msgid "País de origen"
+msgstr "Country of origin"
+
+msgid "Pedido"
+msgstr "Order"
+
+msgid "Pedido Recibido"
+msgstr "Order Received"
+
+msgid "Pedido asociado"
+msgstr "Associated order"
+
+msgid "Pedido entregado correctamente"
+msgstr "Order delivered successfully"
+
+msgid "Pedido tramitado con éxito"
+msgstr "Order processed successfully"
+
+msgid "Pedidos"
+msgstr "Orders"
+
+msgid "Pedidos recientes"
+msgstr "Recent orders"
+
+msgid "Pedir Muestrario Gratis"
+msgstr "Request Free Sample Pack"
+
+msgid "Pedir por WhatsApp"
+msgstr "Order on WhatsApp"
+
+msgid "Pegatinas & Etiquetas"
+msgstr "Stickers & Labels"
+
+msgid "Pendiente"
+msgstr "Pending"
+
+msgid "Pendiente de enviar"
+msgstr "Pending dispatch"
+
+msgid "Pendiente de pago"
+msgstr "Pending payment"
+
+msgid "Península"
+msgstr "Mainland"
+
+msgid "Perfil de color: ICC (Fogra39 recomendado)"
+msgstr "Colour profile: ICC (Fogra39 recommended)"
+
+msgid "Permite consultar confirmación y factura sin iniciar sesión"
+msgstr "Allows checking confirmation and invoice without logging in"
+
+msgid "Permite solicitar prueba previa"
+msgstr "Allows requesting a prior proof"
+
+msgid "Permite subir arte gráfico"
+msgstr "Allows uploading artwork"
+
+msgid "Personaliza"
+msgstr "Customise"
+
+msgid "Personaliza lo que imaginas"
+msgstr "Customise what you imagine"
+
+msgid "Peso neto"
+msgstr "Net weight"
+
+msgid "Precio pendiente"
+msgstr "Price pending"
+
+msgid "El PVP se publica en la administración antes de la compra."
+msgstr "The retail price will be published before the product is available for purchase."
+
+msgid "La variante seleccionada no está disponible."
+msgstr "The selected variant is not available."
+
+msgid "Esta variante está agotada."
+msgstr "This variant is out of stock."
+
+msgid "Esta variante aún no tiene un precio publicado."
+msgstr "This variant does not have a published price yet."
+
+msgid "La cantidad solicitada supera el stock disponible de esta variante."
+msgstr "The requested quantity exceeds this variant's available stock."
+
+msgid "La variante %(name)s no tiene stock suficiente; actualiza la cantidad antes de continuar."
+msgstr "There is not enough stock for %(name)s; update the quantity before continuing."
+
+msgid "No hay stock suficiente para duplicar esta variante."
+msgstr "There is not enough stock to duplicate this variant."
+
+msgid "Peso neto (gramos)"
+msgstr "Net weight (grams)"
+
+msgid "Piso, puerta, escalera"
+msgstr "Floor, door, stairs"
+
+msgid "Piso, puerta, escalera (opcional)"
+msgstr "Floor, door, staircase (optional)"
+
+msgid "Plazo de producción (días hábiles)"
+msgstr "Production lead time (working days)"
+
+msgid "Plazo de tránsito estimado"
+msgstr "Estimated transit time"
+
+msgid "Plazo estimado de entrega"
+msgstr "Estimated delivery time"
+
+msgid "Plazo estándar"
+msgstr "Standard lead time"
+
+msgid "Política de Cookies"
+msgstr "Cookie Policy"
+
+msgid "Política de Privacidad"
+msgstr "Privacy Policy"
+
+msgid "Por"
+msgstr "By"
+
+msgid "Por defecto"
+msgstr "Default"
+
+msgid "Por definir"
+msgstr "To be defined"
+
+msgid "Por favor cumplimenta todos los campos obligatorios del formulario."
+msgstr "Please complete all required fields in the form."
+
+msgid ""
+"Por favor realiza una transferencia de %(amount)s€ al IBAN: %(iban)s "
+"(%(holder)s) indicando en el concepto '%(order)s'. Tu pedido se pondrá en "
+"producción en cuanto recibamos el justificante."
+msgstr ""
+"Please transfer %(amount)s€ to the IBAN: %(iban)s (%(holder)s), quoting "
+"'%(order)s' in the reference. Your order will enter production as soon as we"
+" receive the payment confirmation."
+
+msgid "Por qué Tintora"
+msgstr "Why Tintora"
+
+msgid "Porcentaje (%)"
+msgstr "Percentage (%)"
+
+msgid "Portafolio"
+msgstr "Portfolio"
+
+msgid "Portes"
+msgstr "Carriage"
+
+msgid "Portes de envío (€)"
+msgstr "Shipping charges (€)"
+
+msgid "Portfolio de Desarrollo Web"
+msgstr "Web Development Portfolio"
+
+msgid "Precio"
+msgstr "Price"
+
+msgid "Precio Unitario"
+msgstr "Unit Price"
+
+msgid "Precio base (€)"
+msgstr "Base price (€)"
+
+msgid "Precio cerrado total con IVA incluido"
+msgstr "Final total price VAT included"
+
+msgid "Precio desde (€)"
+msgstr "Price from (€)"
+
+msgid "Precio en Euros con IVA 21% incluido"
+msgstr "Price in Euros with 21% VAT included"
+
+msgid "Precio por unidad"
+msgstr "Price per unit"
+
+msgid "Precio por unidad con IVA incluido para este tramo"
+msgstr "Unit price VAT included for this tier"
+
+msgid "Precio total del tramo (€)"
+msgstr "Tier total price (€)"
+
+msgid "Precio unitario"
+msgstr "Unit price"
+
+msgid "Precio unitario (€)"
+msgstr "Unit price (€)"
+
+msgid "Precio unitario (€/ud)"
+msgstr "Unit price (€/unit)"
+
+msgid "Precio unitario multiplicado por la cantidad · IVA incluido"
+msgstr "Unit price multiplied by quantity · VAT included"
+
+msgid "Precio: Mayor a Menor"
+msgstr "Price: High to Low"
+
+msgid "Precio: Menor a Mayor"
+msgstr "Price: Low to High"
+
+msgid "Precios con 21% IVA incluido"
+msgstr "Prices with 21% VAT included"
+
+msgid ""
+"Precios mostrados con IVA (21%) incluido según la normativa fiscal española "
+"vigente."
+msgstr "Prices shown with VAT (21%) included under current Spanish tax law."
+
+msgid "Preferencias"
+msgstr "Preferences"
+
+msgid "Preferencias & Seguridad"
+msgstr "Preferences & Security"
+
+msgid "Pregunta"
+msgstr "Question"
+
+msgid "Pregunta frecuente"
+msgstr "Frequently asked question"
+
+msgid "Preguntar al equipo"
+msgstr "Ask the team"
+
+msgid "Preguntas Frecuentes"
+msgstr "Frequently Asked Questions"
+
+msgid "Preguntas frecuentes"
+msgstr "Frequently asked questions"
+
+msgid "Preparación de Archivo & Preimpresión"
+msgstr "File Preparation & Prepress"
+
+msgid "Presupuesto"
+msgstr "Quote"
+
+msgid "Presupuesto Enviado"
+msgstr "Quote Sent"
+
+msgid "Presupuesto en Tiempo Real"
+msgstr "Real-Time Quote"
+
+msgid "Presupuesto orientativo"
+msgstr "Indicative quote"
+
+msgid "Presupuestos y Leads Web"
+msgstr "Quotes and Web Leads"
+
+msgid "Privacidad"
+msgstr "Privacy"
+
+msgid "Privacidad & Cookies"
+msgstr "Privacy & Cookies"
+
+msgid "Privacidad y Datos"
+msgstr "Privacy and Data"
+
+msgid "Privacidad · Tintora Madrid"
+msgstr "Privacy · Tintora Madrid"
+
+msgid "Proceder al Pago Seguro"
+msgstr "Proceed to Secure Payment"
+
+msgid "Proceso de Pedido"
+msgstr "Order Process"
+
+msgid "Producción"
+msgstr "Production"
+
+msgid "Producción profesional"
+msgstr "Professional production"
+
+msgid "Producto"
+msgstr "Product"
+
+msgid "Producto '%(name)s' añadido al carrito."
+msgstr "Product '%(name)s' added to the cart."
+
+msgid ""
+"Producto 100% original con registro sanitario para la Unión Europea. "
+"Almacenado en condiciones óptimas en nuestro centro logístico de Madrid."
+msgstr ""
+"100% original product with health registration for the European Union. "
+"Stored in optimal conditions in our logistics centre in Madrid."
+
+msgid "Producto añadido"
+msgstr "Product added"
+
+msgid "Producto retirado de la cesta."
+msgstr "Product removed from the basket."
+
+msgid "Productos"
+msgstr "Products"
+
+msgid "Productos Latinos"
+msgstr "Latin Products"
+
+msgid "Productos Más Populares en Madrid"
+msgstr "Most Popular Products in Madrid"
+
+msgid "Productos destacados"
+msgstr "Featured products"
+
+msgid "Productos en Catálogo"
+msgstr "Products in Catalog"
+
+msgid "Productos guardados para más tarde"
+msgstr "Products saved for later"
+
+msgid "Productos latinos: harinas, café y snacks"
+msgstr "Latin products: flours, coffee and snacks"
+
+msgid "Progreso del pedido"
+msgstr "Order progress"
+
+msgid "Promo: URL CTA"
+msgstr "Promo: CTA URL"
+
+msgid "Promo: etiqueta CTA"
+msgstr "Promo: CTA label"
+
+msgid "Promo: texto"
+msgstr "Promo: text"
+
+msgid "Promo: titular"
+msgstr "Promo: headline"
+
+msgid "Protección de datos"
+msgstr "Data protection"
+
+msgid "Provincia"
+msgstr "Province"
+
+msgid "Proyecto"
+msgstr "Project"
+
+msgid "Proyecto Integral Marca + Web + Papelería"
+msgstr "Full Brand + Web + Stationery Project"
+
+msgid "Proyecto de portfolio web"
+msgstr "Web portfolio project"
+
+msgid "Proyectos construidos con intención"
+msgstr "Projects built with intention"
+
+msgid "Proyectos seleccionados"
+msgstr "Selected projects"
+
+msgid "Prueba Disponible"
+msgstr "Proof Available"
+
+msgid "Prueba Física Enviada"
+msgstr "Physical Proof Sent"
+
+msgid "Prueba cambiando los filtros o vuelve a todas las categorías."
+msgstr "Try changing the filters or go back to all categories."
+
+msgid "Prueba con MADRID10 o BIENVENIDA5"
+msgstr "Try with MADRID10 or BIENVENIDA5"
+
+msgid "Prueba con otra búsqueda o limpia los filtros activos."
+msgstr "Try another search or clear the active filters."
+
+msgid "Prueba enviada"
+msgstr "Proof sent"
+
+msgid "Prueba física enviada para aprobación (si solicitada)"
+msgstr "Physical proof sent for approval (if requested)"
+
+msgid "Prueba física solicitada"
+msgstr "Physical proof requested"
+
+msgid "Prueba previa solicitada"
+msgstr "Prior proof requested"
+
+msgid "Prueba:"
+msgstr "Proof:"
+
+msgid "Pruebas pendientes"
+msgstr "Pending proofs"
+
+msgid "Publicación"
+msgstr "Publication"
+
+msgid "Publicada"
+msgstr "Published"
+
+msgid "Publicado"
+msgstr "Published"
+
+msgid "Publicado / Activo"
+msgstr "Published / Active"
+
+msgid ""
+"Puede que el enlace esté roto o que el producto se haya retirado. Echa un "
+"vistazo al catálogo o vuelve al inicio."
+msgstr ""
+"The link may be broken or the product may have been withdrawn. Take a look "
+"at the catalog or go back to the homepage."
+
+msgid ""
+"Puedes finalizar el pedido ahora y enviar tu arte gráfico por email o panel "
+"en las próximas 48h."
+msgstr ""
+"You can complete the order now and send your artwork by email or through the"
+" panel within the next 48h."
+
+msgid "Pulsa"
+msgstr "Press"
+
+msgid "Puzzles"
+msgstr "Puzzles"
+
+msgid "Página"
+msgstr "Page"
+
+msgid "Página %(cur)s de %(total)s"
+msgstr "Page %(cur)s of %(total)s"
+
+msgid "Página %(current)s de %(total)s"
+msgstr "Page %(current)s of %(total)s"
+
+msgid "Página anterior"
+msgstr "Previous page"
+
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+msgid "Página siguiente"
+msgstr "Next page"
+
+msgid "Quitar"
+msgstr "Remove"
+
+msgid "Quitar de la lista de deseos"
+msgstr "Remove from wishlist"
+
+msgid "Qué incluye cada paquete"
+msgstr "What each package includes"
+
+msgid "Rango de presupuesto aproximado"
+msgstr "Approximate budget range"
+
+msgid "Razones para encargarnos tu pedido"
+msgstr "Reasons to entrust us with your order"
+
+msgid "Razón Social"
+msgstr "Company Name"
+
+msgid "Razón Social / Empresa"
+msgstr "Company Name / Business"
+
+msgid "Razón Social de la Empresa"
+msgstr "Company Legal Name"
+
+msgid "Rechazada"
+msgstr "Rejected"
+
+msgid "Rechazado"
+msgstr "Rejected"
+
+msgid "Recibe"
+msgstr "Receive"
+
+msgid ""
+"Recibe en 24/48h en toda España o recoge gratis en nuestro taller de Madrid."
+msgstr ""
+"Receive within 24/48h across Spain or collect free from our workshop in "
+"Madrid."
+
+msgid ""
+"Recibe novedades, ofertas exclusivas y consejos de impresión en tu correo."
+msgstr "Get news, exclusive offers and printing tips in your inbox."
+
+msgid "Recibido"
+msgstr "Received"
+
+msgid "Recogida local en Taller (Getafe)"
+msgstr "Local pickup at workshop (Getafe)"
+
+msgid "Recogida en Madrid"
+msgstr "Pickup in Madrid"
+
+msgid "Recogida gratuita en el taller"
+msgstr "Free pickup at the workshop"
+
+msgid "Redirigiendo al TPV…"
+msgstr "Redirecting to the POS…"
+
+msgid "Redsys"
+msgstr "Redsys"
+
+msgid "Redsys (TPV Virtual)"
+msgstr "Redsys (Virtual POS)"
+
+msgid "Redsys / TPV Virtual Bancario"
+msgstr "Redsys / Bank Virtual POS"
+
+msgid "Reembolsado"
+msgstr "Refunded"
+
+msgid "Reenviar"
+msgstr "Resend"
+
+msgid "Reenviar enlace"
+msgstr "Resend link"
+
+msgid "Referencia"
+msgstr "Reference"
+
+msgid "Referencia / SKU"
+msgstr "Reference / SKU"
+
+msgid "Referencias"
+msgstr "References"
+
+msgid "Registro de Auditoría"
+msgstr "Audit Log"
+
+msgid "Registro de auditoría"
+msgstr "Audit log"
+
+msgid "Repetir pedido"
+msgstr "Repeat order"
+
+msgid ""
+"Requerido para la emisión de factura española conforme a normativa "
+"tributaria"
+msgstr "Required to issue a Spanish invoice in accordance with tax law"
+
+msgid "Requisitos técnicos:"
+msgstr "Technical requirements:"
+
+msgid "Resolución"
+msgstr "Resolution"
+
+msgid "Resolución mínima: 300 DPI"
+msgstr "Minimum resolution: 300 DPI"
+
+msgid "Respuesta"
+msgstr "Answer"
+
+msgid "Respuesta de la pasarela"
+msgstr "Gateway response"
+
+msgid "Restablecer contraseña"
+msgstr "Reset password"
+
+msgid "Restablecer contraseña · Tintora Madrid"
+msgstr "Reset password · Tintora Madrid"
+
+msgid "Resultados de Búsqueda"
+msgstr "Search Results"
+
+msgid "Resultados para la consulta"
+msgstr "Results for the query"
+
+msgid "Resumen de Compra"
+msgstr "Order Summary"
+
+msgid "Resumen de Pedido"
+msgstr "Order Summary"
+
+msgid "Resumen de opciones"
+msgstr "Options summary"
+
+msgid "Resumen del Encargo"
+msgstr "Order Summary"
+
+msgid "Resumen del caso"
+msgstr "Case summary"
+
+msgid "Resumen editorial"
+msgstr "Editorial summary"
+
+msgid "Resumen editorial corto"
+msgstr "Short editorial summary"
+
+msgid "Revisa el email y marca la casilla de privacidad para suscribirte."
+msgstr "Check your email and tick the privacy box to subscribe."
+
+msgid "Revisa tu correo"
+msgstr "Check your email"
+
+msgid "Revisa tu correo · Tintora Madrid"
+msgstr "Check your email · Tintora Madrid"
+
+msgid "Revisión de Arte (Fogra39)"
+msgstr "Artwork Review (Fogra39)"
+
+msgid "Revisión de arte"
+msgstr "Artwork review"
+
+msgid "Revisión de arte (Fogra39)"
+msgstr "Artwork review (Fogra39)"
+
+msgid "Revisión técnica de preimpresión Fogra39 incluida"
+msgstr "Fogra39 prepress technical review included"
+
+msgid "Roll-ups & Banners"
+msgstr "Roll-ups & Banners"
+
+msgid "Roll-ups &amp; Banners"
+msgstr "Roll-ups &amp; Banners"
+
+msgid "Ruta de navegación"
+msgstr "Breadcrumb"
+
+msgid "Ruta relativa o URL absoluta. Vacío = sin enlace."
+msgstr "Relative path or absolute URL. Empty = no link."
+
+msgid "SEO"
+msgstr "SEO"
+
+msgid "SEUR"
+msgstr "SEUR"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "Sabores que te llevan a casa"
+msgstr "Flavours that take you home"
+
+msgid "Sabores que te llevan a casa."
+msgstr "Flavours that take you home."
+
+msgid "Saltar al contenido principal"
+msgstr "Skip to main content"
+
+msgid "Sangrado"
+msgstr "Bleed"
+
+msgid "Sangrado: 3mm adicional por cada lado"
+msgstr "Bleed: 3mm extra on each side"
+
+msgid ""
+"Se eliminarán tu cuenta, direcciones, lista de deseos, carritos y archivos "
+"de arte. Los pedidos en curso deben entregarse o cancelarse antes de "
+"continuar."
+msgstr ""
+"Your account, addresses, wishlist, carts and artwork files will be deleted. "
+"Orders in progress must be delivered or cancelled before continuing."
+
+msgid "Secreto TOTP del personal"
+msgstr "Staff TOTP secret"
+
+msgid "Sector"
+msgstr "Industry"
+
+msgid "Seguimiento Comercial & Estado"
+msgstr "Sales Tracking & Status"
+
+msgid "Seguimiento:"
+msgstr "Tracking:"
+
+msgid "Seguir comprando"
+msgstr "Continue shopping"
+
+msgid "Seguir comprando en el taller"
+msgstr "Continue shopping at the workshop"
+
+msgid "Selecciona la Tirada / Cantidad"
+msgstr "Select the Run / Quantity"
+
+msgid ""
+"Selecciona tu pasarela preferida. Todas las operaciones se liquidan en Euros"
+" (€) con IVA desglosado."
+msgstr ""
+"Choose your preferred gateway. All transactions are settled in Euros (€) "
+"with VAT broken down."
+
+msgid "Selecciona un rango"
+msgstr "Select a range"
+
+msgid "Seleccionado por defecto"
+msgstr "Selected by default"
+
+msgid "Selección del taller"
+msgstr "Workshop selection"
+
+msgid "Servicio"
+msgstr "Service"
+
+msgid "Servicio de transporte"
+msgstr "Transport service"
+
+msgid ""
+"Serás redirigido automáticamente a la pasarela segura de tu banco. No "
+"cierres esta ventana."
+msgstr ""
+"You will be automatically redirected to your bank's secure gateway. Do not "
+"close this window."
+
+msgid ""
+"Si hay una cuenta activa con esa dirección, recibirás instrucciones para "
+"elegir una contraseña nueva."
+msgstr ""
+"If there is an active account with that address, you will receive "
+"instructions to choose a new password."
+
+msgid "Si necesitas entrar, inicia sesión con tu cuenta o contáctanos."
+msgstr "If you need to get in, log in with your account or contact us."
+
+msgid "Si se deja vacía se usa el archivo subido"
+msgstr "If left empty, the uploaded file is used"
+
+msgid "Sigue explorando"
+msgstr "Keep exploring"
+
+msgid "Siguiente"
+msgstr "Next"
+
+msgid "Sin imagen"
+msgstr "No image"
+
+msgid "Sin productos que coincidan"
+msgstr "No matching products"
+
+msgid "Sin resultados"
+msgstr "No results"
+
+msgid "Sitio web"
+msgstr "Website"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Slug / URL"
+msgstr "Slug / URL"
+
+msgid "Solicita otro"
+msgstr "Request another"
+
+msgid "Solicita otro enlace"
+msgstr "Request another link"
+
+msgid "Solicita prueba previa física"
+msgstr "Request a physical prior proof"
+
+msgid "Solicita un nuevo enlace con el correo usado al crear la cuenta."
+msgstr "Request a new link using the email used to create the account."
+
+msgid "Solicita un nuevo enlace con el correo usado al registrarte"
+msgstr "Request a new link using the email you registered with"
+
+msgid "Solicita un nuevo enlace con el correo usado al registrarte."
+msgstr "Request a new link using the email you registered with."
+
+msgid "Solicitar Presupuesto"
+msgstr "Request a Quote"
+
+msgid "Solicitar Presupuesto de Desarrollo Web"
+msgstr "Request a Web Development Quote"
+
+msgid "Solicitar cambios"
+msgstr "Request changes"
+
+msgid "Solicitar información"
+msgstr "Request information"
+
+msgid "Solicitar presupuesto"
+msgstr "Request a quote"
+
+msgid "Solicitar prueba física"
+msgstr "Request physical proof"
+
+msgid "Solicitud"
+msgstr "Request"
+
+msgid "Solicitud de Presupuesto (Lead)"
+msgstr "Quote Request (Lead)"
+
+msgid "Solicitud recibida"
+msgstr "Request received"
+
+msgid "Solicitud recibida · Tintora"
+msgstr "Request received · Tintora"
+
+msgid "Solicitudes de Presupuesto"
+msgstr "Quote Requests"
+
+msgid "Solicitudes de Presupuesto (Leads)"
+msgstr "Quote Requests (Leads)"
+
+msgid "Solo Necesarias"
+msgstr "Only Necessary"
+
+msgid "Stamping & Soft Touch"
+msgstr "Stamping & Soft Touch"
+
+msgid "Stamping & Soft Touch, acabados premium"
+msgstr "Stamping & Soft Touch, premium finishes"
+
+msgid "Stamping &amp; Soft Touch"
+msgstr "Stamping &amp; Soft Touch"
+
+msgid "Stock / Estado"
+msgstr "Stock / Status"
+
+msgid "Stripe"
+msgstr "Stripe"
+
+msgid "Stripe (Tarjeta de Crédito / Débito)"
+msgstr "Stripe (Credit / Debit Card)"
+
+msgid "Subcategoría"
+msgstr "Subcategory"
+
+msgid "Sube tu Arte Gráfico (Opcional si prefieres enviarlo luego)"
+msgstr "Upload Your Artwork (Optional if you prefer to send it later)"
+
+msgid ""
+"Sube tu arte o pide diseño. Nuestro equipo de preimpresión en Madrid "
+"verifica tu archivo gratis."
+msgstr ""
+"Upload your artwork or request design. Our prepress team in Madrid checks "
+"your file for free."
+
+msgid "Subir Arte"
+msgstr "Upload Artwork"
+
+msgid "Subir Arte · Tintora Madrid"
+msgstr "Upload Artwork · Tintora Madrid"
+
+msgid "Subir archivo"
+msgstr "Upload file"
+
+msgid "Subir archivo de arte"
+msgstr "Upload artwork file"
+
+msgid "Subir arte"
+msgstr "Upload artwork"
+
+msgid "Subir el archivo de diseño más tarde"
+msgstr "Upload the design file later"
+
+msgid "Sublimación"
+msgstr "Sublimation"
+
+msgid "Sublimación & Artículos Personalizados"
+msgstr "Sublimation & Personalised Items"
+
+msgid "Sublimación & Merch"
+msgstr "Sublimation & Merch"
+
+msgid "Sublimación: tazas, camisetas y gorras personalizadas"
+msgstr "Sublimation: custom mugs, t-shirts and caps"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Subtotal (€)"
+msgstr "Subtotal (€)"
+
+msgid "Subtotal estimado"
+msgstr "Estimated subtotal"
+
+msgid "Subtotal productos"
+msgstr "Products subtotal"
+
+msgid "Suplemento por kg adicional (€)"
+msgstr "Surcharge per additional kg (€)"
+
+msgid "Suplemento sobre precio base (€)"
+msgstr "Surcharge on base price (€)"
+
+msgid "Suscribirme"
+msgstr "Subscribe"
+
+msgid "Suscribirse"
+msgstr "Subscribe"
+
+msgid "Suscribirse a la Gaceta Tintora (novedades y ofertas)"
+msgstr "Subscribe to the Tintora Gazette (news and offers)"
+
+msgid "Suscripción a la Gaceta Tintora"
+msgstr "Tintora Gazette subscription"
+
+msgid "Suscriptor de newsletter"
+msgstr "Newsletter subscriber"
+
+msgid "Suscriptores de newsletter"
+msgstr "Newsletter subscribers"
+
+msgid "Suscrito"
+msgstr "Subscribed"
+
+msgid "Suscrito a la Gaceta Tintora"
+msgstr "Subscribed to the Tintora Gazette"
+
+msgid "Suscrito actualmente"
+msgstr "Currently subscribed"
+
+msgid "Sí, eliminar"
+msgstr "Yes, delete"
+
+msgid "Taller"
+msgstr "Workshop"
+
+msgid "Taller Madrid"
+msgstr "Madrid Workshop"
+
+msgid "Taller Tintora"
+msgstr "Tintora Workshop"
+
+msgid "Taller activo en Madrid · Pedidos enviados en 24/48h"
+msgstr "Workshop active in Madrid · Orders shipped within 24/48h"
+
+msgid "Taller propio en Madrid"
+msgstr "Own workshop in Madrid"
+
+msgid "Tamaño"
+msgstr "Size"
+
+msgid "Tamaño / presentación"
+msgstr "Size / option"
+
+msgid "Tamaño / variante"
+msgstr "Size / variant"
+
+msgid "También en"
+msgstr "Also in"
+
+msgid "Tarifa base (€ IVA incl.)"
+msgstr "Base rate (€ VAT incl.)"
+
+msgid ""
+"Tarifas de partida gestionadas por nuestro equipo. El presupuesto final "
+"detalla alcance, calendario e IVA antes de comenzar."
+msgstr ""
+"Starting prices managed by our team. The final quote details scope, schedule"
+" and VAT before we begin."
+
+msgid "Tarifas e Impuestos (España)"
+msgstr "Rates and Taxes (Spain)"
+
+msgid "Tarjeta Bancaria (Stripe)"
+msgstr "Bank Card (Stripe)"
+
+msgid "Tarjetas"
+msgstr "Cards"
+
+msgid "Tarjetas de Visita"
+msgstr "Business Cards"
+
+msgid "Tarjetas de Visita Premium"
+msgstr "Premium Business Cards"
+
+msgid ""
+"Tarjetas, flyers, carteles y gran formato con acabados premium en nuestro "
+"taller de Madrid."
+msgstr ""
+"Business cards, flyers, posters and large format with premium finishes at "
+"our Madrid workshop."
+
+msgid "Tarjetas, packaging &amp; gran formato"
+msgstr "Cards, packaging &amp; large format"
+
+msgid "Tazas"
+msgstr "Mugs"
+
+msgid "Tazas Cerámicas"
+msgstr "Ceramic Mugs"
+
+msgid "Tazas Personalizadas"
+msgstr "Personalised Mugs"
+
+msgid "Tazas de Cerámica y Mágicas"
+msgstr "Ceramic and Magic Mugs"
+
+msgid ""
+"Te asesoramos en directo sobre papeles, resoluciones de impresión y "
+"presupuestos a medida."
+msgstr "We advise you live on papers, print resolutions and custom quotes."
+
+msgid ""
+"Te enviamos una muestra impresa en 24h para que valides colores y gramaje "
+"antes de imprimir la tirada completa."
+msgstr ""
+"We send you a printed sample within 24h so you can validate colours and "
+"weight before printing the full run."
+
+msgid "Te enviaremos un enlace si existe una cuenta activa con ese correo."
+msgstr ""
+"We will send you a link if there is an active account with that email."
+
+msgid "Te redirigimos a la pasarela segura para completar el pago de %(num)s."
+msgstr ""
+"We redirect you to the secure gateway to complete the payment for %(num)s."
+
+msgid "Tecnología y publicación"
+msgstr "Technology and publication"
+
+msgid "Tecnologías"
+msgstr "Technologies"
+
+msgid "Teléfono"
+msgstr "Phone"
+
+msgid "Teléfono / WhatsApp"
+msgstr "Phone / WhatsApp"
+
+msgid "Teléfono de Contacto"
+msgstr "Contact Phone"
+
+msgid "Teléfono de contacto"
+msgstr "Contact phone"
+
+msgid ""
+"Termotransferencia con colores vibrantes y alta resistencia al lavado. "
+"Tazas, camisetas, gorras, cojines y puzzles — tu diseño, impreso para durar."
+msgstr ""
+"Heat transfer with vibrant colours and high wash resistance. Mugs, T-shirts,"
+" caps, cushions and puzzles — your design, printed to last."
+
+msgid ""
+"Termotransferencia nítida con colores vibrantes, máxima resistencia a "
+"lavados."
+msgstr "Crisp heat transfer with vibrant colours, maximum wash resistance."
+
+msgid "Testimonio"
+msgstr "Testimonial"
+
+msgid "Testimonios"
+msgstr "Testimonials"
+
+msgid "Textil"
+msgstr "Textiles"
+
+msgid "Texto alternativo"
+msgstr "Alt text"
+
+msgid "Texto alternativo (accesibilidad y SEO)"
+msgstr "Alt text (accessibility and SEO)"
+
+msgid "Texto comercial del precio"
+msgstr "Commercial price text"
+
+msgid "Texto del anuncio"
+msgstr "Announcement text"
+
+msgid "Texto en curvas o fuentes incluidas"
+msgstr "Outlined text or embedded fonts"
+
+msgid "Tiempo de taller en Madrid antes de expedición"
+msgstr "Workshop time in Madrid before dispatch"
+
+msgid "Tinta que deja huella"
+msgstr "Ink that leaves a mark"
+
+msgid "Tinta que deja huella &middot; Madrid, España"
+msgstr "Ink that leaves a mark &middot; Madrid, Spain"
+
+msgid "Tinta que deja huella."
+msgstr "Ink that leaves a mark."
+
+msgid "Tinta que deja huella. Impresión, sublimación y servicios digitales."
+msgstr "Ink that leaves a mark. Printing, sublimation and digital services."
+
+msgid "Tintas de sublimación"
+msgstr "Sublimation inks"
+
+msgid "Tintora"
+msgstr "Tintora"
+
+msgid "Tintora &middot; Madrid"
+msgstr "Tintora &middot; Madrid"
+
+msgid "Tintora &middot; Tinta que deja huella"
+msgstr "Tintora &middot; Ink that leaves a mark"
+
+msgid ""
+"Tintora &middot; Tinta que deja huella &middot; Impresión de Alta Gama en "
+"Madrid"
+msgstr ""
+"Tintora &middot; Ink that leaves a mark &middot; High-End Printing in Madrid"
+
+msgid "Tintora &middot; Tinta que deja huella &middot; Madrid"
+msgstr "Tintora &middot; Ink that leaves a mark &middot; Madrid"
+
+msgid "Tintora Madrid"
+msgstr "Tintora Madrid"
+
+msgid "Tintora Madrid · Tinta que deja huella."
+msgstr "Tintora Madrid · Ink that leaves a mark."
+
+msgid ""
+"Tintora es el estudio de impresión de alta gama, sublimación, productos "
+"latinos y desarrollo web en Madrid. Calidad editorial, acabados premium y "
+"entregas rápidas."
+msgstr ""
+"Tintora is the high-end printing, sublimation, Latin products and web "
+"development studio in Madrid. Editorial quality, premium finishes and fast "
+"delivery."
+
+msgid ""
+"Tintora es el estudio de impresión editorial, sublimación técnica, productos"
+" latinos y desarrollo web en Madrid. Calidad premium, precios transparentes "
+"con IVA 21% incluido."
+msgstr ""
+"Tintora is the editorial printing, technical sublimation, Latin products and"
+" web development studio in Madrid. Premium quality, transparent prices with "
+"21% VAT included."
+
+msgid "Tipo"
+msgstr "Type"
+
+msgid "Tipo IVA (%)"
+msgstr "VAT rate (%)"
+
+msgid "Tipo de Facturación"
+msgstr "Billing Type"
+
+msgid "Tipo de cliente"
+msgstr "Customer type"
+
+msgid "Tipo de descuento"
+msgstr "Discount type"
+
+msgid "Tipo de servicio"
+msgstr "Service type"
+
+msgid "Titular"
+msgstr "Account holder"
+
+msgid "Todas"
+msgstr "All"
+
+msgid "Todos"
+msgstr "All"
+
+msgid "Todos los derechos reservados."
+msgstr "All rights reserved."
+
+msgid "Token de acceso"
+msgstr "Access token"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total (IVA incluido)"
+msgstr "Total (VAT included)"
+
+msgid "Total Estimado"
+msgstr "Estimated Total"
+
+msgid "Total Factura (€)"
+msgstr "Invoice Total (€)"
+
+msgid "Total a Pagar"
+msgstr "Total to Pay"
+
+msgid "Total a pagar (€)"
+msgstr "Total to pay (€)"
+
+msgid "Total de línea (€)"
+msgstr "Line total (€)"
+
+msgid "Total línea"
+msgstr "Line total"
+
+msgid "Trabajo real del estudio"
+msgstr "Real studio work"
+
+msgid "Trabajos reales del taller"
+msgstr "Real workshop jobs"
+
+msgid "Tracking"
+msgstr "Tracking"
+
+msgid "Tramitación de Pedido"
+msgstr "Order Processing"
+
+msgid "Tramitar Pedido"
+msgstr "Process Order"
+
+msgid "Tramo de precio por cantidad"
+msgstr "Quantity price tier"
+
+msgid "Tramos de precios por cantidad"
+msgstr "Quantity price tiers"
+
+msgid "Transacciones de pago"
+msgstr "Payment transactions"
+
+msgid "Transacción de pago"
+msgstr "Payment transaction"
+
+msgid "Transfer"
+msgstr "Transfer"
+
+msgid "Transferencia Bancaria"
+msgstr "Bank Transfer"
+
+msgid "Transferencia Bancaria (IBAN)"
+msgstr "Bank Transfer (IBAN)"
+
+msgid "Transporte"
+msgstr "Shipping"
+
+msgid "Transportista"
+msgstr "Carrier"
+
+msgid "Transportista / Courier"
+msgstr "Carrier / Courier"
+
+msgid "Tres pasos para tener tu pedido en manos."
+msgstr "Three steps to get your order in your hands."
+
+msgid "Tu Cesta"
+msgstr "Your Basket"
+
+msgid "Tu carrito está vacío"
+msgstr "Your cart is empty"
+
+msgid "Tu cesta de compra está vacía"
+msgstr "Your shopping basket is empty"
+
+msgid "Tu cesta está vacía."
+msgstr "Your basket is empty."
+
+msgid "Tu cesta está vacía. Añade productos antes de finalizar la compra."
+msgstr "Your basket is empty. Add products before checking out."
+
+msgid "Tu correo electrónico"
+msgstr "Your email address"
+
+msgid "Tu cuenta ha sido eliminada"
+msgstr "Your account has been deleted"
+
+msgid "Tu encargo está registrado en nuestro sistema."
+msgstr "Your order is registered in our system."
+
+msgid "Tu lista de deseos está vacía"
+msgstr "Your wishlist is empty"
+
+msgid "Tu marca empieza aquí."
+msgstr "Your brand starts here."
+
+msgid "Tu pedido"
+msgstr "Your order"
+
+msgid "Tu pedido ha sido recibido correctamente"
+msgstr "Your order has been received successfully"
+
+msgid "Tu trabajo está en máquina"
+msgstr "Your job is on the press"
+
+msgid "Tus datos"
+msgstr "Your data"
+
+msgid "Tus derechos conforme al RGPD"
+msgstr "Your rights under the GDPR"
+
+msgid "Tus instrucciones de entrega"
+msgstr "Your delivery instructions"
+
+msgid "Términos y Condiciones de Venta"
+msgstr "Terms and Conditions of Sale"
+
+msgid "Título"
+msgstr "Title"
+
+msgid "Título SEO"
+msgstr "SEO Title"
+
+msgid "Título del proyecto"
+msgstr "Project title"
+
+msgid "URL del enlace del anuncio"
+msgstr "Announcement link URL"
+
+msgid "URL externa / estática de respaldo"
+msgstr "External / static fallback URL"
+
+msgid "URL pública"
+msgstr "Public URL"
+
+msgid ""
+"Una persona del equipo revisará tu solicitud y te responderá en un día "
+"laborable. Este primer contacto no tiene coste ni compromiso."
+msgstr ""
+"A member of the team will review your request and reply within one working "
+"day. This first contact has no cost or commitment."
+
+msgid "Una selección de lo mejor de nuestra imprenta y taller de sublimación."
+msgstr "A selection of the best from our print shop and sublimation workshop."
+
+msgid ""
+"Una selección de proyectos publicados por el estudio. Cada caso y su imagen "
+"se gestionan desde el panel de Tintora."
+msgstr ""
+"A selection of projects published by the studio. Each case and its image are"
+" managed from the Tintora panel."
+
+msgid ""
+"Una vez recibido el justificante, activaremos tu pedido inmediatamente."
+msgstr ""
+"Once we receive the payment confirmation, we will activate your order "
+"immediately."
+
+msgid "Unidad"
+msgstr "Unit"
+
+msgid "Unidades"
+msgstr "Units"
+
+msgid "Unidades en stock"
+msgstr "Units in stock"
+
+msgid "Unión Europea"
+msgstr "European Union"
+
+msgid "Usos canjeados"
+msgstr "Redeemed uses"
+
+msgid "Usos máximos permitidos"
+msgstr "Maximum allowed uses"
+
+msgid "Usuario"
+msgstr "User"
+
+msgid "Usuario responsable"
+msgstr "Responsible user"
+
+msgid "Usuarios & Clientes"
+msgstr "Users & Customers"
+
+msgid ""
+"Utilizamos cookies propias y de terceros para asegurar el correcto "
+"funcionamiento de la tienda, analizar el tráfico y ofrecer una experiencia "
+"de compra personalizada conforme a la normativa RGPD y LOPD-GDD española."
+msgstr ""
+"We use our own and third-party cookies to ensure the store works correctly, "
+"analyse traffic and offer a personalised shopping experience in accordance "
+"with Spanish GDPR and LOPD-GDD regulations."
+
+msgid "Valor"
+msgstr "Value"
+
+msgid "Valor de opción"
+msgstr "Option value"
+
+msgid "Valor del descuento"
+msgstr "Discount value"
+
+msgid "Valores de opción"
+msgstr "Option values"
+
+msgid "Vas a eliminar la dirección"
+msgstr "You are about to delete the address"
+
+msgid "Vendidos de verdad"
+msgstr "Actually sold"
+
+msgid "Ver"
+msgstr "View"
+
+msgid "Ver Catálogo"
+msgstr "View Catalog"
+
+msgid "Ver Catálogo Completo"
+msgstr "View Full Catalog"
+
+msgid "Ver carrito"
+msgstr "View cart"
+
+msgid "Ver categoría"
+msgstr "View category"
+
+msgid "Ver catálogo"
+msgstr "View catalog"
+
+msgid "Ver catálogo completo"
+msgstr "View full catalog"
+
+msgid "Ver detalles"
+msgstr "View details"
+
+msgid "Ver detalles completos"
+msgstr "View full details"
+
+msgid "Ver impresión"
+msgstr "View printing"
+
+msgid "Ver mis pedidos"
+msgstr "View my orders"
+
+msgid "Ver paquetes"
+msgstr "View packages"
+
+msgid "Ver paquetes y precios"
+msgstr "View packages and prices"
+
+msgid "Ver pedido"
+msgstr "View order"
+
+msgid "Ver portafolio"
+msgstr "View portfolio"
+
+msgid "Ver producto"
+msgstr "View product"
+
+msgid "Ver productos"
+msgstr "View products"
+
+msgid "Ver todas las preguntas"
+msgstr "View all questions"
+
+msgid "Ver todo"
+msgstr "View all"
+
+msgid "Ver todo el catálogo"
+msgstr "View the full catalog"
+
+msgid "Ver todos"
+msgstr "View all"
+
+msgid "Verificación"
+msgstr "Verification"
+
+msgid "Verificación de archivo"
+msgstr "File verification"
+
+msgid "Verificación en dos pasos activa"
+msgstr "Two-step verification active"
+
+msgid "Verificamos perfiles de color ICC (Fogra39), resolución y sangrados"
+msgstr "We check ICC colour profiles (Fogra39), resolution and bleed"
+
+msgid ""
+"Verificamos perfiles de color ICC, sangrados y resolución mínima 300 dpi."
+msgstr "We check ICC colour profiles, bleeds and minimum 300 dpi resolution."
+
+msgid "Vinilos"
+msgstr "Vinyls"
+
+msgid "Visibilidad & SEO"
+msgstr "Visibility & SEO"
+
+msgid "Visible en la web"
+msgstr "Visible on the site"
+
+msgid "Visitar proyecto"
+msgstr "Visit project"
+
+msgid "Vista general del pedido"
+msgstr "Order overview"
+
+msgid "Vista previa"
+msgstr "Preview"
+
+msgid "Vista previa en papel verjurado / calibración Fogra39 certificada"
+msgstr "Wove paper preview / certified Fogra39 calibration"
+
+msgid "Vistas"
+msgstr "Views"
+
+msgid "Volver a Desarrollo Web"
+msgstr "Back to Web Development"
+
+msgid "Volver a Tintora"
+msgstr "Back to Tintora"
+
+msgid "Volver al catálogo"
+msgstr "Back to catalogue"
+
+msgid "Volver al inicio"
+msgstr "Back to home"
+
+msgid "Válido desde"
+msgstr "Valid from"
+
+msgid "Válido hasta"
+msgstr "Valid until"
+
+msgid "Web"
+msgstr "Web"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "WhatsApp Tintora Madrid"
+msgstr "WhatsApp Tintora Madrid"
+
+msgid "WhatsApp directo:"
+msgstr "Direct WhatsApp:"
+
+msgid "Ya puedes acceder a tu cuenta con la nueva contraseña."
+msgstr "You can now access your account with the new password."
+
+msgid "Zona de envío"
+msgstr "Shipping zone"
+
+msgid "Zonas de envío"
+msgstr "Shipping zones"
+
+msgid "a"
+msgstr "to"
+
+msgid "article"
+msgstr "article"
+
+msgid "bizum"
+msgstr "Bizum"
+
+msgid "categorías"
+msgstr "categories"
+
+msgid "con solapa"
+msgstr "with flap"
+
+msgid "conforme a la normativa RGPD y LOPD-GDD española."
+msgstr "in accordance with Spanish GDPR and LOPD-GDD regulations."
+
+msgid "conforme a la normativa RGPD/LOPD-GDD española."
+msgstr "in accordance with Spanish GDPR/LOPD-GDD regulations."
+
+msgid "corte troquelado"
+msgstr "die-cut"
+
+msgid "desde"
+msgstr "from"
+
+msgid "dirección"
+msgstr "address"
+
+msgid "días hábiles"
+msgstr "working days"
+
+msgid "días laborables"
+msgstr "business days"
+
+msgid "en"
+msgstr "in"
+
+msgid "en compras superiores a 75€."
+msgstr "on purchases over €75."
+
+msgid ""
+"en formato PDF, emitida con numeración correlativa conforme al Real Decreto "
+"1619/2012 de la AEAT."
+msgstr ""
+"in PDF format, issued with sequential numbering in accordance with Royal "
+"Decree 1619/2012 of the AEAT."
+
+msgid "ferias & eventos"
+msgstr "trade fairs & events"
+
+msgid ""
+"ha recibido tu encargo y está verificando los perfiles de color, sangrados y"
+" especificaciones técnicas. Te mantendremos informado en cada etapa del "
+"proceso."
+msgstr ""
+"has received your job and is checking the colour profiles, bleed and "
+"technical specifications. We will keep you informed at every stage of the "
+"process."
+
+msgid "ha sido tramitado correctamente"
+msgstr "has been processed successfully"
+
+msgid "hola@empresa.es"
+msgstr "hello@company.com"
+
+msgid "iPhone & Galaxy"
+msgstr "iPhone & Galaxy"
+
+msgid ""
+"impresión madrid, sublimación, productos latinos, desarrollo web, impresión "
+"editorial, tintas, serigrafía, impresión digital"
+msgstr ""
+"printing madrid, sublimation, latin products, web development, editorial "
+"printing, inks, screen printing, digital printing"
+
+msgid "indicando tu referencia"
+msgstr "quoting your reference"
+
+msgid "laura@empresa.es"
+msgstr "laura@company.com"
+
+msgid "o por WhatsApp al"
+msgstr "or on WhatsApp at"
+
+msgid "para"
+msgstr "for"
+
+msgid "para cerrar"
+msgstr "to close"
+
+msgid "política de privacidad"
+msgstr "privacy policy"
+
+msgid "por"
+msgstr "by"
+
+msgid "por unidad"
+msgstr "per unit"
+
+msgid "privacidad@tintora.es"
+msgstr "privacidad@tintora.es"
+
+msgid "product"
+msgstr "product"
+
+msgid "productos"
+msgstr "products"
+
+msgid ""
+"productos del catálogo Goya 2026, con ficha completa y consulta por "
+"WhatsApp."
+msgstr ""
+"products from the Goya 2026 catalog, with a full data sheet and enquiry via "
+"WhatsApp."
+
+msgid "referencias"
+msgstr "references"
+
+msgid ""
+"referencias: harinas, café, snacks, dulces y despensa de Latinoamérica en "
+"Madrid."
+msgstr ""
+"references: flours, coffee, snacks, sweets and Latin American pantry in "
+"Madrid."
+
+msgid "regalo original"
+msgstr "original gift"
+
+msgid "tu@correo.es"
+msgstr "you@email.com"
+
+msgid "tu@email.com"
+msgstr "you@email.com"
+
+msgid "uds"
+msgstr "units"
+
+msgid "unisex & kids"
+msgstr "unisex & kids"
+
+msgid "website"
+msgstr "website"
+
+msgid "y la"
+msgstr "and the"
+
+msgid "¡Gracias! Ya estás suscrito a la newsletter de Tintora."
+msgstr "Thank you! You're now subscribed to the Tintora newsletter."
+
+msgid "¡Gracias,"
+msgstr "Thank you,"
+
+msgid "¡Gracias, %(name)s!"
+msgstr "Thank you, %(name)s!"
+
+msgid "¡Pedido %(num)s tramitado con éxito!"
+msgstr "Order %(num)s processed successfully!"
+
+msgid "¡Tu pedido ha llegado a su destino! Gracias por confiar en Tintora."
+msgstr ""
+"Your order has reached its destination! Thank you for trusting Tintora."
+
+msgid "· Arte pendiente"
+msgstr "· Artwork pending"
+
+msgid "· Arte subido ✓"
+msgstr "· Artwork uploaded ✓"
+
+msgid "· Prueba física solicitada"
+msgstr "· Physical proof requested"
+
+msgid "· RECOMENDADO"
+msgstr "· RECOMMENDED"
+
+msgid "¿Cómo funciona?"
+msgstr "How does it work?"
+
+msgid ""
+"¿Dudas entre estucado mate, offset táctil o papel kraft verjurado? Solicita "
+"nuestro muestrario físico con envío gratuito a Madrid."
+msgstr ""
+"Unsure between matte coated, tactile offset or wove kraft paper? Request our"
+" physical sample pack with free shipping to Madrid."
+
+msgid "¿Estás seguro?"
+msgstr "Are you sure?"
+
+msgid "¿Hablamos por WhatsApp?"
+msgstr "Shall we talk on WhatsApp?"
+
+msgid "¿Has olvidado la contraseña?"
+msgstr "Forgot your password?"
+
+msgid "¿Necesitas ayuda?"
+msgstr "Need help?"
+
+msgid "¿No has recibido el correo de confirmación?"
+msgstr "Haven't received the confirmation email?"
+
+msgid "¿Qué cambios necesitas?"
+msgstr "What changes do you need?"
+
+msgid "¿Qué pasa ahora?"
+msgstr "What happens now?"
+
+msgid "¿Qué quieres comprar hoy?"
+msgstr "What would you like to buy today?"
+
+msgid "¿Tienes alguna consulta? Escríbenos a"
+msgstr "Do you have a question? Write to us at"
+
+msgid "¿Tienes un cupón de descuento?"
+msgstr "Have a discount coupon?"
+
+msgid "¿Un proyecto a medida?"
+msgstr "A custom project?"
+
+msgid "¿Ya tienes cuenta?"
+msgstr "Already have an account?"
+
+msgid "Área"
+msgstr "Area"
+
+msgid "Área Comercial"
+msgstr "Sales Area"
+
+msgid "Área de negocio"
+msgstr "Business area"
+
+msgid "Áreas de Negocio"
+msgstr "Business Areas"
+
+msgid "Ítem de pedido"
+msgstr "Order item"
+
+msgid "Ítems de pedido"
+msgstr "Order items"
+
+msgid "Última actualización"
+msgstr "Last updated"
+
+msgid "Última modificación"
+msgstr "Last modified"
+
+msgid ""
+"— Entregamos a %(courier)s. Recibirás un email con el número de seguimiento."
+msgstr ""
+"— We deliver to %(courier)s. You will receive an email with the tracking "
+"number."
+
+msgid "Cambiar idioma"
+msgstr "Change language"
+
+msgid "Resumen del taller y la tienda"
+msgstr "Workshop and store overview"
+
+msgid "Ingresos"
+msgstr "Revenue"
+
+msgid "Hoy"
+msgstr "Today"
+
+msgid "Esta semana"
+msgstr "This week"
+
+msgid "Este mes"
+msgstr "This month"
+
+msgid "Ingresos · últimos 14 días"
+msgstr "Revenue · last 14 days"
+
+msgid "Gráfico de ingresos por día"
+msgstr "Daily revenue chart"
+
+msgid "Pedidos por estado"
+msgstr "Orders by status"
+
+msgid "Productos con más ventas"
+msgstr "Top-selling products"
+
+msgid "%(name)s · %(units)s unidades"
+msgstr "%(name)s · %(units)s units"
+
+msgid "Aún no hay ventas pagadas."
+msgstr "There are no paid sales yet."
+
+msgid "Stock bajo"
+msgstr "Low stock"
+
+msgid "unidades"
+msgstr "units"
+
+msgid "No hay alertas de stock."
+msgstr "There are no low-stock alerts."
+
+msgid "Nuevas solicitudes de presupuesto"
+msgstr "New quote requests"
+
+msgid "No hay solicitudes nuevas."
+msgstr "There are no new requests."
+
+msgid "Pedidos recientes"
+msgstr "Recent orders"
+
+msgid "Pedido"
+msgstr "Order"
+
+msgid "Cliente"
+msgstr "Customer"
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "Actividad administrativa reciente"
+msgstr "Recent administrative activity"
+
+msgid "Sistema"
+msgstr "System"
+
+msgid "Todavía no hay actividad registrada."
+msgstr "No activity has been recorded yet."
+
+msgid "Aplicaciones"
+msgstr "Applications"
+
+msgid "Analítica de Tintora"
+msgstr "Tintora analytics"
+
+msgid "Segundo factor"
+msgstr "Second factor"
+
+msgid "Confirma tu identidad"
+msgstr "Confirm your identity"
+
+msgid "Introduce el código actual de tu aplicación autenticadora para continuar."
+msgstr "Enter the current code from your authenticator app to continue."
+
+msgid "Código de seis cifras"
+msgstr "Six-digit code"
+
+msgid "Continuar al panel"
+msgstr "Continue to dashboard"
+
+msgid "Seguridad de personal"
+msgstr "Staff security"
+
+msgid "Activa la verificación en dos pasos"
+msgstr "Enable two-step verification"
+
+msgid "Añade esta cuenta a una aplicación autenticadora compatible con TOTP. El panel seguirá bloqueado hasta verificar un código válido."
+msgstr "Add this account to a TOTP-compatible authenticator app. The dashboard will remain locked until you verify a valid code."
+
+msgid "Clave de configuración"
+msgstr "Setup key"
+
+msgid "URI de configuración"
+msgstr "Setup URI"
+
+msgid "Verificar y acceder"
+msgstr "Verify and continue"
+
+msgid "Si necesitas entrar, inicia sesión con tu cuenta o contáctanos."
+msgstr "If you need access, sign in with your account or contact us."
+
+msgid "404 &middot; Página No Encontrada &middot; Tintora Madrid"
+msgstr "404 · Page Not Found · Tintora Madrid"
+
+msgid "La página solicitada no está disponible o ha cambiado de lugar. Descubre nuestro catálogo de impresión de alta gama, sublimación y productos latinos en Madrid."
+msgstr "The page you requested is unavailable or has moved. Explore our premium printing, sublimation, and Latin products in Madrid."
+
+msgid "Error 404"
+msgstr "Error 404"
+
+msgid "Fuera de Registro"
+msgstr "Out of register"
+
+msgid "Esta página no se encuentra en el taller"
+msgstr "This page isn't in our workshop"
+
+msgid "El enlace que has seguido puede haber cambiado, haberse retirado del catálogo o encontrarse fuera de registro. Nuestro taller sigue produciendo con normalidad."
+msgstr "The link may have changed, been removed from the catalogue, or gone out of register. Our workshop is still operating as usual."
+
+msgid "Volver al inicio"
+msgstr "Back to home"
+
+msgid "Continuar comprando en el catálogo"
+msgstr "Continue shopping in the catalogue"
+
+msgid "O explora nuestras áreas principales:"
+msgstr "Or explore our main areas:"
+
+msgid "Tarjetas & Folletos"
+msgstr "Business cards & leaflets"
+
+msgid "Acabados premium"
+msgstr "Premium finishes"
+
+msgid "Tazas & Textil"
+msgstr "Mugs & textiles"
+
+msgid "Personalizado 360°"
+msgstr "360° personalisation"
+
+msgid "+700 referencias"
+msgstr "700+ products"
+
+msgid "Presupuesto online"
+msgstr "Online quote"
+
+msgid "¿Dudas con un pedido?"
+msgstr "Questions about an order?"
+
+msgid "Contactar con el taller"
+msgstr "Contact the workshop"
+
+msgid "Buscar en la tienda"
+msgstr "Search the shop"
+
+msgid ""
+"— Tu trabajo entra en máquina. Impresión offset / digital gran formato según"
+" producto."
+msgstr ""
+"— Your job goes on the press. Offset / large-format digital printing "
+"depending on the product."
+
+msgid ""
+"— Verificamos perfiles de color ICC (Fogra39), resolución y sangrados. Te "
+"contactamos si hay incidencias."
+msgstr ""
+"— We check ICC colour profiles (Fogra39), resolution and bleed. We will "
+"contact you if there are issues."
+
+msgid "⚡ Acción requerida:"
+msgstr "⚡ Action required:"
+
+msgid "📄 Descargar factura"
+msgstr "📄 Download invoice"
+
+msgid "📎 Adjuntamos tu"
+msgstr "📎 We enclose your"
+
+msgid ""
+"\n"
+"                Por favor realiza una transferencia de <strong>%(total)s€</strong> al siguiente IBAN indicando el número de pedido <strong>%(num)s</strong> en el concepto:\n"
+"              "
+msgstr ""
+"\n"
+"                Please transfer <strong>%(total)s€</strong> to the following IBAN, quoting order number <strong>%(num)s</strong> in the reference:\n"
+"              "
+
+msgid ""
+"\n"
+"              Factura <strong class=\"font-mono text-ink dark:text-paper\">%(num)s</strong> disponible para descarga inmediata.\n"
+"            "
+msgstr ""
+"\n"
+"              Invoice <strong class=\"font-mono text-ink dark:text-paper\">%(num)s</strong> available for immediate download.\n"
+"            "
+
+msgid ""
+"\n"
+"          Tu pedido <strong class=\"font-mono text-paper\">%(num)s</strong> ha sido registrado correctamente en nuestro taller de Madrid.\n"
+"        "
+msgstr ""
+"\n"
+"          Your order <strong class=\"font-mono text-paper\">%(num)s</strong> has been registered successfully at our Madrid workshop.\n"
+"        "
+
+msgid ""
+"\n"
+"          ¡Añade productos hasta %(needed)s€ para disfrutar de envío gratuito!\n"
+"          "
+msgstr ""
+"\n"
+"          Add products up to %(needed)s€ to enjoy free shipping!\n"
+"          "
+
+msgid "%(counter)s artículo"
+msgid_plural "%(counter)s artículos"
+msgstr[0] "%(counter)s item"
+msgstr[1] "%(counter)s items"
+
+msgid "%(counter)s artículo en la cesta"
+msgid_plural "%(counter)s artículos en la cesta"
+msgstr[0] "%(counter)s item in the basket"
+msgstr[1] "%(counter)s items in the basket"
+
+msgid "%(counter)s producto"
+msgid_plural "%(counter)s productos"
+msgstr[0] "%(counter)s product"
+msgstr[1] "%(counter)s products"
+
+msgid "%(counter)s producto en tu cesta"
+msgid_plural "%(counter)s productos en tu cesta"
+msgstr[0] "%(counter)s product in your basket"
+msgstr[1] "%(counter)s products in your basket"
+
+msgid "%(counter)s vista"
+msgid_plural "%(counter)s vistas"
+msgstr[0] "%(counter)s view"
+msgstr[1] "%(counter)s views"
+
+msgid ""
+"%(desc)s · Descubre productos de %(name)s con envío en Madrid, España y la "
+"Unión Europea."
+msgstr ""
+"%(desc)s · Discover products from %(name)s with shipping to Madrid, Spain "
+"and the European Union."
+
+msgid "%(name)s · Catálogo Tintora Madrid"
+msgstr "%(name)s · Tintora Madrid Catalogue"
+
+msgid "%(qty)s uds &middot; %(price)s&euro;/ud"
+msgstr "%(qty)s units &middot; %(price)s&euro;/unit"
+
+msgid "Confirmación de Pedido %(num)s · Tintora Madrid"
+msgstr "Order Confirmation %(num)s · Tintora Madrid"
+
+msgid ""
+"Confirmación del pedido %(num)s en Tintora Madrid. Descarga tu factura "
+"oficial y consulta el estado de tu encargo de impresión."
+msgstr ""
+"Order %(num)s confirmation from Tintora Madrid. Download your official "
+"invoice and check the status of your print job."
+
+msgid ""
+"Controlamos cada fase del proceso en %(address)s: preimpresión, corte, "
+"acabado y empaquetado."
+msgstr ""
+"Every stage of the process is checked at %(address)s: prepress, cutting, "
+"finishing and packaging."
+
+msgid "El Equipo de Tintora &middot; %(address)s"
+msgstr "The Tintora Team &middot; %(address)s"
+
+msgid "Factura Oficial %(num)s"
+msgstr "Official Invoice %(num)s"
+
+msgid "Hablas con el taller, no con un bot. Horario: %(hours)s."
+msgstr "You talk to the workshop, not a bot. Opening hours: %(hours)s."
+
+msgid "IVA (%(pct)s%%)"
+msgstr "VAT (%(pct)s%%)"
+
+msgid "Pide una prueba previa física (+%(price)s€ IVA incl.)"
+msgstr "Request a physical prior proof (+€%(price)s VAT incl.)"
+
+msgid "Página %(cur)s de %(total)s"
+msgstr "Page %(cur)s of %(total)s"
+
+msgid "Página %(current)s de %(total)s"
+msgstr "Page %(current)s of %(total)s"
+
+msgid "¡Gracias, %(name)s!"
+msgstr "Thank you, %(name)s!"
+
+msgid ""
+"— Entregamos a %(courier)s. Recibirás un email con el número de seguimiento."
+msgstr ""
+"— We deliver to %(courier)s. You will receive an email with the tracking "
+"number."

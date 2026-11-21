@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-label="Tarjetas de Visita Tintora">
+  <rect width="800" height="600" fill="#F4EFE6"/>
+  <!-- Diagonal Shadow -->
+  <polygon points="260,180 580,180 540,440 220,440" fill="#0D0F14" opacity="0.08"/>
+  <!-- Card Back -->
+  <rect x="230" y="150" width="360" height="210" rx="4" fill="#0D0F14" transform="rotate(-6 410 255)"/>
+  <text x="310" y="270" font-family="'Bodoni Moda', serif" font-size="34" font-weight="bold" fill="#F4EFE6" transform="rotate(-6 410 255)">Tintora<tspan fill="#E8392B">.</tspan></text>
+  <!-- Card Front -->
+  <rect x="250" y="210" width="360" height="210" rx="4" fill="#FFFFFF" stroke="#0D0F14" stroke-opacity="0.1" transform="rotate(4 430 315)"/>
+  <rect x="270" y="230" width="40" height="4" fill="#E8392B" transform="rotate(4 430 315)"/>
+  <text x="270" y="280" font-family="'Bodoni Moda', serif" font-size="28" font-weight="bold" fill="#0D0F14" transform="rotate(4 430 315)">Estudio Gráfico</text>
+  <text x="270" y="310" font-family="'DM Sans', sans-serif" font-size="13" fill="#6A6E7B" transform="rotate(4 430 315)">Getafe &#183; C. Núñez de Balboa 30</text>
+  <text x="270" y="340" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C9A96A" transform="rotate(4 430 315)">ESTUCADO MATE 350G &#183; SOFT-TOUCH</text>
+</svg>

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Mis archivos de arte · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="mb-10 border-b border-ink/10 dark:border-paper/10 pb-6">
+    <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-3 uppercase tracking-wider" aria-label="{% trans "Ruta de navegación" %}">
+      <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion">{% trans "Mi área" %}</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink dark:text-paper" aria-current="page">{% trans "Archivos de arte" %}</span>
+    </nav>
+    <h1 class="text-3xl md:text-5xl font-serif font-bold text-ink dark:text-paper mb-2">{% trans "Mis archivos de arte" %}</h1>
+    <p class="text-sm text-ink-600 dark:text-paper-300">{% trans "Originales enviados y pruebas asociadas a tus pedidos." %}</p>
+  </div>
+
+  {% if artwork_items %}
+  <div class="border-t border-ink/10 dark:border-paper/10">
+    {% for item in artwork_items %}
+    <article class="grid gap-4 border-b border-ink/10 dark:border-paper/10 py-6 md:grid-cols-[1fr_auto] md:items-center">
+      <div>
+        <p class="text-xs uppercase font-mono tracking-widest text-ink-500 dark:text-paper-400">{% trans "Pedido" %} {{ item.order.order_number }}</p>
+        <h2 class="mt-1 text-xl font-serif font-bold text-ink dark:text-paper">{{ item.product_name }}</h2>
+        <p class="mt-1 text-xs text-ink-600 dark:text-paper-300 font-mono">{{ item.get_artwork_status_display }} · {% trans "Actualizado" %} {{ item.updated_at|date:"d M Y" }}</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        {% if item.artwork_file %}
+        <a href="{% url 'customer:download_customer_file' item.id 'artwork' %}" class="btn-outline btn-sm">{% trans "Descargar original" %}</a>
+        {% endif %}
+        {% if item.proof_image %}
+        <a href="{% url 'customer:download_customer_file' item.id 'proof' %}" class="btn-ink btn-sm">{% trans "Descargar prueba" %}</a>
+        {% endif %}
+        <a href="{% url 'customer:order_detail' item.order.order_number %}" class="self-center text-xs font-mono uppercase tracking-wider text-vermilion hover:underline font-semibold">{% trans "Ver pedido" %} &rarr;</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="card-editorial bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 py-14 text-center">
+    <h2 class="text-2xl font-serif font-bold text-ink dark:text-paper">{% trans "Aún no hay archivos asociados a tus pedidos" %}</h2>
+    <p class="mt-2 text-sm text-ink-600 dark:text-paper-300">{% trans "Cuando envíes un original o recibas una prueba, aparecerá aquí." %}</p>
+    <a href="{% url 'customer:order_history' %}" class="mt-6 inline-block btn-vermilion btn-sm">{% trans "Ver mis pedidos" %} &rarr;</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

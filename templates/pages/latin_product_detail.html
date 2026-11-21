@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load i18n static seo_tags l10n core_tags %}
+
+{% block title %}{{ product.name }} · {% trans "Productos Latinos" %} · Tintora Madrid{% endblock %}
+{% block meta_description %}{{ product.name }}{% if product.brand %} · {{ product.brand }}{% endif %}{% if product.retailSize %} · {{ product.retailSize }}{% endif %} — {% trans "Despensa latina en Tintora Madrid." %}{% endblock %}
+{% block og_title %}{{ product.name }} · {% trans "Productos Latinos" %}{% endblock %}
+{% block og_description %}{{ product.category }}{% if product.subcategory %} · {{ product.subcategory }}{% endif %}{% if product.brand %} · {{ product.brand }}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14"
+     x-data="{
+       selectedImage: '{{ product.variants.0.image_url|default:product.image_url|escapejs }}',
+       selectedSize: '{{ product.variants.0.label|default:product.retailSize|escapejs }}',
+       selectedWeight: Number('{{ product.variants.0.weightGrams }}')
+     }">
+
+  <!-- Breadcrumbs -->
+  <nav class="flex flex-wrap text-xs font-mono text-ink-400 dark:text-paper-500 mb-8 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'latin_products:index' %}" class="hover:text-vermilion">{% trans "Productos Latinos" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'latin_products:entry' product_category.slug %}" class="hover:text-vermilion">{{ product_category.name }}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{{ product.name }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
+
+    <!-- Product image -->
+    <div class="border border-ink/10 dark:border-paper/10 p-4 md:p-6 lg:sticky lg:top-28 motion-safe:animate-fade-in">
+      {% include 'components/product_image.html' with image_src=product.image_url image_alt=product.name image_frame_class='aspect-square w-full' image_padding_class='p-4 sm:p-8' image_loading='eager' image_id='latin-detail-image' image_bind_src='selectedImage' %}
+    </div>
+
+    <!-- Facts -->
+    <div class="motion-safe:animate-fade-in">
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="{% url 'latin_products:entry' product_category.slug %}"
+           class="badge-vermilion hover:opacity-80 transition-opacity">{{ product_category.name }}</a>
+        {% if product.subcategory %}
+        <span class="badge-neutral">{{ product.subcategory }}</span>
+        {% endif %}
+      </div>
+
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mt-4 text-ink dark:text-paper">
+        {{ product.name }}
+      </h1>
+      {% if product.nameEn and product.nameEn != product.name %}
+      <p class="font-serif italic text-lg text-ink-500 dark:text-paper-400 mt-2">{{ product.nameEn }}</p>
+      {% endif %}
+
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        {% if product.brand %}
+        <span class="badge-gold">{% trans "Marca" %}: {{ product.brand }}</span>
+        {% endif %}
+        {% with flags=product.originCountry|country_flags %}
+        {% if flags %}
+        <span class="badge-neutral">
+          {% for f in flags %}<span title="{{ f.name }}">{{ f.flag }}</span>{% endfor %}
+          {% trans "Origen" %}: {{ product.originCountry }}
+        </span>
+        {% endif %}
+        {% endwith %}
+      </div>
+
+      <!-- Fact sheet -->
+      <dl class="mt-8 border-t border-ink/10 dark:border-paper/10">
+        <div class="flex items-baseline justify-between gap-6 py-3 border-b border-ink/10 dark:border-paper/10">
+          <dt class="text-xs font-mono uppercase tracking-wider text-ink-400 dark:text-paper-500">{% trans "Categoría" %}</dt>
+          <dd class="text-sm text-right">
+            <a href="{% url 'latin_products:entry' product_category.slug %}" class="hover:text-vermilion transition-colors">{{ product.category }}</a>
+          </dd>
+        </div>
+        {% if product.subcategory %}
+        <div class="flex items-baseline justify-between gap-6 py-3 border-b border-ink/10 dark:border-paper/10">
+          <dt class="text-xs font-mono uppercase tracking-wider text-ink-400 dark:text-paper-500">{% trans "Subcategoría" %}</dt>
+          <dd class="text-sm text-right">{{ product.subcategory }}</dd>
+        </div>
+        {% endif %}
+        {% if product.retailSize %}
+        <div class="flex items-baseline justify-between gap-6 py-3 border-b border-ink/10 dark:border-paper/10">
+          <dt class="text-xs font-mono uppercase tracking-wider text-ink-400 dark:text-paper-500">{% trans "Unidad" %}</dt>
+          <dd class="text-sm text-right break-words" x-text="selectedSize">{{ product.retailSize }}</dd>
+        </div>
+        {% endif %}
+        {% if product.weightGrams > 0 %}
+        <div class="flex items-baseline justify-between gap-6 py-3 border-b border-ink/10 dark:border-paper/10">
+          <dt class="text-xs font-mono uppercase tracking-wider text-ink-400 dark:text-paper-500">{% trans "Peso neto" %}</dt>
+          <dd class="text-sm text-right" x-text="selectedWeight">{{ product.weightGrams }} g</dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <!-- Individual retail purchase through the normal online cart -->
+      <div class="mt-8 card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark space-y-4"
+           x-data="{
+             qty: 1,
+             unitPrice: Number('{{ product.variants.0.price|unlocalize }}'),
+             stock: Number('{{ product.variants.0.stock }}'),
+             get total() { return (this.unitPrice * this.qty).toFixed(2); }
+           }">
+        <div class="flex items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-mono uppercase text-ink-400 dark:text-paper-500">{% trans "Precio por unidad" %}</span>
+            <div class="font-serif text-4xl font-extrabold text-ink dark:text-paper" x-cloak x-show="unitPrice > 0" x-text="total + '€'"></div>
+            <span class="text-[11px] font-mono text-ink-400 dark:text-paper-500" x-cloak x-show="unitPrice > 0">{% trans "IVA 21% incluido" %} · <span x-text="selectedSize"></span></span>
+            <div class="font-serif text-2xl font-bold text-ink dark:text-paper" x-cloak x-show="unitPrice <= 0">{% trans "Precio pendiente" %}</div>
+            <span class="text-[11px] font-mono text-ink-400 dark:text-paper-500" x-cloak x-show="unitPrice <= 0">{% trans "El PVP se publica en la administración antes de la compra." %}</span>
+          </div>
+          <span x-cloak x-show="stock > 0" class="badge-editorial border-green-600/30 bg-green-500/10 text-green-700 dark:text-green-400 font-bold">&check; {% trans "En stock" %}</span>
+          <span x-cloak x-show="stock < 1" class="badge-editorial border-red-500/30 bg-red-500/10 text-red-600 font-bold">{% trans "Agotado temporalmente" %}</span>
+        </div>
+        <form action="{% url 'cart:add' product.slug %}" method="POST"
+              hx-post="{% url 'cart:add' product.slug %}?target=drawer"
+              hx-target="#cart-drawer-content"
+              hx-swap="innerHTML"
+              hx-on::after-request="window.dispatchEvent(new CustomEvent('cart:open'))"
+              class="flex flex-col gap-3">
+          {% csrf_token %}
+        {% if product.variants|length > 1 %}
+        <label for="latin-detail-size" class="text-xs font-mono uppercase text-ink-400 dark:text-paper-500">{% trans "Tamaño / presentación" %}</label>
+        <select id="latin-detail-size" name="variant_slug" class="input-editorial"
+                @change="const option = $event.target.selectedOptions[0]; unitPrice = Number(option.dataset.price); stock = Number(option.dataset.stock); selectedSize = option.dataset.label; selectedImage = option.dataset.image; selectedWeight = option.dataset.weight; qty = Math.min(qty, Math.max(stock, 1))">
+          {% for variant in product.variants %}
+          <option value="{{ variant.slug }}" data-price="{{ variant.price|unlocalize }}" data-stock="{{ variant.stock }}" data-label="{{ variant.label|default:product.retailSize }}" data-image="{{ variant.image_url }}" data-weight="{{ variant.weightGrams }}" {% if forloop.first %}selected{% endif %}>
+            {{ variant.label|default:product.retailSize }} · {{ variant.price }}€
+          </option>
+          {% endfor %}
+        </select>
+        {% else %}
+        <input type="hidden" name="variant_slug" value="{{ product.variants.0.slug }}">
+        {% endif %}
+          <div class="flex items-center border border-ink/20 dark:border-paper/20" x-data>
+            <button type="button" @click="qty = Math.max(1, qty - 1)" class="px-3 py-2 text-sm font-bold hover:bg-ink/5 dark:hover:bg-paper/5" aria-label="{% trans 'Disminuir cantidad' %}">−</button>
+            <input type="number" name="quantity" x-model.number="qty" min="1" x-bind:max="stock" inputmode="numeric"
+                   class="w-14 text-center text-sm font-bold bg-transparent border-none focus:ring-0 p-0" aria-label="{% trans 'Cantidad' %}">
+            <button type="button" @click="qty = Math.min(stock, qty + 1)" class="px-3 py-2 text-sm font-bold hover:bg-ink/5 dark:hover:bg-paper/5" aria-label="{% trans 'Aumentar cantidad' %}">+</button>
+          </div>
+          <button type="submit" {% if not product.inStock or product.price <= 0 %}disabled{% endif %} x-bind:disabled="stock < 1 || unitPrice <= 0"
+                  class="btn-vermilion btn-lg flex-1 min-w-[12rem] disabled:opacity-50 disabled:cursor-not-allowed">
+            <span x-cloak x-show="stock > 0 && unitPrice > 0">{% trans "Añadir a la Cesta" %} · <span x-text="total"></span>€</span>
+            <span x-cloak x-show="stock < 1">{% trans "Agotado" %}</span>
+            <span x-cloak x-show="stock > 0 && unitPrice <= 0">{% trans "Precio pendiente" %}</span>
+          </button>
+        </form>
+        <p class="text-[11px] font-mono text-ink-500 dark:text-paper-400">
+          &bull; {% trans "Compra online segura" %}: {% trans "pago con tarjeta, bizum o transferencia bancaria." %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related products from the same category -->
+  {% if related_products %}
+  <section class="mt-16 pt-10 hairline-t">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 hairline-b pb-4 gap-4">
+      <div>
+        <span class="editorial-number">{% trans "Sigue explorando" %}</span>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink dark:text-paper">
+          {% trans "También en" %} {{ product_category.name }}
+        </h2>
+      </div>
+      <a href="{% url 'latin_products:entry' product_category.slug %}" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Ver categoría" %} &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {% for item in related_products %}
+        {% include 'components/latin_product_card.html' with item=item %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% json_ld product_schema %}
+
+</div>
+{% endblock %}

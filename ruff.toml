@@ -1,0 +1,15 @@
+# Ruff configuration for Django project
+target-version = "py312"
+line-length = 120
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = [
+    "RUF012",  # Mutable class attributes (standard in Django models and admin)
+    "E501",    # Line length (editorial and copy texts)
+]
+
+[lint.per-file-ignores]
+"**/migrations/*" = ["ALL"]
+"**/tests.py" = ["ALL"]
+"config/settings/*" = ["F403", "F405"]

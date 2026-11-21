@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Resultados de Búsqueda" %} &middot; Tintora Madrid{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  
+  <div class="border-b border-ink/10 dark:border-paper/10 pb-6 mb-8">
+    <h1 class="font-serif text-3xl font-bold text-ink dark:text-paper">
+      {% trans "Búsqueda en Catálogo" %}
+    </h1>
+    {% if query %}
+      <p class="text-xs font-mono text-ink-500 dark:text-paper-400 mt-2">
+        {% trans "Resultados para la consulta" %}: <strong class="text-vermilion">"{{ query }}"</strong>
+      </p>
+    {% endif %}
+  </div>
+
+  {% if products %}
+    {% include 'components/product_grid_partial.html' %}
+  {% else %}
+    <div class="py-16 text-center card-editorial p-8 max-w-xl mx-auto">
+      <span class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Sin resultados" %}</span>
+      <p class="text-xs text-ink-500 dark:text-paper-400 mt-2">
+        {% trans "No hemos encontrado artículos que coincidan exactamente con tu búsqueda. Puedes explorar las categorías principales en el menú superior." %}
+      </p>
+      <div class="mt-6">
+        <a href="{% url 'catalog:index' %}" class="btn-vermilion btn-sm">
+          {% trans "Ver todo el catálogo" %}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

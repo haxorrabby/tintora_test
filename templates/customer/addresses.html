@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Mis Direcciones · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+      <nav class="text-xs uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-2">
+        <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi Área" %}</a>
+        <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+        <span class="text-ink dark:text-paper font-medium">{% trans "Mis Direcciones" %}</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper">{% trans "Mis Direcciones" %}</h1>
+    </div>
+    <a href="{% url 'customer:address_create' %}" class="inline-flex items-center bg-vermilion hover:bg-vermilion-dark text-paper px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors">
+      {% trans "+ Nueva dirección" %}
+    </a>
+  </div>
+
+  <!-- Addresses List -->
+  {% if addresses %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for address in addresses %}
+    <div class="bg-surface-cardLight dark:bg-surface-cardDark border {% if address.is_default %}border-vermilion ring-1 ring-vermilion{% else %}border-ink/10 dark:border-paper/10{% endif %} p-6 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-serif font-medium text-ink dark:text-paper text-lg">{{ address.label }}</h3>
+          {% if address.is_default %}
+          <span class="inline-block bg-vermilion text-paper text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5">{% trans "Por defecto" %}</span>
+          {% endif %}
+        </div>
+        <p class="text-sm text-ink-600 dark:text-paper-400 mb-6 leading-relaxed">
+          {{ address.address_line1 }}<br>
+          {% if address.address_line2 %}{{ address.address_line2 }}<br>{% endif %}
+          {{ address.postal_code }} {{ address.city }}<br>
+          {{ address.province }}, {{ address.country }}
+        </p>
+      </div>
+      
+      <div class="flex items-center gap-4 pt-4 border-t border-ink/10 dark:border-paper/10 text-xs uppercase tracking-wider font-medium">
+        <a href="{% url 'customer:address_edit' address.id %}" class="text-ink dark:text-paper hover:text-vermilion dark:hover:text-vermilion transition-colors">{% trans "Editar" %}</a>
+        <span class="text-ink/20 dark:text-paper/20">|</span>
+        <a href="{% url 'customer:address_delete' address.id %}" class="text-vermilion hover:underline transition-colors">{% trans "Eliminar" %}</a>
+        {% if not address.is_default %}
+        <span class="text-ink/20 dark:text-paper/20">|</span>
+        <a href="{% url 'customer:set_default_address' address.id %}" class="text-ink-500 dark:text-paper-400 hover:text-ink dark:hover:text-paper transition-colors">{% trans "Por defecto" %}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-12 text-center">
+    <span class="text-4xl mb-4 block">📍</span>
+    <h2 class="text-2xl font-serif text-ink dark:text-paper mb-2">{% trans "Aún no tienes direcciones guardadas" %}</h2>
+    <p class="text-sm text-ink-500 dark:text-paper-400 mb-6">{% trans "Guarda tus direcciones de entrega y facturación para agilizar tus pedidos." %}</p>
+    <a href="{% url 'customer:address_create' %}" class="inline-block bg-vermilion hover:bg-vermilion-dark text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+      {% trans "Añadir dirección" %}
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

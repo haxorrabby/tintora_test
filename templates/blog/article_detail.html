@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n static seo_tags %}
+
+{% block title %}{{ article.meta_title|default:article.title }} · Blog Tintora{% endblock %}
+{% block meta_description %}{{ article.meta_description|default:article.excerpt|truncatewords:30 }}{% endblock %}
+{% block meta_keywords %}{{ article.category.name|default:"" }}, {{ article.title }}, blog tintora, impresión madrid{% endblock %}
+{% block og_type %}{% trans "article" %}{% endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.meta_description|default:article.excerpt|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if article_image_url %}{{ article_image_url }}{% else %}{% static 'images/brand/og-tintora.svg' %}{% endif %}{% endblock %}
+{% block twitter_title %}{{ article.title }}{% endblock %}
+{% block twitter_description %}{{ article.meta_description|default:article.excerpt|truncatewords:30 }}{% endblock %}
+{% block twitter_image %}{% if article_image_url %}{{ article_image_url }}{% else %}{% static 'images/brand/og-tintora.svg' %}{% endif %}{% endblock %}
+
+{% block extra_head %}{{ block.super }}{% json_ld article_schema %}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Article Header -->
+  <article class="mb-12">
+    {% if article.category %}
+    <a href="{% url 'blog:category_detail' article.category.slug %}" class="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-vermilion text-paper mb-4">
+      {{ article.category.name }}
+    </a>
+    {% endif %}
+    
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-4">{{ article.title }}</h1>
+    
+    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-ink-500 dark:text-paper-400 mb-8 pb-4 border-b border-ink/10 dark:border-paper/10">
+      <span>{{ article.published_at|date:"d M Y" }}</span>
+      <span class="text-ink/20 dark:text-paper/20">·</span>
+      <span>{{ article.views }} vistas</span>
+      {% if article.author %}
+      <span class="text-ink/20 dark:text-paper/20">·</span>
+      <span>{% trans "Por" %} {{ article.author.get_full_name|default:article.author.email }}</span>
+      {% endif %}
+    </div>
+    
+    {% if article.featured_image %}
+    <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="w-full h-auto mb-8 object-cover">
+    {% endif %}
+    
+    <div class="prose prose-lg dark:prose-invert max-w-none text-ink-700 dark:text-paper-300">
+      {{ article.content|linebreaks }}
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  {% if related_articles %}
+  <div class="border-t border-ink/10 dark:border-paper/10 pt-12">
+    <h2 class="text-2xl font-serif font-light text-ink dark:text-paper mb-6">{% trans "Artículos relacionados" %}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for related in related_articles %}
+      <a href="{% url 'blog:article_detail' related.slug %}" class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-4 hover:border-vermilion transition-colors block group">
+        {% if related.featured_image %}
+        <img src="{{ related.featured_image.url }}" alt="{{ related.title }}" class="w-full h-32 object-cover mb-3 group-hover:opacity-90 transition-opacity">
+        {% endif %}
+        <h3 class="font-serif font-medium text-ink dark:text-paper mb-2 group-hover:text-vermilion transition-colors">{{ related.title }}</h3>
+        <p class="text-xs text-ink-500 dark:text-paper-400 line-clamp-2">{{ related.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

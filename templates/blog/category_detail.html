@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ category.name }} · Blog Tintora{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="text-center mb-10 pb-8 border-b border-ink/10 dark:border-paper/10">
+    <p class="text-xs uppercase tracking-widest font-semibold text-vermilion mb-2">{% trans "Blog · Categoría" %}</p>
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-3">{{ category.name }}</h1>
+    {% if category.description %}
+    <p class="text-sm text-ink-600 dark:text-paper-400 max-w-2xl mx-auto">{{ category.description }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Categories Filter -->
+  <div class="flex flex-wrap justify-center gap-2 mb-10">
+    <a href="{% url 'blog:article_list' %}" class="px-4 py-1.5 text-xs uppercase tracking-wider font-medium border border-ink/15 dark:border-paper/15 text-ink dark:text-paper hover:border-vermilion hover:text-vermilion transition-colors">
+      {% trans "Todos" %}
+    </a>
+    {% for cat in categories %}
+    <a href="{% url 'blog:category_detail' cat.slug %}" class="px-4 py-1.5 text-xs uppercase tracking-wider font-medium border {% if cat.id == category.id %}border-vermilion text-vermilion{% else %}border-ink/15 dark:border-paper/15 text-ink dark:text-paper hover:border-vermilion hover:text-vermilion{% endif %} transition-colors">
+      {{ cat.name }}
+    </a>
+    {% endfor %}
+  </div>
+
+  <!-- Articles Grid -->
+  {% if articles %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for article in articles %}
+    <article class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 overflow-hidden hover:border-vermilion transition-colors group flex flex-col">
+      {% if article.featured_image %}
+      <div class="overflow-hidden">
+        <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+      </div>
+      {% endif %}
+      
+      <div class="p-6 flex flex-col flex-1">
+        <h2 class="text-lg font-serif font-medium text-ink dark:text-paper mb-2 flex-1">
+          <a href="{% url 'blog:article_detail' article.slug %}" class="hover:text-vermilion transition-colors">
+            {{ article.title }}
+          </a>
+        </h2>
+        
+        <p class="text-xs text-ink-600 dark:text-paper-400 mb-4 line-clamp-3 leading-relaxed">{{ article.excerpt }}</p>
+        
+        <div class="flex items-center justify-between text-[11px] font-mono text-ink-400 dark:text-paper-500 pt-3 border-t border-ink/10 dark:border-paper/10 mt-auto">
+          <span>{{ article.published_at|date:"d M Y" }}</span>
+          <span>{% blocktrans count counter=article.views %}{{ counter }} vista{% plural %}{{ counter }} vistas{% endblocktrans %}</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  {% if is_paginated %}
+  <div class="flex justify-center mt-12">
+    <nav class="flex gap-2">
+      {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 text-xs uppercase tracking-wider font-medium border border-ink/15 dark:border-paper/15 text-ink dark:text-paper hover:border-vermilion hover:text-vermilion transition-colors">
+        {% trans "Anterior" %}
+      </a>
+      {% endif %}
+      
+      <span class="px-4 py-2 text-xs font-mono text-ink-500 dark:text-paper-400">
+        {% blocktrans with cur=page_obj.number total=page_obj.paginator.num_pages %}Página {{ cur }} de {{ total }}{% endblocktrans %}
+      </span>
+      
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 text-xs uppercase tracking-wider font-medium border border-ink/15 dark:border-paper/15 text-ink dark:text-paper hover:border-vermilion hover:text-vermilion transition-colors">
+        {% trans "Siguiente" %}
+      </a>
+      {% endif %}
+    </nav>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="text-center py-16">
+    <p class="text-sm text-ink-500 dark:text-paper-400">{% trans "No hay artículos en esta categoría aún" %}</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

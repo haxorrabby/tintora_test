@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load i18n static seo_tags l10n core_tags %}
+
+{% block title %}{{ product.meta_title|default:product.name }} · Despensa Latina Tintora{% endblock %}
+{% block meta_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_type %}{% trans "product" %}{% endblock %}
+{% block og_title %}{{ product.meta_title|default:product.name }} · Tintora{% endblock %}
+{% block og_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_image %}{{ product_image_url }}{% endblock %}
+{% block twitter_title %}{{ product.meta_title|default:product.name }} · Tintora{% endblock %}
+{% block twitter_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block twitter_image %}{{ product_image_url }}{% endblock %}
+
+{% block extra_head %}{{ block.super }}{% json_ld product_schema %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" 
+     x-data="{
+       qty: 1,
+       selectedImage: '{{ selected_variant.primary_image_url|escapejs }}',
+       unitPrice: {{ selected_variant.base_price|unlocalize }},
+       stock: {{ selected_variant.stock }},
+       weightGrams: {{ selected_variant.weight_grams }},
+       get total() {
+         return (this.unitPrice * this.qty).toFixed(2);
+       },
+       get base() {
+         return (this.total / 1.21).toFixed(2);
+       },
+       get iva() {
+         return (this.total - this.base).toFixed(2);
+       }
+     }">
+
+  <!-- Breadcrumb -->
+  <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-6 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'catalog:category_detail' product.category.slug %}" class="hover:text-vermilion">{{ product.category.name }}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{{ product.name }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    
+    <!-- LEFT: Product Imagery & Provenance -->
+    <div class="lg:col-span-6 space-y-6">
+      <div class="card-editorial p-10 bg-surface-cardLight dark:bg-surface-cardDark text-center relative overflow-hidden">
+        
+        <div class="absolute top-4 left-4 flex gap-2">
+          {% with flags=product.origin_country|country_flags %}
+          {% if flags %}
+          <span class="badge-neutral bg-surface-light text-ink dark:bg-ink dark:text-paper font-bold">
+            {% for f in flags %}<span title="{{ f.name }}">{{ f.flag }}</span>{% endfor %} {{ product.origin_country }}
+          </span>
+          {% endif %}
+          {% endwith %}
+          {% if selected_variant.weight_grams > 0 %}
+            <span class="badge-editorial border-ink/20 dark:border-paper/20">
+              <span x-text="weightGrams + ' g'">{{ selected_variant.weight_grams }} g</span>
+            </span>
+          {% endif %}
+        </div>
+
+        {% include 'components/product_image.html' with image_src=selected_variant.primary_image_url image_alt=product.name image_frame_class='aspect-[4/3] w-full' image_background_class='bg-surface-light dark:bg-surface-subtleDark' image_padding_class='p-6 sm:p-8' image_loading='eager' image_id='product-detail-image' image_bind_src='selectedImage' %}
+      </div>
+
+      <!-- Origin & Shipping Guarantee Box -->
+      <div class="card-editorial p-5 bg-surface-light dark:bg-surface-subtleDark space-y-2 text-xs">
+        <p class="font-bold text-ink dark:text-paper flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-vermilion"></span>
+          {% trans "Garantía de Importación Tintora Madrid" %}
+        </p>
+        <p class="text-ink-600 dark:text-paper-400 leading-relaxed">
+          {% trans "Producto 100% original con registro sanitario para la Unión Europea. Almacenado en condiciones óptimas en nuestro centro logístico de Madrid." %}
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product Details & Purchase Box -->
+    <div class="lg:col-span-6 space-y-8">
+      <div>
+        <span class="badge-gold">03. {% trans "Productos Latinos" %}</span>
+        <h1 class="font-serif text-3xl md:text-4xl font-extrabold text-ink dark:text-paper mt-3">
+          {{ product.name }}
+        </h1>
+        {% with flags=product.origin_country|country_flags %}
+        {% if flags %}
+        <p class="mt-2 flex items-center gap-2 text-sm text-ink-600 dark:text-paper-400">
+          {% for f in flags %}<span class="text-xl leading-none" title="{{ f.name }}">{{ f.flag }}</span>{% endfor %}
+          <span class="font-mono text-[11px] uppercase tracking-wider">{% trans "Origen" %}: {{ product.origin_country }}</span>
+        </p>
+        {% endif %}
+        {% endwith %}
+        <p class="text-xs font-mono text-ink-400 dark:text-paper-500 mt-1">
+          {% trans "Peso neto" %}: <span x-text="weightGrams + ' g'">{{ selected_variant.weight_grams }} g</span>
+        </p>
+        <p class="text-sm text-ink-700 dark:text-paper-300 mt-4 leading-relaxed">
+          {{ product.short_description }}
+        </p>
+      </div>
+
+      <!-- Price Box -->
+      <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark space-y-6">
+        
+        <div class="flex items-baseline justify-between border-b border-ink/10 dark:border-paper/10 pb-4">
+          <div>
+            <span class="text-xs font-mono uppercase text-ink-400 dark:text-paper-500">{% trans "Precio Unitario" %}</span>
+            <div class="font-serif text-4xl font-extrabold text-ink dark:text-paper" x-show="unitPrice > 0">
+              <span x-text="total"></span>€
+            </div>
+            <div class="font-serif text-2xl font-bold text-ink dark:text-paper" x-show="unitPrice <= 0">{% trans "Precio pendiente" %}</div>
+            <span class="text-[11px] font-mono text-ink-400 dark:text-paper-500" x-show="unitPrice > 0">{% trans "IVA 21% incluido" %}</span>
+          </div>
+
+          <!-- Stock Pill -->
+          <div>
+              <span x-show="stock > 0" class="badge-editorial border-green-600/30 bg-green-500/10 text-green-700 dark:text-green-400 font-bold">
+                &check; {% trans "En stock en Madrid" %}
+              </span>
+              <span x-show="stock < 1" class="badge-editorial border-red-500/30 bg-red-500/10 text-red-600 font-bold">
+                {% trans "Agotado temporalmente" %}
+              </span>
+          </div>
+        </div>
+
+        <!-- Form for Add to Cart -->
+        <form action="{% url 'cart:add' product.slug %}" method="POST" class="space-y-4">
+          {% csrf_token %}
+          {% if product.has_size_variants %}
+          <label for="product-size" class="label-editorial">{% trans "Tamaño / presentación" %}</label>
+          <select id="product-size" name="variant_slug" class="input-editorial"
+                  @change="const option = $event.target.selectedOptions[0]; unitPrice = Number(option.dataset.price); stock = Number(option.dataset.stock); weightGrams = Number(option.dataset.weight); selectedImage = option.dataset.image; qty = Math.min(qty, Math.max(stock, 1))">
+            {% for variant in product_variants %}
+            <option value="{{ variant.slug }}" data-price="{{ variant.base_price|unlocalize }}" data-stock="{{ variant.stock }}" data-weight="{{ variant.weight_grams }}" data-image="{{ variant.primary_image_url }}" {% if variant.pk == selected_variant.pk %}selected{% endif %}>
+              {{ variant.variant_label }} · {{ variant.base_price }}€
+            </option>
+            {% endfor %}
+          </select>
+          {% else %}
+          <input type="hidden" name="variant_slug" value="{{ selected_variant.slug }}">
+          {% endif %}
+          <!-- Quantity Stepper -->
+          <div class="flex items-center space-x-4">
+            <label class="label-editorial mb-0">{% trans "Cantidad" %}:</label>
+            <div class="flex items-center border border-ink/20 dark:border-paper/20 bg-paper dark:bg-ink">
+              <button type="button" @click="if (qty > 1) qty--" class="px-3 py-2 text-sm hover:bg-ink/5 dark:hover:bg-paper/5 font-bold text-ink dark:text-paper">-</button>
+              <input type="number" name="quantity" x-model.number="qty" min="1" x-bind:max="stock" class="w-14 text-center text-sm font-bold bg-transparent border-none focus:ring-0 p-0 text-ink dark:text-paper">
+              <button type="button" @click="qty = Math.min(stock, qty + 1)" class="px-3 py-2 text-sm hover:bg-ink/5 dark:hover:bg-paper/5 font-bold text-ink dark:text-paper">+</button>
+            </div>
+          </div>
+
+          <!-- Tax breakdown summary -->
+          <div class="text-[11px] font-mono text-ink-500 dark:text-paper-400 flex justify-between pt-2">
+            <span>{% trans "Base imponible" %}: <strong x-text="base"></strong>€</span>
+            <span>{% trans "Cuota IVA (21%)" %}: <strong x-text="iva"></strong>€</span>
+          </div>
+
+          <!-- Add to Cart CTA -->
+          <button type="submit" x-bind:disabled="stock < 1 || unitPrice <= 0"
+                  class="btn-vermilion btn-lg w-full text-center font-bold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed">
+            <span x-show="stock > 0 && unitPrice > 0">{% trans "Añadir a la Cesta" %} &rarr;</span>
+            <span x-show="stock < 1">{% trans "Agotado temporalmente" %}</span>
+            <span x-show="stock > 0 && unitPrice <= 0">{% trans "Precio pendiente" %}</span>
+          </button>
+        </form>
+
+        <!-- Shipping estimation note -->
+        <div class="text-[11px] text-ink-500 dark:text-paper-400 space-y-1 font-mono">
+          <p>&bull; <strong>{% trans "Madrid Local" %}</strong>: {% trans "Entrega 24h o recogida gratuita en" %} {{ COMPANY.ADDRESS }}.</p>
+          <p>&bull; <strong>{% trans "Península" %}</strong>: {% trans "Envío en 24/48h por Correos / SEUR / MRW." %}</p>
+          <p>&bull; <strong>{% trans "Envío gratis" %}</strong>: {% trans "en compras superiores a 75€." %}</p>
+        </div>
+
+      </div>
+
+      <!-- Description Details -->
+      <div class="hairline-t pt-6 space-y-4">
+        <h3 class="font-serif text-xl font-bold">{% trans "Descripción & Consejos de Consumo" %}</h3>
+        <p class="text-xs text-ink-700 dark:text-paper-300 leading-relaxed">
+          {{ product.description }}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

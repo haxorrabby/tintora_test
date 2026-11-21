@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "404 &middot; Página No Encontrada &middot; Tintora Madrid" %}{% endblock %}
+{% block meta_description %}{% trans "La página solicitada no está disponible o ha cambiado de lugar. Descubre nuestro catálogo de impresión de alta gama, sublimación y productos latinos en Madrid." %}{% endblock %}
+
+{% block content %}
+<main id="main-content" class="relative overflow-hidden bg-paper dark:bg-ink text-ink dark:text-paper min-h-[75vh] flex items-center justify-center py-16 sm:py-24">
+  <!-- Soft ambient brand glow circles -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/4 -right-20 w-96 h-96 rounded-full bg-gold/15 dark:bg-gold/10 blur-3xl"></div>
+    <div class="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-vermilion/10 dark:bg-vermilion/15 blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+    
+    <!-- Tasteful Print Studio Registration Mark & Badge -->
+    <div class="inline-flex flex-col items-center gap-3">
+      <div class="w-14 h-14 rounded-full border border-ink/15 dark:border-paper/20 flex items-center justify-center bg-surface-cardLight dark:bg-surface-cardDark shadow-sm">
+        <!-- SVG Registration Mark (Crosshair & Ink Ring) -->
+        <svg class="w-7 h-7 text-vermilion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <circle cx="12" cy="12" r="8" stroke-dasharray="2 2" stroke="currentColor" opacity="0.6"></circle>
+          <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor"></line>
+          <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor"></line>
+          <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+        </svg>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="badge-vermilion">{% trans "Error 404" %}</span>
+        <span class="badge-neutral">{% trans "Fuera de Registro" %}</span>
+      </div>
+    </div>
+
+    <!-- Editorial Typography Display -->
+    <div class="space-y-3">
+      <h1 class="font-serif font-extrabold text-7xl sm:text-9xl tracking-tight text-ink dark:text-paper leading-none">
+        404<span class="text-vermilion">.</span>
+      </h1>
+      <h2 class="font-serif text-2xl sm:text-4xl font-bold text-ink dark:text-paper">
+        {% trans "Esta página no se encuentra en el taller" %}
+      </h2>
+      <p class="max-w-xl mx-auto text-sm sm:text-base text-ink-600 dark:text-paper-300 leading-relaxed font-light">
+        {% trans "El enlace que has seguido puede haber cambiado, haberse retirado del catálogo o encontrarse fuera de registro. Nuestro taller sigue produciendo con normalidad." %}
+      </p>
+    </div>
+
+    <!-- Prominent Action CTAs -->
+    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+      <a href="{% url 'core:home' %}" class="btn-vermilion btn-lg shadow-editorial">
+        &larr; {% trans "Volver al inicio" %}
+      </a>
+      <a href="{% url 'catalog:index' %}" class="btn-ink btn-lg">
+        {% trans "Continuar comprando en el catálogo" %} &rarr;
+      </a>
+    </div>
+
+    <!-- Curated Directory Shortcuts (The 4 Pillars) -->
+    <div class="pt-8 border-t border-ink/10 dark:border-paper/10">
+      <p class="font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400 mb-6">
+        {% trans "O explora nuestras áreas principales:" %}
+      </p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto text-left">
+        <a href="{% url 'catalog:index' %}?area=impresion" 
+           class="card-editorial-hover p-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 group">
+          <span class="font-mono text-[10px] text-vermilion tracking-wider uppercase block mb-1">01. {% trans "Impresión" %}</span>
+          <span class="font-serif font-bold text-sm text-ink dark:text-paper group-hover:text-vermilion transition-colors block">
+            {% trans "Tarjetas & Folletos" %}
+          </span>
+          <span class="text-[11px] text-ink-500 dark:text-paper-400 mt-1 block">{% trans "Acabados premium" %}</span>
+        </a>
+
+        <a href="{% url 'catalog:index' %}?area=sublimacion" 
+           class="card-editorial-hover p-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 group">
+          <span class="font-mono text-[10px] text-gold-dark dark:text-gold tracking-wider uppercase block mb-1">02. {% trans "Sublimación" %}</span>
+          <span class="font-serif font-bold text-sm text-ink dark:text-paper group-hover:text-gold transition-colors block">
+            {% trans "Tazas & Textil" %}
+          </span>
+          <span class="text-[11px] text-ink-500 dark:text-paper-400 mt-1 block">{% trans "Personalizado 360°" %}</span>
+        </a>
+
+        <a href="{% url 'latin_products:index' %}" 
+           class="card-editorial-hover p-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 group">
+          <span class="font-mono text-[10px] text-vermilion tracking-wider uppercase block mb-1">03. {% trans "Despensa" %}</span>
+          <span class="font-serif font-bold text-sm text-ink dark:text-paper group-hover:text-vermilion transition-colors block">
+            {% trans "Productos Latinos" %}
+          </span>
+          <span class="text-[11px] text-ink-500 dark:text-paper-400 mt-1 block">{% trans "+700 referencias" %}</span>
+        </a>
+
+        <a href="{% url 'quotes:development' %}" 
+           class="card-editorial-hover p-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 group">
+          <span class="font-mono text-[10px] text-gold-dark dark:text-gold tracking-wider uppercase block mb-1">04. {% trans "Digital" %}</span>
+          <span class="font-serif font-bold text-sm text-ink dark:text-paper group-hover:text-gold transition-colors block">
+            {% trans "Desarrollo Web" %}
+          </span>
+          <span class="text-[11px] text-ink-500 dark:text-paper-400 mt-1 block">{% trans "Presupuesto online" %}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Need Help Row -->
+    <div class="pt-4 flex items-center justify-center gap-6 text-xs text-ink-500 dark:text-paper-400 font-mono">
+      <span>{% trans "¿Dudas con un pedido?" %}</span>
+      <a href="{% url 'core:contact' %}" class="underline hover:text-vermilion transition-colors">
+        {% trans "Contactar con el taller" %}
+      </a>
+      <span>&bull;</span>
+      <button type="button" @click="$dispatch('open-search')" class="underline hover:text-vermilion transition-colors">
+        {% trans "Buscar en la tienda" %}
+      </button>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Tramitar Pedido" %} &middot; Tintora Madrid{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" x-data="{ customerType: '{% if user.is_authenticated %}{{ user.customer_type|default:'individual' }}{% else %}individual{% endif %}', paymentMethod: 'transfer' }">
+  
+  <!-- Breadcrumbs -->
+  <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-6 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'cart:detail' %}" class="hover:text-vermilion">{% trans "Cesta" %}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{% trans "Tramitación de Pedido" %}</span>
+  </nav>
+
+  <!-- Editorial Heading -->
+  <div class="border-b border-ink/10 dark:border-paper/10 pb-6 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div>
+      <span class="badge-vermilion">{% trans "Taller de Getafe" %}</span>
+      <h1 class="font-serif text-2xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">
+        {% trans "Finalizar Compra" %}
+      </h1>
+    </div>
+    
+    <div class="text-xs font-mono text-ink-500 dark:text-paper-400 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-green-500"></span>
+      <span>{% trans "Pasarela segura con encriptación SSL 256-bit" %}</span>
+    </div>
+  </div>
+
+  <form action="{% url 'orders:checkout_process' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      
+      <!-- LEFT: CHECKOUT FORM SECTIONS -->
+      <div class="lg:col-span-8 space-y-8">
+        
+        <!-- SECTION 1: CUSTOMER & FISCAL DATA -->
+        <div class="card-editorial p-6 sm:p-8 bg-surface-cardLight dark:bg-surface-cardDark space-y-6">
+          <div class="flex items-center justify-between border-b border-ink/10 dark:border-paper/10 pb-4">
+            <h2 class="font-serif text-xl font-bold text-ink dark:text-paper flex items-center gap-2">
+              <span class="font-mono text-sm text-vermilion font-bold">01.</span>
+              {% trans "Datos del Cliente & Facturación Oficial" %}
+            </h2>
+            <span class="text-[10px] font-mono text-ink-400 dark:text-paper-500">{% trans "Factura con NIF/CIF" %}</span>
+          </div>
+
+          <!-- Customer Type Toggle -->
+          <div class="space-y-2">
+            <label class="label-editorial">{% trans "Tipo de Facturación" %}</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="p-3 border border-ink/15 dark:border-paper/15 cursor-pointer text-center text-xs font-medium has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+                <input type="radio" name="customer_type" value="individual" x-model="customerType" class="hidden">
+                <span class="block font-bold">{% trans "Particular / Autónomo" %}</span>
+                <span class="text-[10px] font-mono text-ink-400">{% trans "Factura con DNI / NIE" %}</span>
+              </label>
+              <label class="p-3 border border-ink/15 dark:border-paper/15 cursor-pointer text-center text-xs font-medium has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+                <input type="radio" name="customer_type" value="business" x-model="customerType" class="hidden">
+                <span class="block font-bold">{% trans "Empresa / Sociedad" %}</span>
+                <span class="text-[10px] font-mono text-ink-400">{% trans "Factura con CIF empresarial" %}</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Company Name (if business) -->
+          <div x-show="customerType === 'business'" class="space-y-1.5" style="display:none;">
+            <label class="label-editorial">{% trans "Razón Social de la Empresa" %} *</label>
+            <input type="text" name="company_name" value="{% if user.is_authenticated %}{{ user.company_name }}{% endif %}"
+                   class="input-editorial" placeholder="{% trans "Ej. Estudio Creativo Alcalá S.L." %}">
+          </div>
+
+          <!-- NIF/CIF Input -->
+          <div class="space-y-1.5">
+            <label class="label-editorial">
+              {% trans "NIF / CIF / NIE" %} * 
+              <span class="text-[10px] font-normal text-ink-400 dark:text-paper-500">({% trans "Obligatorio conforme al RD 1619/2012 de facturación" %})</span>
+            </label>
+            <input type="text" name="nif_cif" required value="{% if user.is_authenticated %}{{ user.nif_cif }}{% endif %}"
+                   class="input-editorial uppercase font-mono" placeholder="{% trans "Ej. B-88776655 o 12345678Z" %}">
+          </div>
+
+          <!-- Name & Surname -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Nombre" %} *</label>
+              <input type="text" name="first_name" required value="{% if user.is_authenticated %}{{ user.first_name }}{% endif %}"
+                     class="input-editorial" placeholder="{% trans "Ej. Laura" %}">
+            </div>
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Apellidos" %} *</label>
+              <input type="text" name="last_name" required value="{% if user.is_authenticated %}{{ user.last_name }}{% endif %}"
+                     class="input-editorial" placeholder="{% trans "Ej. Gómez Méndez" %}">
+            </div>
+          </div>
+
+          <!-- Email & Phone -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Correo Electrónico" %} *</label>
+              <input type="email" name="email" required value="{% if user.is_authenticated %}{{ user.email }}{% endif %}"
+                     class="input-editorial" placeholder="{% trans "laura@empresa.es" %}">
+            </div>
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Teléfono de Contacto" %} *</label>
+              <input type="tel" name="phone" required value="{% if user.is_authenticated %}{{ user.phone }}{% endif %}"
+                     class="input-editorial" placeholder="+34 631 51 76 44">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SECTION 2: SHIPPING ADDRESS -->
+        <div class="card-editorial p-6 sm:p-8 bg-surface-cardLight dark:bg-surface-cardDark space-y-6">
+          <div class="flex items-center justify-between border-b border-ink/10 dark:border-paper/10 pb-4">
+            <h2 class="font-serif text-xl font-bold text-ink dark:text-paper flex items-center gap-2">
+              <span class="font-mono text-sm text-vermilion font-bold">02.</span>
+              {% trans "Dirección de Entrega" %}
+            </h2>
+            <span class="text-[10px] font-mono text-ink-400 dark:text-paper-500">
+              {{ cart.shipping_method.name|default:"Envío Taller Madrid" }}
+            </span>
+          </div>
+
+          <!-- Address line 1 -->
+          <div class="space-y-1.5">
+            <label class="label-editorial">{% trans "Calle, número y portal" %} *</label>
+            <input type="text" name="shipping_address_line1" required
+                   value="{% if user.is_authenticated %}{{ user.address }}{% endif %}"
+                   class="input-editorial" placeholder="{% trans "Ej. Calle de Alcalá 120" %}">
+          </div>
+
+          <!-- Address line 2 -->
+          <div class="space-y-1.5">
+            <label class="label-editorial">{% trans "Piso, puerta, escalera (opcional)" %}</label>
+            <input type="text" name="shipping_address_line2" 
+                   class="input-editorial" placeholder="{% trans "Ej. 3º Izquierda" %}">
+          </div>
+
+          <!-- Postal Code, City & Province -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Código Postal" %} *</label>
+              <input type="text" name="shipping_postal_code" required
+                     value="{% if user.is_authenticated %}{{ user.postal_code|default:cart.shipping_postal_code|default:'28012' }}{% else %}{{ cart.shipping_postal_code|default:'28012' }}{% endif %}"
+                     class="input-editorial font-mono" placeholder="28012">
+            </div>
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Ciudad / Localidad" %} *</label>
+              <input type="text" name="shipping_city" required
+                     value="{% if user.is_authenticated %}{{ user.city|default:'Madrid' }}{% else %}Madrid{% endif %}"
+                     class="input-editorial" placeholder="{% trans "Madrid" %}">
+            </div>
+            <div class="space-y-1.5">
+              <label class="label-editorial">{% trans "Provincia" %} *</label>
+              <input type="text" name="shipping_province" required
+                     value="{% if user.is_authenticated %}{{ user.province|default:'Madrid' }}{% else %}Madrid{% endif %}"
+                     class="input-editorial" placeholder="{% trans "Madrid" %}">
+            </div>
+          </div>
+
+          <!-- Customer delivery instructions -->
+          <div class="space-y-1.5">
+            <label class="label-editorial">{% trans "Notas de entrega / Observaciones para taller" %}</label>
+            <textarea name="customer_notes" rows="2" 
+                      class="input-editorial" placeholder="{% trans "Ej. Dejar en conserjería si no estamos en horario comercial..." %}"></textarea>
+          </div>
+
+          <!-- Shipping method selection -->
+          {% if shipping_methods %}
+          <div class="space-y-2 pt-2 border-t border-ink/10 dark:border-paper/10">
+            <label class="label-editorial">{% trans "Método de envío" %} *</label>
+            <div class="space-y-2">
+              {% for method in shipping_methods %}
+              <label class="flex items-start gap-3 p-3 border border-ink/15 dark:border-paper/15 cursor-pointer has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+                <input type="radio" name="shipping_method_id" value="{{ method.id }}"
+                       class="mt-1 text-vermilion focus:ring-vermilion"
+                       {% if cart.shipping_method_id == method.id or not cart.shipping_method_id and forloop.first %}checked{% endif %}>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-bold text-sm text-ink dark:text-paper">{{ method.name }}</span>
+                  <span class="block text-[11px] font-mono text-ink-400 dark:text-paper-500">
+                    {{ method.get_courier_display }} · {{ method.zone.name }} · {{ method.estimated_days }}
+                  </span>
+                </div>
+                <span class="font-serif font-bold text-sm text-ink dark:text-paper whitespace-nowrap">
+                  {% if method.courier == 'pickup' %}{% trans "Gratis" %}{% else %}{{ method.base_rate }}€{% endif %}
+                </span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+
+        <!-- SECTION 3: PAYMENT METHOD -->
+        <div class="card-editorial p-6 sm:p-8 bg-surface-cardLight dark:bg-surface-cardDark space-y-6">
+          <div class="border-b border-ink/10 dark:border-paper/10 pb-4">
+            <h2 class="font-serif text-xl font-bold text-ink dark:text-paper flex items-center gap-2">
+              <span class="font-mono text-sm text-vermilion font-bold">03.</span>
+              {% trans "Método de Pago Seguro" %}
+            </h2>
+            <p class="text-xs text-ink-500 dark:text-paper-400 mt-1">
+              {% trans "Selecciona tu pasarela preferida. Todas las operaciones se liquidan en Euros (€) con IVA desglosado." %}
+            </p>
+          </div>
+
+          <!-- Gateway options (Stripe desactivado temporalmente) -->
+          <div class="space-y-3">
+
+            <!-- Bizum -->
+            <label class="p-4 border border-ink/15 dark:border-paper/15 cursor-pointer block hover:border-vermilion transition-colors has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <input type="radio" name="payment_method" value="bizum" x-model="paymentMethod" class="text-vermilion focus:ring-vermilion">
+                  <div>
+                    <span class="font-serif font-bold text-base text-ink dark:text-paper">{% trans "Bizum" %}</span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-400">{% trans "Pago móvil instantáneo sin comisiones" %}</span>
+                  </div>
+                </div>
+                <span class="px-2 py-1 bg-[#00756B] text-white text-[11px] font-bold rounded">{% trans "bizum" %}</span>
+              </div>
+            </label>
+
+            <!-- Redsys -->
+            <label class="p-4 border border-ink/15 dark:border-paper/15 cursor-pointer block hover:border-vermilion transition-colors has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <input type="radio" name="payment_method" value="redsys" x-model="paymentMethod" class="text-vermilion focus:ring-vermilion">
+                  <div>
+                    <span class="font-serif font-bold text-base text-ink dark:text-paper">{% trans "Redsys / TPV Virtual Bancario" %}</span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-400">{% trans "Pasarela oficial bancaria española" %}</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 border text-[10px] font-mono font-bold">{% trans "Redsys" %}</span>
+              </div>
+            </label>
+
+            <!-- Bank Transfer (default) -->
+            <label class="p-4 border border-ink/15 dark:border-paper/15 cursor-pointer block hover:border-vermilion transition-colors has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <input type="radio" name="payment_method" value="transfer" x-model="paymentMethod" class="text-vermilion focus:ring-vermilion">
+                  <div>
+                    <span class="font-serif font-bold text-base text-ink dark:text-paper">{% trans "Transferencia Bancaria (IBAN)" %}</span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-400">{% trans "Banco Santander · La producción comienza tras recibir el justificante" %}</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 border text-[10px] font-mono font-bold">{% trans "IBAN" %}</span>
+              </div>
+            </label>
+
+          </div>
+
+          <!-- Legal & Privacy Checkbox -->
+          <div class="pt-4 border-t border-ink/10 dark:border-paper/10">
+            <label class="flex items-start space-x-3 text-xs text-ink-600 dark:text-paper-400 cursor-pointer">
+              <input type="checkbox" required class="mt-0.5 text-vermilion rounded-none focus:ring-vermilion flex-shrink-0">
+              <span>
+                {% trans "He leído y acepto los" %} <a href="{% url 'core:legal' slug='condiciones-venta' %}" target="_blank" rel="noopener" class="underline hover:text-vermilion font-bold">{% trans "Términos y Condiciones de Venta" %}</a> {% trans "y la" %} <a href="{% url 'core:legal' slug='politica-privacidad' %}" target="_blank" rel="noopener" class="underline hover:text-vermilion font-bold">{% trans "Política de Privacidad" %}</a> {% trans "conforme a la normativa RGPD y LOPD-GDD española." %}
+              </span>
+            </label>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT: ORDER SUMMARY SIDEBAR -->
+      <div class="lg:col-span-4">
+        <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark sticky top-28 space-y-6">
+          
+          <div>
+            <h2 class="font-serif text-xl font-bold text-ink dark:text-paper">
+              {% trans "Resumen de Compra" %}
+            </h2>
+            <span class="text-[11px] font-mono text-ink-400 dark:text-paper-500">
+              {% blocktrans count counter=cart.item_count %}{{ counter }} producto en tu cesta{% plural %}{{ counter }} productos en tu cesta{% endblocktrans %}
+            </span>
+          </div>
+
+          <!-- Items list preview -->
+          <div class="space-y-3 max-h-64 overflow-y-auto hairline-y py-3">
+            {% for item in cart.items.all %}
+            <div class="flex items-center justify-between text-xs font-mono">
+              <div class="flex items-center space-x-2">
+                {% include 'components/product_image.html' with image_src=item.product.primary_image_url image_alt=item.product.name image_frame_class='h-8 w-8 shrink-0 border border-ink/10 dark:border-paper/10' image_padding_class='p-0.5' %}
+                <div>
+                  <span class="font-bold text-ink dark:text-paper block line-clamp-1">{{ item.quantity }}x {{ item.product.display_name }}</span>
+                  {% if item.product.variant_label %}<span class="text-[10px] text-ink-500 dark:text-paper-400">{{ item.product.variant_label }}</span>{% endif %}
+                  <span class="text-[10px] text-ink-400">{{ item.unit_price }}€/ud</span>
+                </div>
+              </div>
+              <span class="font-serif font-bold text-ink dark:text-paper">{{ item.line_total }}€</span>
+            </div>
+            {% endfor %}
+          </div>
+
+          <!-- Totals breakdown -->
+          <div class="space-y-2 text-xs font-mono">
+            <div class="flex justify-between text-ink-600 dark:text-paper-300">
+              <span>{% trans "Subtotal productos" %}</span>
+              <span>{{ cart.subtotal }}€</span>
+            </div>
+
+            {% if cart.discount_amount > 0 %}
+            <div class="flex justify-between text-vermilion font-bold">
+              <span>{% trans "Descuento" %} ({{ cart.coupon.code }})</span>
+              <span>-{{ cart.discount_amount }}€</span>
+            </div>
+            {% endif %}
+
+            <div class="flex justify-between text-ink-600 dark:text-paper-300">
+              <span>{% trans "Envío" %}</span>
+              <span>
+                {% if cart.shipping_cost == 0 %}
+                  <span class="text-green-700 font-bold">{% trans "GRATIS" %}</span>
+                {% else %}
+                  {{ cart.shipping_cost }}€
+                {% endif %}
+              </span>
+            </div>
+
+            <div class="hairline-t pt-2 space-y-1 text-[11px] text-ink-400 dark:text-paper-500">
+              <div class="flex justify-between">
+                <span>{% trans "Base imponible" %}:</span>
+                <span>{{ cart.taxable_base }}€</span>
+              </div>
+              <div class="flex justify-between">
+                <span>{% trans "Cuota IVA (21%)" %}:</span>
+                <span>{{ cart.iva_amount }}€</span>
+              </div>
+            </div>
+
+            <div class="hairline-t pt-3 flex items-baseline justify-between">
+              <span class="font-serif text-lg font-bold text-ink dark:text-paper">{% trans "Total a Pagar" %}</span>
+              <div class="text-right">
+                <span class="font-serif text-3xl font-extrabold text-vermilion">
+                  {{ cart.total }}€
+                </span>
+                <span class="block text-[10px] font-mono text-ink-400 dark:text-paper-500">
+                  {% trans "21% IVA español incluido" %}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Order Button -->
+          <button type="submit" 
+                  class="btn-vermilion btn-lg w-full text-center font-bold tracking-wide">
+            {% trans "Pagar y Confirmar Pedido" %} &rarr;
+          </button>
+
+          <!-- Back to cart -->
+          <div class="text-center pt-1">
+            <a href="{% url 'cart:detail' %}" class="text-xs font-mono text-ink-500 dark:text-paper-400 hover:text-vermilion underline">
+              &larr; {% trans "Modificar artículos en la cesta" %}
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+</div>
+{% endblock %}

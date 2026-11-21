@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Favicon: Editorial Bodoni T with Vermilion Ink Drop -->
+  <rect width="64" height="64" rx="14" fill="#0D0F14"/>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,800&amp;display=swap');
+      .fav-t {
+        font-family: 'Bodoni Moda', serif;
+        font-size: 46px;
+        font-weight: 800;
+        fill: #F4EFE6;
+      }
+    </style>
+  </defs>
+  <text x="12" y="47" class="fav-t">T</text>
+  <circle cx="48" cy="46" r="5" fill="#E8392B"/>
+  <circle cx="47.5" cy="45.5" r="2" fill="#FF5C4F" opacity="0.8"/>
+</svg>

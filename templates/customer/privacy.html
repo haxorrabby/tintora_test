@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Privacidad · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-8">
+    <nav class="text-xs uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-2">
+      <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi Área" %}</a>
+      <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+      <span class="text-ink dark:text-paper font-medium">{% trans "Privacidad" %}</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-2">{% trans "Privacidad y Datos" %}</h1>
+    <p class="text-sm text-ink-600 dark:text-paper-400">{% trans "Gestión transparente de tus datos personales conforme al RGPD europeo" %}</p>
+  </div>
+
+  <!-- Newsletter Subscription -->
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-6 sm:p-8 mb-6">
+    <h2 class="text-xl font-serif font-medium text-ink dark:text-paper mb-2">{% trans "Suscripción a la Gaceta Tintora" %}</h2>
+    <p class="text-sm text-ink-600 dark:text-paper-400 mb-6">{% trans "Recibe novedades de taller, papeles especiales y ofertas exclusivas directamente en tu bandeja de entrada." %}</p>
+    
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="toggle_newsletter">
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 border border-ink/10 dark:border-paper/10 bg-ink/[0.02] dark:bg-paper/[0.02]">
+        <div class="flex items-center">
+          {% if user.newsletter_subscribed %}
+          <span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-3"></span>
+          <span class="text-sm text-ink dark:text-paper font-medium">{% trans "Suscrito actualmente" %}</span>
+          {% else %}
+          <span class="inline-block w-2.5 h-2.5 bg-ink/30 dark:bg-paper/30 rounded-full mr-3"></span>
+          <span class="text-sm text-ink-600 dark:text-paper-400">{% trans "No suscrito" %}</span>
+          {% endif %}
+        </div>
+        <button type="submit" class="bg-vermilion hover:bg-vermilion-dark text-paper px-5 py-2 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% if user.newsletter_subscribed %}{% trans "Darse de baja" %}{% else %}{% trans "Suscribirse" %}{% endif %}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Data Export -->
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-6 sm:p-8 mb-6">
+    <h2 class="text-xl font-serif font-medium text-ink dark:text-paper mb-2">{% trans "Exportar mis datos" %}</h2>
+    <p class="text-sm text-ink-600 dark:text-paper-400 mb-6">{% trans "Descarga un archivo ZIP con tus datos de perfil, direcciones, lista de deseos, carritos, pedidos, facturas y archivos de arte disponibles." %}</p>
+    
+    <form method="post" action="{% url 'customer:data_export' %}">
+      {% csrf_token %}
+      <button type="submit" class="border border-ink/20 dark:border-paper/20 hover:border-ink dark:hover:border-paper text-ink dark:text-paper px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors">
+        {% trans "Descargar mis datos (ZIP)" %}
+      </button>
+    </form>
+  </div>
+
+  <!-- Account Deletion -->
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-vermilion/30 p-6 sm:p-8 mb-6">
+    <h2 class="text-xl font-serif font-medium text-ink dark:text-paper mb-2">{% trans "Eliminar mi cuenta" %}</h2>
+    <p class="text-sm text-ink-600 dark:text-paper-400 mb-3">{% trans "Se eliminarán tu cuenta, direcciones, lista de deseos, carritos y archivos de arte. Los pedidos en curso deben entregarse o cancelarse antes de continuar." %}</p>
+    <p class="text-xs text-ink-500 dark:text-paper-500 mb-6">{% trans "Conservaremos las facturas y los datos fiscales que debamos guardar por obligación legal. La información de contacto de los pedidos se anonimizará y sus enlaces de acceso dejarán de funcionar. Esta acción no se puede deshacer." %}</p>
+    
+    <form method="post" action="{% url 'customer:delete_account' %}" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label for="delete-password" class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Contraseña actual" %}</label>
+        <input id="delete-password" type="password" name="password" autocomplete="current-password" required class="input-editorial max-w-md">
+      </div>
+      <div>
+        <label for="delete-confirmation" class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Escribe ELIMINAR para confirmar" %}</label>
+        <input id="delete-confirmation" type="text" name="confirmation" autocomplete="off" required class="input-editorial max-w-md">
+      </div>
+      <button type="submit" class="bg-vermilion hover:bg-vermilion-dark text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+        {% trans "Eliminar definitivamente mi cuenta" %}
+      </button>
+    </form>
+  </div>
+
+  <!-- GDPR Info -->
+  <div class="bg-ink/[0.02] dark:bg-paper/[0.02] border border-ink/10 dark:border-paper/10 p-6">
+    <h3 class="font-serif font-medium text-ink dark:text-paper mb-3">{% trans "Tus derechos conforme al RGPD" %}</h3>
+    <ul class="text-xs text-ink-600 dark:text-paper-400 space-y-1.5 leading-relaxed">
+      <li>• {% trans "Derecho de acceso a tus datos personales" %}</li>
+      <li>• {% trans "Derecho de rectificación de datos inexactos" %}</li>
+      <li>• {% trans 'Derecho de supresión ("derecho al olvido")' %}</li>
+      <li>• {% trans "Derecho a la limitación del tratamiento" %}</li>
+      <li>• {% trans "Derecho a la portabilidad de los datos" %}</li>
+      <li>• {% trans "Derecho de oposición" %}</li>
+    </ul>
+    <p class="mt-4 text-xs text-ink-500 dark:text-paper-400">
+      {% trans "Para ejercer estos derechos, también puedes contactarnos directamente en" %} 
+      <a href="mailto:privacidad@tintora.es" class="text-vermilion hover:underline">privacidad@tintora.es</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

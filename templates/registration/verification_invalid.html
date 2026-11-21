@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Enlace no válido · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<section class="max-w-xl mx-auto px-4 sm:px-6 py-20">
+  <p class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3">{% trans "Verificación" %}</p>
+  <h1 class="mt-2 text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper">{% trans "El enlace ha caducado o no es válido" %}</h1>
+  <p class="mt-4 text-sm text-ink-600 dark:text-paper-400 mb-6">{% trans "Solicita un nuevo enlace con el correo que usaste al crear la cuenta." %}</p>
+  <form method="post" action="{% url 'customer:resend_verification' %}" class="flex flex-col sm:flex-row gap-2">
+    {% csrf_token %}
+    <input type="email" name="email" required autocomplete="email" placeholder="{% trans 'tu@correo.es' %}"
+      class="input-editorial min-w-0 flex-1">
+    <button type="submit" class="bg-ink dark:bg-paper text-paper dark:text-ink px-5 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-vermilion dark:hover:bg-vermilion dark:hover:text-paper transition-colors whitespace-nowrap">
+      {% trans "Reenviar enlace" %}
+    </button>
+  </form>
+  <p class="mt-6 text-sm">
+    <a href="{% url 'customer:login' %}" class="text-vermilion hover:underline text-xs uppercase tracking-wider font-medium">{% trans "← Volver al acceso" %}</a>
+  </p>
+</section>
+{% endblock %}

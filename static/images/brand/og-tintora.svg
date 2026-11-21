@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none" role="img" aria-label="Tintora Editorial Open Graph Preview">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Sans:wght@400;500;700&amp;display=swap');
+      .og-title { font-family: 'Bodoni Moda', serif; font-size: 110px; font-weight: 800; fill: #F4EFE6; letter-spacing: -0.04em; }
+      .og-tagline { font-family: 'Bodoni Moda', serif; font-size: 40px; font-style: italic; fill: #C9A96A; }
+      .og-sub { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 500; fill: #A9ACB9; letter-spacing: 0.15em; text-transform: uppercase; }
+      .og-pill { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; fill: #F4EFE6; }
+    </style>
+  </defs>
+
+  <!-- Editorial Background -->
+  <rect width="1200" height="630" fill="#0D0F14"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#F4EFE6" stroke-opacity="0.12" stroke-width="1"/>
+
+  <!-- Gold Accent Corner Accents -->
+  <line x1="40" y1="40" x2="90" y2="40" stroke="#C9A96A" stroke-width="2"/>
+  <line x1="40" y1="40" x2="40" y2="90" stroke="#C9A96A" stroke-width="2"/>
+  <line x1="1160" y1="590" x2="1110" y2="590" stroke="#C9A96A" stroke-width="2"/>
+  <line x1="1160" y1="590" x2="1160" y2="540" stroke="#C9A96A" stroke-width="2"/>
+
+  <!-- Brand Wordmark & Ink Drop -->
+  <text x="100" y="220" class="og-title">Tintora</text>
+  <circle cx="505" cy="215" r="14" fill="#E8392B"/>
+
+  <!-- Tagline -->
+  <text x="105" y="290" class="og-tagline">"Tinta que deja huella."</text>
+
+  <!-- Madrid Location & Quality Stamp -->
+  <text x="105" y="360" class="og-sub">Estudio de Impresión de Alta Gama &#183; Madrid, España</text>
+
+  <!-- Four Pillars Grid -->
+  <g transform="translate(105, 430)">
+    <rect x="0" y="0" width="220" height="70" fill="#14171F" stroke="#F4EFE6" stroke-opacity="0.1"/>
+    <text x="20" y="30" class="og-sub" fill="#C9A96A" font-size="12">01</text>
+    <text x="20" y="52" class="og-pill">Impresión</text>
+
+    <rect x="240" y="0" width="220" height="70" fill="#14171F" stroke="#F4EFE6" stroke-opacity="0.1"/>
+    <text x="260" y="30" class="og-sub" fill="#C9A96A" font-size="12">02</text>
+    <text x="260" y="52" class="og-pill">Sublimación</text>
+
+    <rect x="480" y="0" width="240" height="70" fill="#14171F" stroke="#F4EFE6" stroke-opacity="0.1"/>
+    <text x="500" y="30" class="og-sub" fill="#C9A96A" font-size="12">03</text>
+    <text x="500" y="52" class="og-pill">Productos Latinos</text>
+
+    <rect x="740" y="0" width="240" height="70" fill="#14171F" stroke="#F4EFE6" stroke-opacity="0.1"/>
+    <text x="760" y="30" class="og-sub" fill="#C9A96A" font-size="12">04</text>
+    <text x="760" y="52" class="og-pill">Desarrollo Web</text>
+  </g>
+</svg>

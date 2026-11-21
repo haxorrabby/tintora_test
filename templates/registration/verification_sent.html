@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Confirma tu correo · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<section class="max-w-xl mx-auto px-4 sm:px-6 py-20 text-center">
+  <p class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3">{% trans "Cuenta creada" %}</p>
+  <h1 class="mt-2 text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper">{% trans "Confirma tu correo" %}</h1>
+  {% if email_sent %}
+  <p class="mt-4 text-sm text-ink-600 dark:text-paper-400 max-w-md mx-auto">
+    {% trans "Hemos enviado un enlace de confirmación a" %} <strong class="text-ink dark:text-paper">{{ email }}</strong>{% trans ". El enlace estará activo durante 24 horas." %}
+  </p>
+  {% else %}
+  <p class="mt-4 text-sm text-ink-600 dark:text-paper-400 max-w-md mx-auto">
+    {% trans "No hemos podido enviar el correo ahora mismo. Puedes solicitar otro enlace desde la página de acceso." %}
+  </p>
+  {% endif %}
+  <a href="{% url 'customer:login' %}" class="mt-8 inline-block bg-ink dark:bg-paper text-paper dark:text-ink px-5 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-vermilion dark:hover:bg-vermilion dark:hover:text-paper transition-colors">
+    {% trans "Ir a iniciar sesión" %}
+  </a>
+</section>
+{% endblock %}

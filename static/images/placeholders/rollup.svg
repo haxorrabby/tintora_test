@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-label="Roll-up Expositor">
+  <rect width="800" height="600" fill="#F4EFE6"/>
+  <!-- Banner base -->
+  <rect x="290" y="510" width="220" height="24" rx="4" fill="#343743"/>
+  <rect x="250" y="526" width="300" height="6" rx="2" fill="#737788"/>
+  <!-- Banner Banner Pole -->
+  <rect x="396" y="80" width="8" height="430" fill="#A9ACB9"/>
+  <!-- Banner Graphic Body -->
+  <rect x="310" y="80" width="180" height="430" fill="#0D0F14" stroke="#737788" stroke-width="2"/>
+  <rect x="310" y="80" width="180" height="80" fill="#E8392B"/>
+  <text x="330" y="130" font-family="'Bodoni Moda', serif" font-size="20" font-weight="bold" fill="#F4EFE6">TINTORA</text>
+  <text x="330" y="240" font-family="'Bodoni Moda', serif" font-size="16" fill="#C9A96A">Gran Formato</text>
+  <text x="330" y="270" font-family="'DM Sans', sans-serif" font-size="10" fill="#A9ACB9">Ferias &#183; Eventos &#183; Madrid</text>
+  <rect x="330" y="320" width="140" height="120" fill="#14171F" stroke="#F4EFE6" stroke-opacity="0.1"/>
+  <circle cx="400" cy="380" r="28" fill="#C9A96A" opacity="0.3"/>
+</svg>

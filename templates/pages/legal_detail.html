@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+  <header class="mb-10 hairline-b pb-8">
+    <p class="editorial-number mb-4">— {% trans "Información legal" %}</p>
+    <h1 class="font-serif text-3xl md:text-4xl font-medium text-ink dark:text-paper">
+      {{ legal.title }}
+    </h1>
+    <p class="mt-3 text-xs font-mono text-ink-400 dark:text-paper-500">
+      {{ COMPANY.NAME }} · {{ COMPANY.NIF_CIF }} · {{ COMPANY.ADDRESS }}
+    </p>
+  </header>
+
+  <div class="space-y-10">
+    {% for section in legal.sections %}
+    <section>
+      <h2 class="font-serif text-xl md:text-2xl text-ink dark:text-paper mb-4">{{ section.heading }}</h2>
+      <div class="space-y-4 text-sm leading-relaxed text-ink-600 dark:text-paper-400">
+        {% for paragraph in section.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+
+  <footer class="mt-14 hairline-t pt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+    <a href="{% url 'core:legal' slug='aviso-legal' %}" class="text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors {% if slug == 'aviso-legal' %}text-vermilion{% endif %}">{% trans "Aviso Legal" %}</a>
+    <a href="{% url 'core:legal' slug='politica-privacidad' %}" class="text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors {% if slug == 'politica-privacidad' %}text-vermilion{% endif %}">{% trans "Privacidad" %}</a>
+    <a href="{% url 'core:legal' slug='politica-cookies' %}" class="text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors {% if slug == 'politica-cookies' %}text-vermilion{% endif %}">{% trans "Cookies" %}</a>
+    <a href="{% url 'core:legal' slug='condiciones-venta' %}" class="text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors {% if slug == 'condiciones-venta' %}text-vermilion{% endif %}">{% trans "Condiciones de venta" %}</a>
+    <a href="{% url 'core:legal' slug='envios-devoluciones' %}" class="text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors {% if slug == 'envios-devoluciones' %}text-vermilion{% endif %}">{% trans "Envíos y devoluciones" %}</a>
+  </footer>
+</article>
+{% endblock %}

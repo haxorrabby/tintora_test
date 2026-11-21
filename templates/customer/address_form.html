@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if form.instance.pk %}Editar{% else %}Nueva{% endif %} Dirección · Tintora Madrid{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-8">
+    <nav class="text-xs uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-2">
+      <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi Área" %}</a>
+      <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+      <a href="{% url 'customer:addresses' %}" class="hover:text-vermilion transition-colors">{% trans "Mis Direcciones" %}</a>
+      <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+      <span class="text-ink dark:text-paper font-medium">{% if form.instance.pk %}{% trans "Editar" %}{% else %}{% trans "Nueva" %}{% endif %}</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-2">{% if form.instance.pk %}{% trans "Editar dirección" %}{% else %}{% trans "Nueva dirección" %}{% endif %}</h1>
+    <p class="text-sm text-ink-600 dark:text-paper-400">{% trans "Dirección de entrega y facturación en España o Península" %}</p>
+  </div>
+
+  <!-- Address Form -->
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-6 sm:p-8">
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Etiqueta" %}</label>
+        {{ form.label }}
+        <p class="mt-1 text-xs text-ink-500 dark:text-paper-500">{% trans "Ej: Oficina Central, Estudio, Taller, Domicilio" %}</p>
+      </div>
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Dirección línea 1" %}</label>
+        {{ form.address_line1 }}
+      </div>
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Dirección línea 2 (opcional)" %}</label>
+        {{ form.address_line2 }}
+        <p class="mt-1 text-xs text-ink-500 dark:text-paper-500">{% trans "Piso, puerta, nave, escalera" %}</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Código Postal" %}</label>
+          {{ form.postal_code }}
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Ciudad" %}</label>
+          {{ form.city }}
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "Provincia" %}</label>
+          {{ form.province }}
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-400 mb-1.5">{% trans "País" %}</label>
+        {{ form.country }}
+      </div>
+      
+      <div class="pt-2">
+        <label class="flex items-center cursor-pointer">
+          {{ form.is_default }}
+          <span class="ml-3 text-sm text-ink dark:text-paper">{% trans "Establecer como dirección por defecto" %}</span>
+        </label>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 pt-6 border-t border-ink/10 dark:border-paper/10">
+        <button type="submit" class="bg-vermilion hover:bg-vermilion-dark text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% trans "Guardar dirección" %}
+        </button>
+        <a href="{% url 'customer:addresses' %}" class="border border-ink/20 dark:border-paper/20 hover:border-ink dark:hover:border-paper text-ink dark:text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% trans "Cancelar" %}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

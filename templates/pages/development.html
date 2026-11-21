@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Desarrollo Web en Madrid · Tintora" %}{% endblock %}
+{% block meta_description %}{% trans "Diseño y desarrollo web a medida en Madrid. Consulta paquetes, proyectos y solicita una propuesta para tu negocio." %}{% endblock %}
+
+{% block content %}
+<section class="bg-ink text-paper dark:bg-ink-950 dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
+    <p class="font-mono text-xs uppercase tracking-widest text-gold">{% trans "04 / Desarrollo Web · Madrid" %}</p>
+    <div class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+      <h1 class="max-w-4xl font-serif text-5xl leading-[0.98] md:text-7xl">{% trans "Ingeniería digital, con una voz propia." %}</h1>
+      <div class="max-w-md lg:justify-self-end">
+        <p class="text-paper-300 leading-relaxed font-light">{% trans "Diseñamos y construimos sitios rápidos, claros y fáciles de mantener. Cada propuesta parte de tus objetivos, no de una plantilla cerrada." %}</p>
+        <a href="#paquetes" class="mt-6 inline-block border border-gold px-5 py-3 text-sm text-paper hover:bg-gold hover:text-ink transition-colors">{% trans "Ver paquetes y precios" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes" class="scroll-mt-24 py-16 md:py-24 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-vermilion">{% trans "01 / Alcance y precio" %}</p>
+        <h2 class="mt-2 font-serif text-3xl md:text-4xl text-ink dark:text-paper font-bold">{% trans "Paquetes para empezar con claridad" %}</h2>
+      </div>
+      <p class="max-w-md text-sm text-ink-600 dark:text-paper-300">{% trans "Tarifas de partida gestionadas por nuestro equipo. El presupuesto final detalla alcance, calendario e IVA antes de comenzar." %}</p>
+    </div>
+
+    {% if web_packages %}
+    <div class="grid gap-0 border-t border-ink/10 dark:border-paper/10 sm:grid-cols-2 lg:grid-cols-4">
+      {% for package in web_packages %}
+      <article class="flex min-h-full flex-col border-b border-ink/10 dark:border-paper/10 p-6 {% if not forloop.first %}sm:border-l sm:border-ink/10 dark:sm:border-paper/10{% endif %} {% if package.is_featured %}bg-surface-cardLight dark:bg-surface-cardDark shadow-sm{% else %}bg-paper dark:bg-ink{% endif %}">
+        <p class="font-mono text-xs text-vermilion font-semibold">{{ forloop.counter|stringformat:"02d" }}{% if package.is_featured %} {% trans "· RECOMENDADO" %}{% endif %}</p>
+        <h3 class="mt-5 font-serif text-2xl text-ink dark:text-paper font-bold">{{ package.name }}</h3>
+        <p class="mt-3 min-h-16 text-sm leading-relaxed text-ink-600 dark:text-paper-300">{{ package.short_summary }}</p>
+        <p class="mt-6 font-serif text-3xl font-extrabold text-ink dark:text-paper">{{ package.price_display }}</p>
+        <p class="mt-1 text-xs font-mono text-ink-500 dark:text-paper-400">{{ package.delivery_timeline }}</p>
+        <ul class="mt-6 flex-1 space-y-3 border-t border-ink/10 dark:border-paper/10 pt-5 text-sm text-ink-700 dark:text-paper-200">
+          {% for feature in package.features %}
+          <li class="flex gap-2"><span class="text-vermilion font-bold" aria-hidden="true">+</span><span>{{ feature }}</span></li>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'quotes:development' %}?paquete={{ package.slug }}#solicitar-presupuesto" class="mt-8 inline-flex min-h-11 items-center justify-center {% if package.is_featured %}btn-vermilion{% else %}btn-ink{% endif %} px-4 py-3 text-sm">
+          {% trans "Consultar este paquete" %}
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="border-y border-ink/10 dark:border-paper/10 py-8 text-ink-600 dark:text-paper-300">{% trans "Estamos preparando nuevas modalidades. Cuéntanos qué necesitas y te enviaremos una propuesta a medida." %}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% if comparison_features and web_packages %}
+<section id="comparativa" class="border-b border-ink/10 dark:border-paper/10 bg-surface-light text-ink dark:text-paper py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="font-mono text-xs uppercase tracking-widest text-vermilion">{% trans "02 / Comparativa" %}</p>
+    <h2 class="mt-2 font-serif text-3xl text-ink dark:text-paper font-bold">{% trans "Qué incluye cada paquete" %}</h2>
+    <div class="mt-8 overflow-x-auto">
+      <table class="w-full min-w-[680px] border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-y border-ink/15 dark:border-paper/15">
+            <th scope="col" class="py-4 pr-6 font-medium text-ink-600 dark:text-paper-300">{% trans "Incluido" %}</th>
+            {% for package in web_packages %}<th scope="col" class="px-4 py-4 font-serif text-base font-bold text-ink dark:text-paper">{{ package.name }}</th>{% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in comparison_features %}
+          <tr class="border-b border-ink/10 dark:border-paper/10">
+            <th scope="row" class="py-3 pr-6 font-normal text-ink-700 dark:text-paper-200">{{ row.name }}</th>
+            {% for package in web_packages %}
+            <td class="px-4 py-3 text-center">{% if package.pk in row.package_ids %}<span class="text-vermilion font-bold" aria-label="{% trans "Incluido" %}">&#10003;</span>{% else %}<span class="text-ink-300 dark:text-paper-500" aria-label="{% trans "No incluido" %}">—</span>{% endif %}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section id="portfolio" class="py-16 md:py-24 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 grid gap-4 md:grid-cols-2 md:items-end">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-vermilion">{% trans "03 / Trabajo seleccionado" %}</p>
+        <h2 class="mt-2 font-serif text-3xl md:text-4xl text-ink dark:text-paper font-bold">{% trans "Proyectos construidos con intención" %}</h2>
+      </div>
+      <p class="max-w-lg text-sm text-ink-600 dark:text-paper-300 md:justify-self-end">{% trans "Una selección de proyectos publicados por el estudio. Cada caso y su imagen se gestionan desde el panel de Tintora." %}</p>
+    </div>
+    {% if portfolio_projects %}
+    <div class="grid gap-8 md:grid-cols-2">
+      {% for project in portfolio_projects %}
+      <article class="group card-editorial-hover p-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        {% if project.image %}
+        <div class="overflow-hidden hairline-b">
+          <img src="{{ project.image.url }}" alt="{{ project.title }}{% if project.client_name %}, {{ project.client_name }}{% endif %}" loading="lazy" class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.01]">
+        </div>
+        {% else %}
+        <div class="flex aspect-[4/3] flex-col justify-between bg-ink p-6 text-paper md:p-9 border border-ink/10 dark:border-paper/10">
+          <span class="font-mono text-xs uppercase tracking-widest text-gold">{{ project.sector|default:"Proyecto digital" }}</span>
+          <p class="max-w-lg font-serif text-3xl md:text-5xl">{{ project.title }}</p>
+        </div>
+        {% endif %}
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-between p-2">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-ink dark:text-paper">{{ project.title }}</h3>
+            <p class="mt-1 text-sm text-ink-600 dark:text-paper-300">{{ project.client_name }}{% if project.client_name and project.sector %} · {% endif %}{{ project.sector }}</p>
+            <p class="mt-2 max-w-xl text-sm leading-relaxed text-ink-700 dark:text-paper-200">{{ project.summary }}</p>
+            {% if project.technologies %}<p class="mt-3 font-mono text-xs text-ink-500 dark:text-paper-400">{{ project.technologies|join:" · " }}</p>{% endif %}
+          </div>
+          {% if project.project_url %}<a href="{{ project.project_url }}" target="_blank" rel="noopener noreferrer" class="self-start text-sm text-vermilion underline font-semibold">{% trans "Visitar proyecto" %}</a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="border-y border-ink/10 dark:border-paper/10 py-8 text-ink-600 dark:text-paper-300">{% trans "Estamos preparando esta selección. Mientras tanto, podemos enseñarte trabajos relevantes para tu sector durante la primera conversación." %}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section id="solicitar-presupuesto" class="scroll-mt-24 bg-surface-light text-ink dark:text-paper py-16 md:py-24 hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-vermilion">{% trans "04 / Brief inicial" %}</p>
+        <h2 class="mt-2 font-serif text-3xl md:text-4xl text-ink dark:text-paper font-bold">{% trans "Cuéntanos el proyecto" %}</h2>
+        <p class="mt-4 max-w-md text-sm leading-relaxed text-ink-600 dark:text-paper-300">{% trans "Una persona del equipo revisará tu solicitud y te responderá en un día laborable. Este primer contacto no tiene coste ni compromiso." %}</p>
+        <div class="mt-6 space-y-2 border-t border-ink/10 dark:border-paper/10 pt-5 text-sm text-ink-700 dark:text-paper-200 font-mono">
+          <p><a href="mailto:{{ company.EMAIL }}" class="hover:text-vermilion transition-colors">{{ company.EMAIL }}</a></p>
+          <p><a href="tel:{{ company.PHONE }}" class="hover:text-vermilion transition-colors">{{ company.PHONE }}</a></p>
+          <p>{{ company.OPENING_HOURS }}</p>
+        </div>
+      </div>
+      <form method="post" enctype="multipart/form-data" class="space-y-5 card-editorial p-6 md:p-8 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="hidden" aria-hidden="true"><label for="id_website_url">{% trans "Sitio web" %}</label>{{ form.website_url }}</div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          {% for field in form %}
+          {% if field.name != "website_url" %}
+          <div class="{% if field.name == 'project_description' or field.name == 'attachment' or field.name == 'privacy_accepted' %}sm:col-span-2{% endif %}">
+            <label for="{{ field.id_for_label }}" class="mb-1.5 block text-xs uppercase tracking-wider font-semibold text-ink-600 dark:text-paper-300">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+            {{ field }}
+            {% for error in field.errors %}<p class="mt-1 text-xs text-vermilion">{{ error }}</p>{% endfor %}
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <p class="text-xs text-ink-500 dark:text-paper-400 font-mono">{% trans "Adjuntos: PDF, Word, ZIP, JPG o PNG; máximo 10 MB." %}</p>
+        <button type="submit" class="btn-vermilion btn-lg w-full">{% trans "Enviar solicitud" %} &rarr;</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="font-mono text-xs uppercase tracking-widest text-vermilion">{% trans "05 / Dudas habituales" %}</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-ink dark:text-paper">{% trans "Antes de empezar" %}</h2>
+    <div class="mt-6 divide-y divide-ink/10 dark:divide-paper/10 border-y border-ink/10 dark:border-paper/10">
+      {% for faq in development_faqs %}
+      <details class="group py-5">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-serif font-bold text-base text-ink dark:text-paper">{{ faq.question }}<span class="text-vermilion text-lg font-bold" aria-hidden="true">+</span></summary>
+        <p class="mt-3 max-w-3xl text-sm leading-relaxed text-ink-600 dark:text-paper-300">{{ faq.answer }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

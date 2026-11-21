@@ -1,0 +1,28 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'es' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>{% trans "Acceso no autorizado" %} · Tintora</title>
+  <link rel="icon" href="{% static 'images/brand/favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
+</head>
+<body class="min-h-screen bg-paper dark:bg-ink text-ink dark:text-paper flex items-center justify-center px-4">
+  <main class="max-w-lg w-full text-center">
+    <img src="{% static 'images/brand/tintora-logo-light.svg' %}" alt="{% trans "Tintora" %}" class="h-10 w-auto mx-auto mb-10 dark:hidden">
+    <img src="{% static 'images/brand/tintora-logo-dark.svg' %}" alt="{% trans "Tintora" %}" class="h-10 w-auto mx-auto mb-10 hidden dark:block">
+    <p class="editorial-number mb-4">403</p>
+    <h1 class="font-serif text-3xl md:text-4xl mb-4">{% trans "No tienes acceso a esta sección" %}</h1>
+    <p class="text-sm text-ink-500 dark:text-paper-400 mb-8">
+      {% trans "Si necesitas entrar, inicia sesión con tu cuenta o contáctanos." %}
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}/{% endif %}" class="btn-vermilion btn-sm">{% trans "Ir al inicio" %}</a>
+      <a href="/{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}/{% endif %}iniciar-sesion/" class="btn-outline btn-sm">{% trans "Iniciar sesión" %}</a>
+      <a href="/{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}/{% endif %}contacto/" class="btn-outline btn-sm">{% trans "Contacto" %}</a>
+    </div>
+  </main>
+</body>
+</html>

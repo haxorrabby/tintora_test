@@ -1,0 +1,61 @@
+{% load i18n %}
+{# GDPR newsletter opt-in form. HTMX posts to core:newsletter and swaps itself. #}
+{# Pass newsletter_badge (unique string) when including more than once/page.  #}
+{# Pass newsletter_dark to render light text (e.g. inside the ink footer).    #}
+{% with nl_id=newsletter_badge|default:'global' %}
+{% if newsletter_ok %}
+<p id="newsletter-form-{{ nl_id }}" class="font-mono text-xs {% if newsletter_dark %}text-gold{% else %}text-vermilion{% endif %}" role="status">
+  {% trans "¡Gracias! Ya estás suscrito a la newsletter de Tintora." %}
+</p>
+{% else %}
+<form id="newsletter-form-{{ nl_id }}"
+      action="{% url 'core:newsletter' %}"
+      hx-post="{% url 'core:newsletter' %}"
+      hx-target="#newsletter-form-{{ nl_id }}"
+      hx-swap="outerHTML"
+      method="post"
+      class="space-y-3">
+  {% csrf_token %}
+  <input type="hidden" name="source" value="{{ nl_id }}">
+  {% if newsletter_dark %}<input type="hidden" name="dark" value="1">{% endif %}
+  {# Honeypot — hidden from humans and assistive tech #}
+  <div class="hidden" aria-hidden="true">
+    <label for="nl-website-{{ nl_id }}">{% trans "No rellenar" %}</label>
+    <input type="text" id="nl-website-{{ nl_id }}"
+           name="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-2">
+    <label for="nl-email-{{ nl_id }}" class="sr-only">
+      {% trans "Tu correo electrónico" %}
+    </label>
+    <input type="email"
+           id="nl-email-{{ nl_id }}"
+           name="email"
+           required
+           autocomplete="email"
+           placeholder="{% trans 'tu@email.com' %}"
+           class="input-editorial flex-1 text-sm">
+    <button type="submit" class="btn-vermilion btn-sm whitespace-nowrap">
+      {% trans "Suscribirme" %}
+    </button>
+  </div>
+
+  <label class="flex items-start gap-2 text-[11px] leading-relaxed {% if newsletter_dark %}text-paper-400{% else %}text-ink-500 dark:text-paper-400{% endif %}">
+    <input type="checkbox" name="consent" required class="mt-0.5 accent-vermilion">
+    <span>
+      {% trans "He leído y acepto la" %}
+      <a href="{% url 'core:legal' slug='politica-privacidad' %}" class="underline hover:text-vermilion">
+        {% trans "política de privacidad" %}
+      </a>.
+    </span>
+  </label>
+
+  {% if newsletter_error %}
+  <p class="font-mono text-[11px] text-vermilion" role="alert">
+    {% trans "Revisa el email y marca la casilla de privacidad para suscribirte." %}
+  </p>
+  {% endif %}
+</form>
+{% endif %}
+{% endwith %}

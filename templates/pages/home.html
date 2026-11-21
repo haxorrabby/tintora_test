@@ -1,0 +1,923 @@
+{% extends 'base.html' %}
+{% load i18n static core_tags seo_tags %}
+
+{% block title %}{% trans "Tintora &middot; Tinta que deja huella &middot; Impresión de Alta Gama en Madrid" %}{% endblock %}
+{% block meta_description %}{% trans "Tintora es el estudio de impresión editorial, sublimación técnica, productos latinos y desarrollo web en Madrid. Calidad premium, precios transparentes con IVA 21% incluido." %}{% endblock %}
+
+{% block extra_head %}
+  {{ block.super }}
+  {% if faq_schema %}{% json_ld faq_schema %}{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================================
+     01 · HERO — commerce-first: copy left · real product photos right
+     ===================================================================== -->
+<section class="home-hero relative overflow-hidden bg-surface-light dark:bg-surface-dark text-ink dark:text-paper">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+
+      <!-- LEFT — copy + CTAs + factual trust row -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="badge-vermilion">{{ home_content.hero_eyebrow }}</span>
+          <span class="badge-neutral">{% trans "Taller propio en Madrid" %}</span>
+        </div>
+
+        <h1 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight leading-tight text-ink dark:text-paper">
+          {{ home_content.hero_title }}
+        </h1>
+
+        <p class="text-sm font-semibold text-vermilion">
+          {% trans "Tinta que deja huella." %}
+        </p>
+
+        <p class="text-sm md:text-base text-ink-600 dark:text-paper-300 leading-relaxed max-w-lg">
+          {{ home_content.hero_subtitle }}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          {% localize_url home_content.hero_primary_url as hero_primary %}
+          <a href="{{ hero_primary }}" class="btn-vermilion btn-lg">
+            {{ home_content.hero_primary_label }} &rarr;
+          </a>
+          {% localize_url home_content.hero_secondary_url as hero_secondary %}
+          <a href="{{ hero_secondary }}" class="btn-outline btn-lg">
+            {{ home_content.hero_secondary_label }}
+          </a>
+        </div>
+
+        <!-- Factual trust row -->
+        <ul class="pt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-mono uppercase tracking-widest text-ink-500 dark:text-paper-400">
+          <li class="flex items-center gap-1.5"><span class="text-vermilion font-bold">&check;</span>{% trans "IVA 21% incluido" %}</li>
+          <li class="flex items-center gap-1.5"><span class="text-vermilion font-bold">&check;</span>{% trans "Envíos 24/48h a España" %}</li>
+          <li class="flex items-center gap-1.5"><span class="text-vermilion font-bold">&check;</span>{% trans "Recogida gratuita en el taller" %}</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT — real product photography composition -->
+      <div class="lg:col-span-7">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3">
+          <!-- Main: real latin product photo -->
+          {% with hero_item=latin_preview.0 %}
+          {% if hero_item and "tintora-logo-mono.svg" not in hero_item.image_url %}
+          <a href="{% url 'latin_products:entry' hero_item.slug %}" class="group relative col-span-1 row-span-1 md:col-span-3 md:row-span-2 overflow-hidden card-editorial-hover bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[180px] md:min-h-[320px]">
+            <div class="absolute inset-0">
+              {% include 'components/product_image.html' with image_src=hero_item.image_url image_alt=hero_item.name image_frame_class='h-full w-full' image_background_class='bg-surface-cardLight dark:bg-surface-cardDark' image_padding_class='p-2 md:p-4' image_loading='eager' %}
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 z-10 p-4">
+              <span class="badge-gold-on-dark text-[10px]">{% trans "Productos Latinos" %}</span>
+              <p class="font-serif font-bold text-paper text-base md:text-lg mt-1.5 leading-snug">{{ hero_item.name }}</p>
+              {% if hero_item.retailSize %}<p class="font-mono text-[10px] text-paper-300 mt-0.5">{{ hero_item.retailSize }} · {% trans "por unidad" %}</p>{% endif %}
+            </div>
+          </a>
+          {% endif %}
+          {% endwith %}
+
+          <!-- Secondary photos -->
+          {% for hero_item in latin_preview|slice:"1:3" %}
+          {% if "tintora-logo-mono.svg" not in hero_item.image_url %}
+          <a href="{% url 'latin_products:entry' hero_item.slug %}" class="hidden md:block group relative col-span-2 overflow-hidden card-editorial-hover bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[153px]">
+            <div class="absolute inset-0">
+              {% include 'components/product_image.html' with image_src=hero_item.image_url image_alt=hero_item.name image_frame_class='h-full w-full' image_background_class='bg-surface-cardLight dark:bg-surface-cardDark' image_padding_class='p-2 md:p-3' image_loading='eager' %}
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 z-10 p-3">
+              <p class="font-serif font-bold text-paper text-xs md:text-sm leading-snug line-clamp-2">{{ hero_item.name }}</p>
+              {% if hero_item.retailSize %}<p class="font-mono text-[10px] text-paper-300">{{ hero_item.retailSize }}</p>{% endif %}
+            </div>
+          </a>
+          {% endif %}
+          {% endfor %}
+
+          <!-- Real DB product with real price -->
+          {% with hero_product=featured_products.0 %}
+          {% if hero_product %}
+          <a href="{% url 'catalog:product_detail' hero_product.slug %}" class="group relative col-span-1 md:col-span-2 overflow-hidden card-editorial-hover bg-vermilion text-paper border border-vermilion min-h-[180px] md:min-h-[153px] p-4 flex flex-col justify-between">
+            <span class="text-xs font-semibold">{{ hero_product.category.name }}</span>
+            <div>
+              <p class="font-serif font-bold text-sm md:text-base leading-snug line-clamp-2">{{ hero_product.name }}</p>
+              <p class="mt-1.5 flex items-baseline gap-2">
+                <span class="font-serif text-xl md:text-2xl font-bold text-white">{{ hero_product.base_price }}€</span>
+                <span class="font-mono text-[10px] text-paper-400">{% trans "IVA incl." %}</span>
+              </p>
+              <span class="inline-flex items-center mt-1 text-[10px] font-mono uppercase tracking-wider text-paper group-hover:text-gold-light transition-colors">
+                {% trans "Comprar ahora" %} &rarr;
+              </span>
+            </div>
+          </a>
+          {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     02 · TRUST STRIP — light band with factual guarantees
+     ===================================================================== -->
+<section class="bg-ink text-paper" aria-label="{% trans 'Garantías de compra' %}">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
+    <ul class="flex items-center justify-start md:justify-center gap-6 md:gap-10 text-[11px] font-mono uppercase tracking-widest whitespace-nowrap text-paper">
+      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-paper flex-shrink-0"></span>{% trans "Taller propio en Madrid" %}</li>
+      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-paper flex-shrink-0"></span>{% trans "IVA 21% incluido" %}</li>
+      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-paper flex-shrink-0"></span>{% trans "Envíos 24/48h a España" %}</li>
+      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-paper flex-shrink-0"></span>{% trans "Pago seguro · Stripe · Bizum" %}</li>
+      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-paper flex-shrink-0"></span>{% trans "Recogida gratuita en el taller" %}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =====================================================================
+     03 · COMPRA POR CATEGORÍA — immediate category navigation
+     ===================================================================== -->
+{% if categories %}
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Compra por categoría" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "¿Qué quieres comprar hoy?" %}</h2>
+      </div>
+      <a href="{% url 'catalog:index' %}" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Ver todo el catálogo" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      {% for cat in categories %}
+      {% category_min_price cat.slug as cat_desde %}
+      <a href="{% url 'catalog:category_detail' cat.slug %}"
+         class="group relative overflow-hidden card-editorial-hover bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[145px] md:min-h-[170px] flex items-end p-3 md:p-4">
+        {% if cat.cover_image_url %}
+          <div class="absolute inset-0">
+            {% include 'components/product_image.html' with image_src=cat.cover_image_url image_alt=cat.name image_frame_class='h-full w-full' image_padding_class='p-2 md:p-3' %}
+          </div>
+          <span class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" aria-hidden="true"></span>
+        {% endif %}
+        {% if cat.business_area == 'impresion' %}
+          <span class="absolute top-3 left-3 badge-vermilion text-[9px]">{% trans "Impresión" %}</span>
+        {% elif cat.business_area == 'sublimacion' %}
+          <span class="absolute top-3 left-3 badge-gold text-[9px]">{% trans "Sublimación" %}</span>
+        {% else %}
+          <span class="absolute top-3 left-3 badge-neutral text-[9px]">{% trans "Latino" %}</span>
+        {% endif %}
+        <div class="relative z-10 w-full {% if cat.cover_image_url %}text-paper{% endif %}">
+          <h3 class="font-serif font-bold {% if cat.cover_image_url %}text-paper{% else %}text-ink dark:text-paper{% endif %} group-hover:text-vermilion transition-colors text-sm md:text-base leading-snug">
+            {{ cat.name }}
+          </h3>
+          <p class="font-mono text-[10px] {% if cat.cover_image_url %}text-paper/80{% else %}text-ink-400 dark:text-paper-400{% endif %} mt-1">
+            {% if cat.product_count %}{% blocktrans count counter=cat.product_count %}{{ counter }} producto{% plural %}{{ counter }} productos{% endblocktrans %}{% endif %}{% if cat_desde %} · {% trans "Desde" %} {{ cat_desde }}€{% endif %}
+          </p>
+          <span class="inline-flex items-center mt-1.5 text-[10px] font-mono uppercase tracking-wider text-vermilion opacity-0 group-hover:opacity-100 transition-opacity">
+            {% trans "Ver" %} &rarr;
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     04 · PRODUCTOS DESTACADOS — high on the page, 8 real products from DB
+     ===================================================================== -->
+{% if featured_products %}
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Selección del taller" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Productos destacados" %}</h2>
+        <p class="text-sm text-ink-500 dark:text-paper-400 mt-1">{% trans "Una selección de lo mejor de nuestra imprenta y taller de sublimación." %}</p>
+      </div>
+      <a href="{% url 'catalog:index' %}" class="btn-vermilion btn-sm self-start md:self-auto">
+        {% trans "Ver catálogo completo" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {% for product in featured_products %}
+        {% include 'components/product_card.html' with product=product %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     05 · MÁS VENDIDOS — real sales, hidden until data exists
+     ===================================================================== -->
+{% if has_sales_data and best_sellers %}
+<section class="py-14 md:py-20 bg-surface-light text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Vendidos de verdad" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Los favoritos de nuestros clientes" %}</h2>
+        <p class="text-sm text-ink-500 dark:text-paper-400 mt-1">{% trans "Ordenados por unidades reales en pedidos no cancelados." %}</p>
+      </div>
+      <a href="{% url 'catalog:index' %}" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Comprar ahora" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {% for product in best_sellers %}
+        {% include 'components/product_card.html' with product=product %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     06 · NEW ARRIVALS — priced, active products ordered by real creation date
+     ===================================================================== -->
+{% if new_arrivals %}
+<section class="py-12 md:py-16 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-7 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Recién llegados" %}</span>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold mt-2 text-ink dark:text-paper">{% trans "Novedades de Tintora" %}</h2>
+      </div>
+      <a href="{% url 'catalog:index' %}" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Explorar el catálogo" %} &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      {% for product in new_arrivals %}
+        {% include 'components/product_card.html' with product=product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     07 · DARK PROMO BANNER — "Tu marca empieza aquí"
+     ===================================================================== -->
+<section class="py-16 md:py-20 bg-ink text-paper hairline-y relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true"
+       style="background-image: linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px); background-size: 80px 80px;"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="space-y-5">
+      {% if home_content.promo_enabled %}
+        <span class="badge-gold-on-dark">{% trans "Oferta de bienvenida" %}</span>
+        <h2 class="font-serif text-2xl md:text-4xl font-bold">{{ home_content.promo_title }}</h2>
+        <p class="text-sm text-paper-300 max-w-md leading-relaxed">{{ home_content.promo_text }}</p>
+        {% localize_url home_content.promo_cta_url as promo_url %}
+        <a href="{{ promo_url }}" class="btn-vermilion btn-lg">{{ home_content.promo_cta_label }} &rarr;</a>
+      {% else %}
+        <span class="badge-gold-on-dark">{% trans "Impresión &middot; Sublimación &middot; Latinos" %}</span>
+        <h2 class="font-serif text-2xl md:text-4xl font-bold">
+          {% trans "Tu marca empieza aquí." %}
+        </h2>
+        <p class="text-sm text-paper-300 max-w-md leading-relaxed">
+          {% trans "Impresión profesional para empresas y proyectos creativos. Tarjetas, packaging, textil personalizado y productos latinos — todo desde nuestro taller en Madrid." %}
+        </p>
+        <a href="{% url 'catalog:index' %}?area=impresion" class="btn-vermilion btn-lg">
+          {% trans "Ver impresión" %} &rarr;
+        </a>
+      {% endif %}
+    </div>
+    <div class="grid grid-cols-3 gap-3" aria-hidden="true">
+      {% for promo_item in latin_preview|slice:"3:6" %}
+      {% if "tintora-logo-mono.svg" not in promo_item.image_url %}
+      {% include 'components/product_image.html' with image_src=promo_item.image_url image_alt=promo_item.name image_frame_class='aspect-[3/4] border border-paper/10' image_background_class='bg-surface-cardDark' image_padding_class='p-2' %}
+      {% endif %}
+      {% empty %}
+      <div class="aspect-[3/4] bg-surface-cardDark border border-paper/10 flex items-center justify-center">
+        <span class="font-serif font-extrabold text-paper/20 text-3xl">T</span>
+      </div>
+      <div class="aspect-[3/4] bg-surface-cardDark border border-paper/10 flex items-center justify-center -mt-4">
+        <span class="font-serif font-extrabold text-paper/20 text-3xl">M</span>
+      </div>
+      <div class="aspect-[3/4] bg-surface-cardDark border border-paper/10 flex items-center justify-center">
+        <span class="font-serif font-extrabold text-paper/20 text-3xl">W</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     07 · IMPRESIÓN PROFESIONAL — print category showcase
+     ===================================================================== -->
+{% category_min_price 'tarjetas-de-visita' as desde_tarjetas %}
+{% category_min_price 'flyers-y-folletos' as desde_flyers %}
+{% category_min_price 'rollups-y-gran-formato' as desde_rollups %}
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">01 &middot; {% trans "Impresión" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Impresión profesional" %}</h2>
+        <p class="text-sm text-ink-500 dark:text-paper-400 mt-1 max-w-xl">{% trans "Tarjetas, flyers, carteles y gran formato con acabados premium en nuestro taller de Madrid." %}</p>
+      </div>
+      <a href="{% url 'catalog:index' %}?area=impresion" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Ver todo" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+      <a href="{% url 'catalog:category_detail' 'tarjetas-de-visita' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">01</span>
+          {% include 'components/product_image.html' with image_src='images/printing/tintora_business_cards.webp' image_static=1 image_alt='Tarjetas de visita premium' image_frame_class='h-12 w-12 border border-ink/10 dark:border-paper/10' image_padding_class='p-0.5' %}
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Tarjetas" %}</h3>
+          {% if desde_tarjetas %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_tarjetas }}€</p>{% endif %}
+        </div>
+      </a>
+      <a href="{% url 'catalog:category_detail' 'flyers-y-folletos' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">02</span>
+          {% include 'components/product_image.html' with image_src='images/printing/tintora_flyers_brochures.webp' image_static=1 image_alt='Flyers y folletos' image_frame_class='h-12 w-12 border border-ink/10 dark:border-paper/10' image_padding_class='p-0.5' %}
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Flyers" %}</h3>
+          {% if desde_flyers %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_flyers }}€</p>{% endif %}
+        </div>
+      </a>
+      <a href="{% url 'catalog:category_detail' 'rollups-y-gran-formato' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">03</span>
+          {% include 'components/product_image.html' with image_src='images/printing/tintora_rollup_banner.webp' image_static=1 image_alt='Roll-ups y banners' image_frame_class='h-12 w-12 border border-ink/10 dark:border-paper/10' image_padding_class='p-0.5' %}
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Roll-ups &amp; Banners" %}</h3>
+          {% if desde_rollups %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_rollups }}€</p>{% endif %}
+        </div>
+      </a>
+      <a href="{% url 'catalog:category_detail' 'tarjetas-de-visita' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">04</span>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Vinilos" %}</h3>
+          <span class="inline-flex items-center mt-1 text-[10px] font-mono uppercase tracking-wider text-vermilion opacity-0 group-hover:opacity-100 transition-opacity">{% trans "Ver" %} &rarr;</span>
+        </div>
+      </a>
+      <a href="{% url 'catalog:category_detail' 'flyers-y-folletos' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">05</span>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Carteles" %}</h3>
+          <span class="inline-flex items-center mt-1 text-[10px] font-mono uppercase tracking-wider text-vermilion opacity-0 group-hover:opacity-100 transition-opacity">{% trans "Ver" %} &rarr;</span>
+        </div>
+      </a>
+      <a href="{% url 'catalog:category_detail' 'carpetas-corporativas' %}" class="group card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[132px] flex flex-col justify-between">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-vermilion">06</span>
+          {% include 'components/product_image.html' with image_src='images/printing/tintora_corporate_folders.webp' image_static=1 image_alt='Carpetas corporativas' image_frame_class='h-12 w-12 border border-ink/10 dark:border-paper/10' image_padding_class='p-0.5' %}
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-sm mt-1 text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Carpetas" %}</h3>
+          <span class="inline-flex items-center mt-1 text-[10px] font-mono uppercase tracking-wider text-vermilion opacity-0 group-hover:opacity-100 transition-opacity">{% trans "Ver" %} &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================================================
+     08 · SUBLIMACIÓN SHOWCASE — "Personaliza lo que imaginas"
+     ===================================================================== -->
+{% category_min_price 'tazas-personalizadas' as desde_tazas %}
+{% category_min_price 'textil-y-camisetas' as desde_textil %}
+{% category_min_price 'gorras-y-accesorios' as desde_gorras %}
+<section class="py-14 md:py-20 bg-surface-light text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+      <div class="lg:col-span-5 space-y-4">
+        <span class="badge-gold">02 &middot; {% trans "Sublimación" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ink dark:text-paper">
+          {% trans "Personaliza lo que imaginas" %}
+        </h2>
+        <p class="text-sm text-ink-600 dark:text-paper-300 leading-relaxed">
+          {% trans "Termotransferencia con colores vibrantes y alta resistencia al lavado. Tazas, camisetas, gorras, cojines y puzzles — tu diseño, impreso para durar." %}
+        </p>
+        <a href="{% url 'catalog:index' %}?area=sublimacion" class="btn-ink mt-2">
+          {% trans "Explorar sublimación" %} &rarr;
+        </a>
+      </div>
+
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+        <a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Cerámica" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Tazas" %}</h3>
+            {% if desde_tazas %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_tazas }}€</p>{% endif %}
+          </div>
+        </a>
+        <a href="{% url 'catalog:category_detail' 'textil-y-camisetas' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Textil" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Camisetas" %}</h3>
+            {% if desde_textil %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_textil }}€</p>{% endif %}
+          </div>
+        </a>
+        <a href="{% url 'catalog:category_detail' 'gorras-y-accesorios' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Accesorios" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Gorras" %}</h3>
+            {% if desde_gorras %}<p class="text-[10px] font-mono text-ink-400 dark:text-paper-400 mt-0.5">{% trans "Desde" %} {{ desde_gorras }}€</p>{% endif %}
+          </div>
+        </a>
+        <a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Decoración" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Cojines" %}</h3>
+          </div>
+        </a>
+        <a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Accesorios" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Fundas" %}</h3>
+          </div>
+        </a>
+        <a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="card-editorial-hover p-5 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 min-h-[150px] flex flex-col justify-between group">
+          <span class="badge-gold text-[9px]">{% trans "Ocio" %}</span>
+          <div>
+            <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Puzzles" %}</h3>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     09 · PRODUCTOS LATINOS — real e-commerce grocery showcase
+     ===================================================================== -->
+{% if latin_preview %}
+<section class="py-14 md:py-20 bg-[#F6F0E4] dark:bg-surface-dark text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">03 &middot; {% trans "Productos Latinos" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Sabores que te llevan a casa." %}</h2>
+        <p class="text-sm text-ink-600 dark:text-paper-300 mt-1">
+          <span class="font-semibold">{{ latin_total }}</span>
+          {% trans "referencias: harinas, café, snacks, dulces y despensa de Latinoamérica en Madrid." %}
+        </p>
+      </div>
+      <a href="{% url 'latin_products:index' %}" class="btn-vermilion btn-sm self-start md:self-auto">
+        {% trans "Comprar productos latinos" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {% for item in latin_preview %}
+        {% include 'components/latin_product_card.html' with item=item %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     10 · HOW IT WORKS — clean 3-step process
+     ===================================================================== -->
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <span class="badge-gold">{% trans "Proceso de Pedido" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink dark:text-paper">{% trans "¿Cómo funciona?" %}</h2>
+      <p class="text-sm text-ink-500 dark:text-paper-400 mt-2">{% trans "Tres pasos para tener tu pedido en manos." %}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-editorial p-8 text-center space-y-3 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-serif text-5xl font-extrabold text-vermilion leading-none">01</span>
+        <h3 class="font-serif text-xl font-bold text-ink dark:text-paper">{% trans "Elige" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">
+          {% trans "Elige tu producto en el catálogo, configura el formato y añádelo al carrito con el precio con IVA visible." %}
+        </p>
+      </div>
+      <div class="card-editorial p-8 text-center space-y-3 bg-ink text-paper border border-ink dark:border-paper/20">
+        <span class="font-serif text-5xl font-extrabold text-gold-light leading-none">02</span>
+        <h3 class="font-serif text-xl font-bold text-paper">{% trans "Personaliza" %}</h3>
+        <p class="text-xs text-paper-300 leading-relaxed">
+          {% trans "Sube tu arte o pide diseño. Nuestro equipo de preimpresión en Madrid verifica tu archivo gratis." %}
+        </p>
+      </div>
+      <div class="card-editorial p-8 text-center space-y-3 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-serif text-5xl font-extrabold text-vermilion leading-none">03</span>
+        <h3 class="font-serif text-xl font-bold text-ink dark:text-paper">{% trans "Recibe" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">
+          {% trans "Recibe en 24/48h en toda España o recoge gratis en nuestro taller de Madrid." %}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================================================
+     11 · FOUR DISCIPLINES — services overview
+     ===================================================================== -->
+<section class="py-14 md:py-20 bg-surface-light text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Catálogo &amp; Servicios" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Cuatro disciplinas. Un solo estándar." %}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {% for service in services %}
+      <div class="card-editorial-hover p-6 flex flex-col justify-between group bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="font-serif text-5xl font-extrabold text-ink-400 dark:text-paper-500 group-hover:text-vermilion transition-colors duration-300">
+              {{ service.number }}
+            </span>
+            <span class="badge-neutral text-[10px]">{% trans "Madrid" %}</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-ink dark:text-paper group-hover:translate-x-0.5 transition-transform duration-300">
+            {{ service.name }}
+          </h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 mt-2 leading-relaxed">{{ service.tagline }}</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-ink/10 dark:border-paper/10">
+          {% if service.category_slug %}
+            <a href="{% url 'catalog:category_detail' service.category_slug %}"
+               class="w-full text-xs font-mono uppercase tracking-wider font-semibold py-2.5 px-3 border border-ink/20 dark:border-paper/20 hover:border-vermilion hover:bg-vermilion hover:text-paper transition-all flex items-center justify-between text-ink dark:text-paper">
+              <span>{% trans "Ver productos" %}</span><span>&rarr;</span>
+            </a>
+          {% else %}
+            <a href="#desarrollo-web"
+               class="w-full text-xs font-mono uppercase tracking-wider font-semibold py-2.5 px-3 border border-ink/20 dark:border-paper/20 hover:border-gold hover:bg-gold hover:text-ink transition-all flex items-center justify-between text-ink dark:text-paper">
+              <span>{% trans "Ver paquetes" %}</span><span>&rarr;</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================================================
+     12 · DESARROLLO WEB — admin-managed packages + live quote form
+     ===================================================================== -->
+{% if web_packages %}
+<section id="desarrollo-web" class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10">
+      <span class="badge-vermilion">04 &middot; {% trans "Desarrollo Web" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink dark:text-paper">
+        {% trans "Ingeniería Digital a Medida" %}
+      </h2>
+      <p class="text-sm text-ink-500 dark:text-paper-400 mt-2 max-w-xl mx-auto">
+        {% trans "Diseño editorial de alta gama en Python/Django, Tailwind y Alpine.js. Pago Stripe + Bizum." %}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {% for pkg in web_packages %}
+      <div class="card-editorial flex flex-col justify-between p-6 group {% if pkg.is_featured %}ring-2 ring-vermilion{% endif %} bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        {% if pkg.is_featured %}
+        <div class="mb-4"><span class="badge-vermilion font-bold">{% trans "Más Elegido" %}</span></div>
+        {% else %}
+        <div class="mb-4 h-6"></div>
+        {% endif %}
+        <div class="flex-grow space-y-4">
+          <h3 class="font-serif text-xl font-bold text-ink dark:text-paper">{{ pkg.name }}</h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">{{ pkg.short_summary }}</p>
+          <div class="hairline-t pt-4">
+            <span class="font-serif text-3xl font-extrabold text-ink dark:text-paper">{{ pkg.price_display }}</span>
+            <span class="block text-[11px] font-mono text-ink-400 dark:text-paper-400 mt-1">{{ pkg.delivery_timeline }}</span>
+          </div>
+          <ul class="space-y-2 text-xs pt-2">
+            {% for feature in pkg.features %}
+            <li class="flex items-start text-ink-700 dark:text-paper-200">
+              <span class="text-vermilion mr-2 flex-shrink-0 font-bold mt-0.5">&check;</span>
+              {{ feature }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t border-ink/10 dark:border-paper/10">
+          <a href="{% url 'quotes:development' %}?paquete={{ pkg.slug }}#solicitar-presupuesto"
+             class="w-full text-center {% if pkg.is_featured %}btn-vermilion{% else %}btn-outline{% endif %} btn-sm flex items-center justify-center">
+            {% trans "Solicitar Presupuesto" %}
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Quote Request Form Anchor -->
+    <div id="solicitar-presupuesto" class="scroll-mt-24 mt-12 card-editorial p-8 md:p-12 bg-ink text-paper">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+        <div class="space-y-4">
+          <span class="badge-gold-on-dark">{% trans "Contacto Comercial" %}</span>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold">{% trans "Solicitar Presupuesto de Desarrollo Web" %}</h3>
+          <p class="text-xs text-paper-300 leading-relaxed">
+            {% trans "Completa el formulario o escríbenos directamente por WhatsApp. Un ingeniero senior revisará tu proyecto y te responderá en menos de 24 horas hábiles con una propuesta detallada." %}
+          </p>
+          <div class="space-y-2 text-xs font-mono text-paper-400">
+            <p>&bull; <a href="mailto:{{ COMPANY.EMAIL }}" class="underline hover:text-gold">{{ COMPANY.EMAIL }}</a></p>
+            <p>&bull; <a href="tel:{{ COMPANY.PHONE|cut:' ' }}" class="underline hover:text-gold">{{ COMPANY.PHONE }}</a></p>
+            <p>&bull; {{ COMPANY.OPENING_HOURS }}</p>
+          </div>
+        </div>
+
+        <form method="post" action="{% url 'quotes:development' %}#solicitar-presupuesto" enctype="multipart/form-data" class="space-y-4">
+          {% csrf_token %}
+          <div class="hidden" aria-hidden="true"><label for="home-website-url">{% trans "Sitio web" %}</label><input id="home-website-url" name="website_url" type="text" tabindex="-1" autocomplete="off"></div>
+          <div>
+            <label for="home-package" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Paquete de interés" %}</label>
+            <select id="home-package" name="package" class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none">
+              <option value="">{% trans "A medida / todavía no lo sé" %}</option>
+              {% for pkg in web_packages %}<option value="{{ pkg.pk }}">{{ pkg.name }} &middot; {{ pkg.price_display }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="col-span-2 sm:col-span-1">
+              <label for="home-full-name" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Nombre Completo" %} *</label>
+              <input id="home-full-name" type="text" name="full_name" required
+                     class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none"
+                     placeholder="{% trans "Carlos Martínez" %}">
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="home-company" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Empresa / Proyecto" %}</label>
+              <input id="home-company" type="text" name="company_name"
+                     class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none"
+                     placeholder="{% trans "Estudio Creativo S.L." %}">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="col-span-2 sm:col-span-1">
+              <label for="home-email" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Email" %} *</label>
+              <input id="home-email" type="email" name="email" required
+                     class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none"
+                     placeholder="{% trans "hola@empresa.es" %}">
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="home-phone" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Teléfono / WhatsApp" %} *</label>
+              <input id="home-phone" type="tel" name="phone" required
+                     class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none"
+                     placeholder="+34 631 51 76 44">
+            </div>
+          </div>
+          <div>
+            <label for="home-project" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Descripción del Proyecto" %} *</label>
+            <textarea id="home-project" name="project_description" rows="4" required
+                      class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none resize-none"
+                      placeholder="{% trans "Cuéntanos tu proyecto, la funcionalidad principal, si tienes referentes visuales y el presupuesto aproximado..." %}"></textarea>
+          </div>
+          <div>
+            <label for="home-budget" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Presupuesto orientativo" %}</label>
+            <select id="home-budget" name="budget_range" class="w-full bg-ink-800 border border-paper/20 text-paper px-3 py-2.5 text-sm focus:border-vermilion rounded-none">
+              <option value="">{% trans "Selecciona un rango" %}</option>
+              <option>{% trans "Menos de 1.000€" %}</option><option>1.000€ - 3.000€</option><option>3.000€ - 6.000€</option><option>{% trans "Más de 6.000€" %}</option><option>{% trans "Por definir" %}</option>
+            </select>
+          </div>
+          <div>
+            <label for="home-attachment" class="block text-[11px] font-mono uppercase tracking-wider font-semibold text-paper-400 mb-1.5">{% trans "Adjuntar briefing (opcional)" %}</label>
+            <input id="home-attachment" type="file" name="attachment" accept=".pdf,.doc,.docx,.zip,.jpg,.jpeg,.png" class="w-full text-xs text-paper file:mr-3 file:border-0 file:bg-paper file:px-3 file:py-2 file:text-ink">
+          </div>
+          <div class="flex items-start space-x-2 text-xs text-paper-300">
+            <input id="home-privacy" type="checkbox" name="privacy_accepted" value="on" required class="mt-0.5 text-vermilion rounded-none focus:ring-vermilion flex-shrink-0">
+            <label for="home-privacy" class="cursor-pointer">{% trans "He leído y acepto la" %} <a href="{% url 'core:legal' slug='politica-privacidad' %}" target="_blank" rel="noopener" class="underline hover:text-gold">{% trans "Política de Privacidad" %}</a> {% trans "conforme a la normativa RGPD/LOPD-GDD española." %}</label>
+          </div>
+          <button type="submit" class="btn-vermilion btn-lg w-full">
+            {% trans "Enviar Solicitud de Presupuesto" %} &rarr;
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     13 · WHY TINTORA — trust section
+     ===================================================================== -->
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10">
+      <span class="badge-vermilion">{% trans "Por qué Tintora" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink dark:text-paper">
+        {% trans "Razones para encargarnos tu pedido" %}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      <div class="card-editorial p-6 space-y-2 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-vermilion">01</span>
+        <h3 class="font-serif text-lg font-bold text-ink dark:text-paper">{% trans "Producción profesional" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">{% blocktrans with address=COMPANY.ADDRESS %}Controlamos cada fase del proceso en {{ address }}: preimpresión, corte, acabado y empaquetado.{% endblocktrans %}</p>
+      </div>
+      <div class="card-editorial p-6 space-y-2 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-vermilion">02</span>
+        <h3 class="font-serif text-lg font-bold text-ink dark:text-paper">{% trans "Envíos a toda España" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">{% trans "Enviamos en 24/48h por Correos, SEUR, MRW y GLS. Recogida gratuita en el taller." %}</p>
+      </div>
+      <div class="card-editorial p-6 space-y-2 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-vermilion">03</span>
+        <h3 class="font-serif text-lg font-bold text-ink dark:text-paper">{% trans "IVA incluido siempre" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">{% trans "El precio que ves es el precio que pagas. Factura española con IVA 21% desglosado." %}</p>
+      </div>
+      <div class="card-editorial p-6 space-y-2 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-vermilion">04</span>
+        <h3 class="font-serif text-lg font-bold text-ink dark:text-paper">{% trans "Atención personalizada" %}</h3>
+        <p class="text-xs text-ink-600 dark:text-paper-300 leading-relaxed">{% blocktrans with hours=COMPANY.OPENING_HOURS %}Hablas con el taller, no con un bot. Horario: {{ hours }}.{% endblocktrans %}</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================================================
+     14 · PORTAFOLIO — real photographs only (hidden while empty)
+     ===================================================================== -->
+{% if portfolio %}
+<section class="py-14 md:py-20 bg-surface-light text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="editorial-number font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-paper-400">{% trans "Portafolio" %}</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">{% trans "Trabajos reales del taller" %}</h2>
+      </div>
+      <a href="{% url 'quotes:development' %}#portafolio" class="btn-outline btn-sm self-start md:self-auto">
+        {% trans "Ver portafolio" %} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      {% for item in portfolio %}
+      <figure class="card-editorial-hover overflow-hidden group bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <div class="overflow-hidden bg-surface-light hairline-b">
+          <img src="{{ item.image.url }}"
+               alt="{{ item.alt_text|default:item.title }}"
+               loading="lazy"
+               class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
+        </div>
+        <figcaption class="p-5">
+          <h3 class="font-serif font-bold text-base text-ink dark:text-paper">{{ item.title }}</h3>
+          {% if item.description %}<p class="text-xs text-ink-500 dark:text-paper-400 mt-1">{{ item.description }}</p>{% endif %}
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     15 · TESTIMONIOS — admin-managed, hidden when empty
+     ===================================================================== -->
+{% if testimonials %}
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10">
+      <span class="badge-gold">{% trans "Clientes de Tintora" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink dark:text-paper">
+        {% trans "Lo que dicen nuestros clientes" %}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      {% for t in testimonials %}
+      <div class="card-editorial p-6 flex flex-col justify-between space-y-4 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <div>
+          <span class="font-serif text-4xl text-vermilion leading-none font-extrabold">"</span>
+          <p class="font-serif italic text-base text-ink-800 dark:text-paper-200 mt-1 leading-relaxed">{{ t.quote }}</p>
+        </div>
+        <div class="hairline-t pt-4 flex items-center space-x-3">
+          <div class="w-10 h-10 bg-ink text-paper font-serif font-bold text-lg flex items-center justify-center flex-shrink-0">
+            {{ t.avatar_initial }}
+          </div>
+          <div class="text-xs">
+            <p class="font-bold text-ink dark:text-paper">{{ t.author }}</p>
+            <p class="text-ink-500 dark:text-paper-400">{{ t.role }}</p>
+            {% if t.company %}<p class="text-ink-400 dark:text-paper-500 font-mono text-[11px]">{{ t.company }}</p>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     16 · FAQ — admin-editable, hidden when empty (FAQPage schema in head)
+     ===================================================================== -->
+{% if faqs %}
+<section class="py-14 md:py-20 bg-surface-light text-ink dark:text-paper hairline-b">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10">
+      <span class="badge-neutral">{% trans "Dudas Frecuentes" %}</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-ink dark:text-paper">{% trans "Preguntas Frecuentes" %}</h2>
+      <a href="{% url 'core:faq' %}" class="inline-block mt-3 text-xs font-mono uppercase tracking-wider underline text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors">
+        {% trans "Ver todas las preguntas" %} &rarr;
+      </a>
+    </div>
+
+    <div class="space-y-3" x-data="{ openFaq: null }">
+      {% for faq in faqs %}
+      <div class="card-editorial bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+        <button type="button"
+                @click="openFaq = openFaq === {{ forloop.counter }} ? null : {{ forloop.counter }}"
+                class="w-full text-left px-6 py-4 flex items-center justify-between hover:bg-ink/[0.02] dark:hover:bg-paper/[0.04] transition-colors focus:outline-none"
+                :aria-expanded="openFaq === {{ forloop.counter }} ? 'true' : 'false'">
+          <span class="font-serif font-bold text-base text-ink dark:text-paper pr-4">
+            {{ faq.question }}
+          </span>
+          <span :class="openFaq === {{ forloop.counter }} ? 'rotate-180' : ''" class="transition-transform duration-200 flex-shrink-0 text-ink-400 dark:text-paper-400">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </span>
+        </button>
+        <div x-show="openFaq === {{ forloop.counter }}"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-1"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="px-6 pb-5 hairline-t pt-4 text-xs text-ink-700 dark:text-paper-300 leading-relaxed"
+             style="display: none;">
+          {{ faq.answer|linebreaksbr }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- =====================================================================
+     17 · NEWSLETTER — GDPR form, admin-managed copy
+     ===================================================================== -->
+<section class="py-14 md:py-20 bg-ink text-paper hairline-b">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+    <span class="badge-gold-on-dark">{% trans "Gaceta Tintora" %}</span>
+    <h2 class="font-serif text-2xl md:text-4xl font-bold">
+      {{ home_content.newsletter_title }}
+    </h2>
+    {% if home_content.newsletter_text %}
+    <p class="text-sm text-paper-300 leading-relaxed">
+      {{ home_content.newsletter_text }}
+    </p>
+    {% endif %}
+    <div class="text-left pt-2">
+      {% include 'components/newsletter_form.html' with newsletter_badge='home' %}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     18 · MANIFIESTO EDITORIAL + WhatsApp (light closing band)
+     ===================================================================== -->
+<section class="py-14 md:py-20 bg-paper dark:bg-ink text-ink dark:text-paper hairline-b">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+    <blockquote class="font-serif text-2xl md:text-3xl text-ink dark:text-paper font-light leading-snug">
+      {% trans '"No somos una imprenta industrial sin rostro. Revisamos cada archivo, comprobamos perfiles Fogra39 y cuidamos que cada producto hable con orgullo de tu marca."' %}
+    </blockquote>
+    <div class="font-mono text-xs text-ink-500 dark:text-paper-400 tracking-widest uppercase">
+      {% blocktrans with address=COMPANY.ADDRESS %}El Equipo de Tintora &middot; {{ address }}{% endblocktrans %}
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-4 pt-3">
+      <a href="{% url 'catalog:index' %}" class="btn-ink">{% trans "Ver Catálogo" %} &rarr;</a>
+      <a href="https://wa.me/{{ COMPANY.WHATSAPP|cut:' '|cut:'+' }}" target="_blank" rel="noopener" class="btn-outline">
+        {% trans "Hablar por WhatsApp" %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

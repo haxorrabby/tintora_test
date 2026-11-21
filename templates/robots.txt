@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
+
+# Disallow admin
+Disallow: /{{ ADMIN_URL_PATH }}
+Disallow: /admin/
+
+# Disallow private areas
+Disallow: /*/mi-area/
+Disallow: /*/mis-pedidos/
+Disallow: /*/direcciones/
+Disallow: /*/deseos/
+Disallow: /*/privacidad/
+
+# Disallow checkout
+Disallow: /*/checkout/
+Disallow: /*/carrito/
+
+# Disallow payment webhooks
+Disallow: /pagos/
+
+# Crawl-delay (optional, respectful crawling)
+Crawl-delay: 1

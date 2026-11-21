@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% load i18n static seo_tags l10n core_tags %}
+
+{% block title %}{{ product.meta_title|default:product.name }} · Tintora Madrid{% endblock %}
+{% block meta_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_type %}{% trans "product" %}{% endblock %}
+{% block og_title %}{{ product.meta_title|default:product.name }} · Tintora Madrid{% endblock %}
+{% block og_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_image %}{{ product_image_url }}{% endblock %}
+{% block twitter_title %}{{ product.meta_title|default:product.name }} · Tintora Madrid{% endblock %}
+{% block twitter_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block twitter_image %}{{ product_image_url }}{% endblock %}
+
+{% block extra_head %}{{ block.super }}{% json_ld product_schema %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" 
+     x-data="{
+       basePrice: {{ product.base_price|unlocalize }},
+       hasTiers: {% if quantity_tiers %}true{% else %}false{% endif %},
+       selectedQty: {% if quantity_tiers %}{{ quantity_tiers.0.min_quantity|unlocalize }}{% else %}1{% endif %},
+       selectedTierPrice: {% if quantity_tiers %}{{ quantity_tiers.0.total_price|unlocalize }}{% else %}{{ product.base_price|unlocalize }}{% endif %},
+       optionSelections: { {% for group in option_groups %}'{{ group.code }}': {{ group.default_modifier|unlocalize }}{% if not forloop.last %}, {% endif %}{% endfor %} },
+       designLater: false,
+       requestProof: false,
+       proofPrice: {{ proof_price_default|default:'12.00'|unlocalize }},
+       turnaroundDays: {{ product.turnaround_days|unlocalize }},
+
+       get optionModifiers() {
+         return Object.values(this.optionSelections).reduce((sum, value) => sum + Number(value), 0);
+       },
+       get totalPrice() {
+         const quantity = Math.max(1, Number(this.selectedQty) || 1);
+         const base = this.hasTiers ? Number(this.selectedTierPrice) : Number(this.basePrice) * quantity;
+         let subtotal = base + this.optionModifiers;
+         if (this.requestProof) subtotal += Number(this.proofPrice);
+         return subtotal.toFixed(2);
+       },
+       get unitPrice() {
+         const quantity = Math.max(1, Number(this.selectedQty) || 1);
+         return (this.totalPrice / quantity).toFixed(4);
+       },
+       get priceWithoutIva() {
+         return (this.totalPrice / 1.21).toFixed(2);
+       },
+       get ivaAmount() {
+         return (this.totalPrice - this.priceWithoutIva).toFixed(2);
+       },
+       get deliveryDate() {
+         const now = new Date();
+         let added = 0;
+         while (added < this.turnaroundDays + 1) {
+           now.setDate(now.getDate() + 1);
+           if (now.getDay() !== 0 && now.getDay() !== 6) added++;
+         }
+         return now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+       }
+     }">
+
+  <!-- Breadcrumb -->
+  <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-6 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'catalog:category_detail' product.category.slug %}" class="hover:text-vermilion">{{ product.category.name }}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{{ product.name }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    
+    <!-- LEFT COLUMN: Editorial Visual Mockup & 3D Interactive Card -->
+    <div class="lg:col-span-7 space-y-6">
+      <div class="card-editorial p-8 bg-surface-cardLight dark:bg-surface-cardDark text-center relative overflow-hidden group">
+        
+        <!-- Live Badges -->
+        <div class="absolute top-4 left-4 flex gap-2">
+          <span class="badge-vermilion">{{ product.get_business_area_display }}</span>
+          {% if product.allows_proof %}
+            <span class="badge-gold">{% trans "Prueba Disponible" %}</span>
+          {% endif %}
+        </div>
+
+        <!-- Interactive Mockup Image -->
+        {% include 'components/product_image.html' with image_src=product.primary_image_url image_alt=product.name image_frame_class='aspect-[4/3] w-full' image_background_class='bg-surface-light dark:bg-surface-subtleDark' image_padding_class='p-6 sm:p-8' image_loading='eager' %}
+
+        <p class="text-xs font-mono text-ink-400 dark:text-paper-500">
+          {% trans "Vista previa en papel verjurado / calibración Fogra39 certificada" %}
+        </p>
+      </div>
+
+      <!-- File Upload & Pre-flight Technical Box -->
+      {% if product.allows_file_upload %}
+      <div class="card-editorial p-6 bg-surface-light dark:bg-surface-subtleDark space-y-4">
+        <div class="flex items-center space-x-2">
+          <span class="w-2 h-2 rounded-full bg-vermilion"></span>
+          <div class="font-serif font-bold text-base text-ink dark:text-paper">{% trans "Preparación de Archivo & Preimpresión" %}</div>
+        </div>
+        <p class="text-xs text-ink-600 dark:text-paper-400 leading-relaxed">
+          {% trans "Aceptamos archivos en PDF / X-1a, AI, PSD y SVG. Recuerda incluir 3 mm de sangrado perimetral, mantener textos a más de 4 mm del corte y trabajar en perfil de color CMYK a 300 DPI." %}
+        </p>
+        <div class="grid grid-cols-3 gap-2 font-mono text-[11px] pt-1">
+          <div class="p-2 border border-ink/10 dark:border-paper/10 text-center">
+            <span class="text-vermilion font-bold block">{% trans "300 DPI" %}</span>
+            <span class="text-ink-500 dark:text-paper-400 text-[10px]">{% trans "Resolución" %}</span>
+          </div>
+          <div class="p-2 border border-ink/10 dark:border-paper/10 text-center">
+            <span class="text-gold-dark font-bold block">{% trans "CMYK" %}</span>
+            <span class="text-ink-500 dark:text-paper-400 text-[10px]">{% trans "Espacio Color" %}</span>
+          </div>
+          <div class="p-2 border border-ink/10 dark:border-paper/10 text-center">
+            <span class="text-ink dark:text-paper font-bold block">+3 mm</span>
+            <span class="text-ink-500 dark:text-paper-400 text-[10px]">{% trans "Sangrado" %}</span>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Specifications Tabular Section -->
+      <div class="hairline-t pt-8 space-y-4">
+        <div class="font-serif text-xl font-bold">{% trans "Ficha Técnica del Taller" %}</div>
+        <div class="text-xs space-y-3 font-mono">
+          <div class="flex justify-between py-2 border-b border-ink/10 dark:border-paper/10">
+            <span class="text-ink-500 dark:text-paper-400">{% trans "Producción" %}</span>
+            <span class="font-bold text-ink dark:text-paper">{% trans "Taller de Getafe" %}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-ink/10 dark:border-paper/10">
+            <span class="text-ink-500 dark:text-paper-400">{% trans "Plazo estándar" %}</span>
+            <span class="font-bold text-ink dark:text-paper">{{ product.turnaround_days }} {% trans "días laborables" %}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-ink/10 dark:border-paper/10">
+            <span class="text-ink-500 dark:text-paper-400">{% trans "Verificación de archivo" %}</span>
+            <span class="font-bold text-vermilion">{% trans "Incluida y Gratuita" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Interactive Live Configurator & Pricing Table -->
+    <div class="lg:col-span-5 space-y-8">
+      <div>
+        <h1 class="font-serif text-3xl font-extrabold text-ink dark:text-paper leading-tight">
+          {{ product.name }}
+        </h1>
+        {% with flags=product.origin_country|country_flags %}
+        {% if flags %}
+        <p class="mt-3 flex items-center gap-2 text-sm text-ink-600 dark:text-paper-400">
+          {% for f in flags %}<span class="text-xl leading-none" title="{{ f.name }}" aria-label="{% trans 'País de origen' %}: {{ f.name }}">{{ f.flag }}</span>{% endfor %}
+          <span class="font-mono text-[11px] uppercase tracking-wider">{% trans "Origen" %}: {{ product.origin_country }}</span>
+        </p>
+        {% endif %}
+        {% endwith %}
+        <p class="text-xs text-ink-600 dark:text-paper-400 mt-2 leading-relaxed">
+          {{ product.short_description }}
+        </p>
+      </div>
+
+      <!-- Configurator Form (HTMX → cart drawer; falls back to native POST) -->
+      <form action="{% url 'cart:add' product.slug %}" method="POST" enctype="multipart/form-data"
+            hx-post="{% url 'cart:add' product.slug %}?target=drawer"
+            hx-target="#cart-drawer-content"
+            hx-swap="innerHTML"
+            hx-on::after-request="window.dispatchEvent(new CustomEvent('cart:open'))"
+            class="space-y-8">
+        {% csrf_token %}
+        {% if quantity_tiers %}<input type="hidden" name="quantity" :value="selectedQty">{% endif %}
+
+        <!-- Configurator Options -->
+        {% if option_groups %}
+        <div class="space-y-6 hairline-t pt-6">
+          {% for group in option_groups %}
+          <div class="space-y-2">
+            <label class="label-editorial">{{ group.name }}</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              {% for val in group.values.all %}
+              <label class="p-3 border border-ink/15 dark:border-paper/15 cursor-pointer hover:border-vermilion flex items-center justify-between transition-colors has-[:checked]:border-vermilion has-[:checked]:bg-vermilion/5">
+                <div class="flex items-center space-x-2">
+                  <input type="radio" 
+                         name="option_{{ group.code }}" 
+                         value="{{ val.id }}" 
+                         {% if group.default_value_id and val.id == group.default_value_id %}checked{% endif %}
+                         @change="optionSelections['{{ group.code }}'] = {{ val.price_modifier|unlocalize }}"
+                         class="text-vermilion focus:ring-vermilion">
+                  <span class="font-medium text-ink dark:text-paper">{{ val.name }}</span>
+                </div>
+                {% if val.price_modifier > 0 %}
+                  <span class="font-mono text-gold-dark font-bold">+{{ val.price_modifier }}€</span>
+                {% endif %}
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Quantity Tiers Table (Print & Merch) -->
+        {% if quantity_tiers %}
+        <div class="space-y-3 hairline-t pt-6">
+          <label class="label-editorial">{% trans "Selecciona la Tirada / Cantidad" %}</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {% for tier in quantity_tiers %}
+            <button type="button" 
+                    @click="selectedQty = {{ tier.min_quantity|unlocalize }}; selectedTierPrice = {{ tier.total_price|unlocalize }};"
+                    :class="selectedQty === {{ tier.min_quantity|unlocalize }} ? 'border-vermilion bg-vermilion/5 dark:bg-vermilion/10 text-vermilion font-bold' : 'border-ink/15 dark:border-paper/15 hover:border-ink/30'"
+                    class="p-3 border text-center transition-all">
+              <span class="block font-serif text-lg">{{ tier.min_quantity }} {% trans "uds" %}</span>
+              <span class="block font-mono text-[11px] text-ink-500 dark:text-paper-400 mt-0.5">{{ tier.total_price }}€</span>
+              <span class="block text-[9px] font-mono text-ink-500 dark:text-paper-500">({{ tier.unit_price }}€/ud)</span>
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <!-- Free quantity input for products without tier pricing -->
+        <div class="space-y-2 hairline-t pt-6">
+          <label class="label-editorial" for="qty-input">{% trans "Cantidad" %}</label>
+          <input id="qty-input"
+                 type="number"
+                 name="quantity"
+                 x-model.number="selectedQty"
+                 min="1"
+                 step="1"
+                 value="1"
+                 class="input-editorial w-32"
+                 inputmode="numeric">
+          <p class="text-[10px] font-mono text-ink-400 dark:text-paper-500">
+            {% trans "Precio unitario multiplicado por la cantidad · IVA incluido" %}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- File Upload Field (if allows_file_upload) -->
+        {% if product.allows_file_upload %}
+        <div class="hairline-t pt-6 space-y-2">
+          <label class="label-editorial" for="artwork_file">{% trans "Sube tu Arte Gráfico (Opcional si prefieres enviarlo luego)" %}</label>
+          <input type="file" 
+                 id="artwork_file"
+                 name="artwork_file" 
+                 accept=".pdf,.ai,.psd,.svg,.png,.jpg,.jpeg"
+                 class="block w-full text-xs text-ink-500 dark:text-paper-400 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-xs file:font-mono file:bg-ink file:text-paper dark:file:bg-paper dark:file:text-ink hover:file:bg-vermilion cursor-pointer">
+          <p class="text-[10px] font-mono text-ink-400 dark:text-paper-500">
+            {% trans "Formatos admitidos: PDF/X, AI, PSD, SVG, PNG (300 DPI recomendados)" %}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- Pre-flight / Proof Toggle Options -->
+        <div class="space-y-3 hairline-t pt-6 text-xs">
+          <label class="flex items-start space-x-3 cursor-pointer">
+            <input type="checkbox" name="design_later" x-model="designLater" class="mt-0.5 text-vermilion rounded-none focus:ring-vermilion">
+            <div>
+              <span class="font-bold text-ink dark:text-paper">{% trans "Subir el archivo de diseño más tarde" %}</span>
+              <p class="text-ink-500 dark:text-paper-400 text-[11px]">{% trans "Puedes finalizar el pedido ahora y enviar tu arte gráfico por email o panel en las próximas 48h." %}</p>
+            </div>
+          </label>
+
+          {% if product.allows_proof %}
+          <label class="flex items-start space-x-3 cursor-pointer pt-2">
+            <input type="checkbox" name="request_proof" x-model="requestProof" class="mt-0.5 text-vermilion rounded-none focus:ring-vermilion">
+            <div>
+              <span class="font-bold text-ink dark:text-paper">
+                {% blocktrans with price=proof_price_default %}Pide una prueba previa física (+{{ price }}€ IVA incl.){% endblocktrans %}
+              </span>
+              <p class="text-ink-500 dark:text-paper-400 text-[11px]">{% trans "Te enviamos una muestra impresa en 24h para que valides colores y gramaje antes de imprimir la tirada completa." %}</p>
+            </div>
+          </label>
+          {% endif %}
+        </div>
+
+        <!-- Live Price Calculation & Buy Box -->
+        <div class="card-editorial p-6 bg-surface-light dark:bg-surface-subtleDark space-y-4">
+          <div class="flex items-baseline justify-between border-b border-ink/10 dark:border-paper/10 pb-4">
+            <div>
+              {% if product.base_price > 0 or quantity_tiers %}
+                <span class="text-xs font-mono uppercase text-ink-400 dark:text-paper-500">{% trans "Total Estimado" %}</span>
+                <div class="font-serif text-4xl font-extrabold text-ink dark:text-paper">
+                  <span x-text="totalPrice"></span>€
+                </div>
+                <span class="text-[11px] font-mono text-ink-500 dark:text-paper-400">
+                  <span x-text="unitPrice"></span>€ {% trans "por unidad" %}
+                </span>
+              {% else %}
+                <span class="text-xs font-mono uppercase text-ink-400 dark:text-paper-500">{% trans "Precio" %}</span>
+                <div class="font-serif text-2xl font-bold text-ink dark:text-paper">{% trans "Precio pendiente" %}</div>
+                <span class="text-[11px] text-ink-500 dark:text-paper-400">{% trans "Este producto aún no está disponible para compra." %}</span>
+              {% endif %}
+            </div>
+
+            {% if product.base_price > 0 or quantity_tiers %}
+            <div class="text-right text-[11px] font-mono text-ink-500 dark:text-paper-400">
+              <div>{% trans "Base" %}: <span x-text="priceWithoutIva"></span>€</div>
+              <div>{% trans "IVA 21%" %}: <span x-text="ivaAmount"></span>€</div>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- Delivery Date Calculation -->
+          <div class="flex items-center space-x-2 text-xs font-mono text-ink-600 dark:text-paper-400">
+            <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+            <span>{% trans "Entrega estimada en Madrid" %}: <strong class="text-ink dark:text-paper" x-text="deliveryDate"></strong></span>
+          </div>
+
+          <!-- Add to Cart CTA -->
+          <button type="submit"
+                  {% if product.base_price <= 0 and not quantity_tiers %}disabled{% endif %}
+                  class="btn-vermilion btn-lg w-full text-center font-bold tracking-wide {% if product.base_price <= 0 and not quantity_tiers %}opacity-50 cursor-not-allowed{% endif %}">
+            {% if product.base_price > 0 or quantity_tiers %}{% trans "Añadir al Carrito" %} &rarr;{% else %}{% trans "No disponible" %}{% endif %}
+          </button>
+
+          <p class="text-[10px] font-mono text-center text-ink-400 dark:text-paper-500">
+            {% trans "Pago 100% seguro con Stripe, Bizum o Redsys &middot; Factura oficial española con CIF" %}
+          </p>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

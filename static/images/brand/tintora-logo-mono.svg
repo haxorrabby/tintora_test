@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" fill="none" role="img" aria-label="Tintora Logo Monochrome">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,800&amp;display=swap');
+      .logo-text-mono {
+        font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+  <text x="2" y="52" class="logo-text-mono">Tintora</text>
+  <circle cx="204" cy="50" r="7" fill="currentColor"/>
+</svg>

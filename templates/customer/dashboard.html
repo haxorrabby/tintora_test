@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Mi Área · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b border-ink/10 dark:border-paper/10 pb-6">
+    <div>
+      <span class="badge-vermilion mb-2">{% trans "Área Privada de Cliente" %}</span>
+      <h1 class="text-3xl md:text-4xl font-serif font-bold text-ink dark:text-paper mt-1">{% trans "Hola," %} {{ user.first_name|default:user.email }}</h1>
+      <p class="text-sm text-ink-600 dark:text-paper-300 mt-1">{% trans "Gestiona tus pedidos, archivos de preimpresión y datos fiscales." %}</p>
+    </div>
+    <form method="post" action="{% url 'customer:logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn-outline btn-sm">{% trans "Cerrar sesión" %}</button>
+    </form>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10">
+    <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wider font-mono text-ink-500 dark:text-paper-400 mb-1">{% trans "Pedidos recientes" %}</p>
+          <p class="text-3xl font-serif font-extrabold text-ink dark:text-paper">{{ recent_orders|length }}</p>
+        </div>
+        <span class="text-2xl opacity-75">📦</span>
+      </div>
+    </div>
+    
+    <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wider font-mono text-ink-500 dark:text-paper-400 mb-1">{% trans "Lista de deseos" %}</p>
+          <p class="text-3xl font-serif font-extrabold text-ink dark:text-paper">{{ wishlist_count }}</p>
+        </div>
+        <span class="text-2xl opacity-75">❤️</span>
+      </div>
+    </div>
+    
+    <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wider font-mono text-ink-500 dark:text-paper-400 mb-1">{% trans "Direcciones" %}</p>
+          <p class="text-3xl font-serif font-extrabold text-ink dark:text-paper">{{ addresses_count }}</p>
+        </div>
+        <span class="text-2xl opacity-75">📍</span>
+      </div>
+    </div>
+    
+    <div class="card-editorial p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wider font-mono text-ink-500 dark:text-paper-400 mb-1">{% trans "Pruebas" %}</p>
+          <p class="text-3xl font-serif font-extrabold text-ink dark:text-paper">{{ pending_proofs }}</p>
+        </div>
+        <span class="text-2xl opacity-75">👁️</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 mb-12">
+    <a href="{% url 'customer:order_history' %}" class="group card-editorial-hover p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center space-x-4">
+        <span class="text-2xl text-vermilion">📋</span>
+        <div>
+          <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Ver mis pedidos" %}</h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 mt-0.5">{% trans "Historial completo y estado actual" %}</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="{% url 'customer:wishlist' %}" class="group card-editorial-hover p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center space-x-4">
+        <span class="text-2xl text-vermilion">💝</span>
+        <div>
+          <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-vermilion transition-colors">{% trans "Lista de deseos" %}</h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 mt-0.5">{% trans "Productos guardados para más tarde" %}</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="{% url 'customer:profile_edit' %}" class="group card-editorial-hover p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center space-x-4">
+        <span class="text-2xl text-gold-dark dark:text-gold">✏️</span>
+        <div>
+          <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-gold transition-colors">{% trans "Editar perfil" %}</h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 mt-0.5">{% trans "Datos personales y fiscales" %}</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="{% url 'customer:artwork_library' %}" class="group card-editorial-hover p-6 bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10">
+      <div class="flex items-center space-x-4">
+        <span class="text-2xl text-gold-dark dark:text-gold">↗</span>
+        <div>
+          <h3 class="font-serif font-bold text-base text-ink dark:text-paper group-hover:text-gold transition-colors">{% trans "Mis archivos de arte" %}</h3>
+          <p class="text-xs text-ink-600 dark:text-paper-300 mt-0.5">{% trans "Originales enviados y pruebas recibidas" %}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Recent Orders -->
+  <div class="card-editorial bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 overflow-hidden">
+    <div class="px-6 py-4 border-b border-ink/10 dark:border-paper/10 flex justify-between items-center">
+      <h2 class="text-xl font-serif font-bold text-ink dark:text-paper">{% trans "Pedidos recientes" %}</h2>
+      <a href="{% url 'customer:order_history' %}" class="text-xs font-mono uppercase tracking-wider text-vermilion hover:underline">{% trans "Ver todos" %} &rarr;</a>
+    </div>
+    
+    {% if recent_orders %}
+    <div class="divide-y divide-ink/10 dark:divide-paper/10">
+      {% for order in recent_orders %}
+      <div class="px-6 py-4 hover:bg-ink/[0.02] dark:hover:bg-paper/[0.04] transition-colors">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="font-mono text-sm font-bold text-ink dark:text-paper">{{ order.order_number }}</p>
+            <p class="text-xs text-ink-600 dark:text-paper-300 mt-0.5">{{ order.created_at|date:"d M Y" }} · {% blocktrans count counter=order.items.count %}{{ counter }} artículo{% plural %}{{ counter }} artículos{% endblocktrans %}</p>
+          </div>
+          <div class="text-right">
+            <p class="font-serif font-bold text-base text-ink dark:text-paper">{{ order.total }}€</p>
+            <span class="badge-editorial text-[10px] mt-1
+              {% if order.status == 'recibido' %}border-ink/20 text-ink dark:border-paper/20 dark:text-paper
+              {% elif order.status == 'en_produccion' %}border-gold/40 text-gold-dark dark:text-gold bg-gold/10
+              {% elif order.status == 'enviado' %}border-vermilion/40 text-vermilion bg-vermilion/10
+              {% elif order.status == 'entregado' %}border-green-600/40 text-green-700 dark:text-green-400 bg-green-500/10
+              {% else %}border-ink/20 text-ink-600 dark:text-paper-400{% endif %}">
+              {{ order.get_status_display }}
+            </span>
+          </div>
+        </div>
+        <a href="{% url 'customer:order_detail' order.order_number %}" class="mt-2 inline-block text-xs font-mono uppercase tracking-wider text-vermilion hover:underline">{% trans "Ver detalles" %} &rarr;</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="px-6 py-12 text-center">
+      <p class="text-sm text-ink-600 dark:text-paper-300 mb-4">{% trans "Aún no tienes pedidos registrados." %}</p>
+      <a href="{% url 'catalog:index' %}" class="btn-vermilion btn-sm">
+        {% trans "Explorar catálogo" %} &rarr;
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

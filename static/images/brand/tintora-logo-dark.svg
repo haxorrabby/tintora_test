@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" fill="none" role="img" aria-label="Tintora Logo">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,800&amp;display=swap');
+      .logo-text-dark {
+        font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        fill: #F4EFE6;
+      }
+    </style>
+  </defs>
+  <text x="2" y="52" class="logo-text-dark">Tintora</text>
+  <!-- Vermilion Ink Droplet Period -->
+  <g transform="translate(196, 42)">
+    <circle cx="8" cy="8" r="7" fill="#E8392B"/>
+    <path d="M8 1 C8 1 5 5 5 8 C5 9.65 6.34 11 8 11 C9.65 11 11 9.65 11 8 C11 5 8 1 8 1Z" fill="#FF5C4F" opacity="0.6"/>
+  </g>
+</svg>

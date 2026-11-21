@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Catálogo Completo &middot; Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+  
+  <!-- Breadcrumb -->
+  <nav class="flex text-xs font-mono text-ink-400 dark:text-paper-500 mb-6 uppercase tracking-wider">
+    <a href="{% url 'core:home' %}" class="hover:text-vermilion">{% trans "Inicio" %}</a>
+    <span class="mx-2">/</span>
+    <span class="text-ink dark:text-paper">{% trans "Catálogo" %}</span>
+  </nav>
+
+  <!-- Editorial Heading -->
+  <div class="border-b border-ink/10 dark:border-paper/10 pb-6 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <span class="badge-vermilion">{% trans "Taller de Getafe" %}</span>
+      <h1 class="font-serif text-2xl md:text-4xl font-bold mt-2 text-ink dark:text-paper">
+        {% trans "Catálogo General" %}
+      </h1>
+      <p class="text-xs md:text-sm text-ink-600 dark:text-paper-400 mt-2 max-w-xl">
+        {% trans "Explora nuestra selección de imprenta editorial, artículos sublimados y despensa latina con precios transparentes y 21% de IVA incluido." %}
+      </p>
+    </div>
+
+    <!-- Area Filter Pills -->
+    <div class="flex flex-wrap gap-2 text-xs font-mono">
+      <a href="{% url 'catalog:index' %}" 
+         class="px-3 py-1.5 border {% if not current_area %}bg-ink text-paper dark:bg-paper dark:text-ink font-bold{% else %}border-ink/20 dark:border-paper/20 hover:border-vermilion{% endif %}">
+        {% trans "Todos" %}
+      </a>
+      {% for area_code, area_label in areas %}
+      <a href="{% url 'catalog:index' %}?area={{ area_code }}" 
+         class="px-3 py-1.5 border {% if current_area == area_code %}bg-ink text-paper dark:bg-paper dark:text-ink font-bold{% else %}border-ink/20 dark:border-paper/20 hover:border-vermilion{% endif %}">
+        {{ area_label }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  {% include 'components/product_grid_partial.html' %}
+
+</div>
+{% endblock %}

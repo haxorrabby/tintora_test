@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Lista de Deseos · Tintora Madrid" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Header -->
+  <div class="mb-8">
+    <nav class="text-xs uppercase tracking-wider text-ink-500 dark:text-paper-400 mb-2">
+      <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi Área" %}</a>
+      <span class="mx-2 text-ink/30 dark:text-paper/30">/</span>
+      <span class="text-ink dark:text-paper font-medium">{% trans "Lista de Deseos" %}</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-serif font-light text-ink dark:text-paper mb-2">{% trans "Lista de Deseos" %}</h1>
+    <p class="text-sm text-ink-600 dark:text-paper-400">{% trans "Selección de piezas y servicios guardados para futuros proyectos" %}</p>
+  </div>
+
+  <!-- Wishlist Items -->
+  {% if wishlist_items %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for item in wishlist_items %}
+    <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 overflow-hidden flex flex-col justify-between group">
+      <div>
+        {% if item.product.main_image %}
+        {% include 'components/product_image.html' with image_src=item.product.main_image.url image_alt=item.product.name image_frame_class='aspect-square' image_background_class='bg-ink/5 dark:bg-paper/5' %}
+        {% else %}
+        {% include 'components/product_image.html' with image_src='' image_alt=item.product.name image_frame_class='aspect-square' image_background_class='bg-ink/5 dark:bg-paper/5' %}
+        {% endif %}
+        
+        <div class="p-6">
+          <h3 class="font-serif font-medium text-ink dark:text-paper text-lg mb-2">{{ item.product.name }}</h3>
+          <p class="text-sm font-serif font-semibold text-vermilion mb-3">Desde {{ item.product.base_price }}€</p>
+          
+          {% if item.notes %}
+          <p class="text-xs text-ink-500 dark:text-paper-400 mb-4 italic">"{{ item.notes }}"</p>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="p-6 pt-0 flex gap-3">
+        <a href="{% url 'catalog:product_detail' item.product.slug %}" class="flex-1 bg-vermilion hover:bg-vermilion-dark text-paper text-center py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors">
+          {% trans "Configurar" %}
+        </a>
+        <a href="{% url 'customer:remove_from_wishlist' item.id %}" class="border border-ink/20 dark:border-paper/20 hover:border-vermilion hover:text-vermilion text-ink dark:text-paper px-3.5 py-2.5 text-xs transition-colors flex items-center justify-center" title="{% trans 'Eliminar de la lista' %}">
+          ✕
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-surface-cardLight dark:bg-surface-cardDark border border-ink/10 dark:border-paper/10 p-12 text-center">
+    <span class="text-4xl mb-4 block">✧</span>
+    <h2 class="text-2xl font-serif text-ink dark:text-paper mb-2">{% trans "Tu lista de deseos está vacía" %}</h2>
+    <p class="text-sm text-ink-500 dark:text-paper-400 mb-6">{% trans "Explora nuestro catálogo editorial y añade impresiones, merchandising o identidades que te inspiren." %}</p>
+    <a href="{% url 'catalog:index' %}" class="inline-block bg-vermilion hover:bg-vermilion-dark text-paper px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors">
+      {% trans "Explorar catálogo" %}
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

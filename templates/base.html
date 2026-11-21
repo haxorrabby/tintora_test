@@ -1,0 +1,198 @@
+{% load i18n static seo_tags core_tags %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>{% block title %}{% trans "Tintora &middot; Tinta que deja huella &middot; Madrid" %}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% trans "Tintora es el estudio de impresión de alta gama, sublimación, productos latinos y desarrollo web en Madrid. Calidad editorial, acabados premium y entregas rápidas." %}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{% trans "impresión madrid, sublimación, productos latinos, desarrollo web, impresión editorial, tintas, serigrafía, impresión digital" %}{% endblock %}">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="{% block og_type %}{% trans "website" %}{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% trans "Tintora &middot; Tinta que deja huella" %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{% trans "Estudio de impresión editorial, sublimación técnica y desarrollo web en Madrid." %}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{% static 'images/brand/og-tintora.svg' %}{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ canonical_url }}{% endblock %}">
+  <meta property="og:locale" content="{% if LANGUAGE_CODE == 'en' %}en_GB{% else %}es_ES{% endif %}">
+  <meta property="og:site_name" content="Tintora Madrid">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block twitter_title %}{% trans "Tintora &middot; Madrid" %}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{% trans "Tinta que deja huella. Impresión, sublimación y servicios digitales." %}{% endblock %}">
+  <meta name="twitter:image" content="{% block twitter_image %}{% static 'images/brand/og-tintora.svg' %}{% endblock %}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{% block canonical %}{{ canonical_url }}{% endblock %}">
+  {% for alternate in hreflang_alternates %}
+  <link rel="alternate" hreflang="{{ alternate.language }}" href="{{ alternate.url }}">
+  {% endfor %}
+  {% for alternate in hreflang_alternates %}{% if alternate.language == 'es' %}<link rel="alternate" hreflang="x-default" href="{{ alternate.url }}">{% endif %}{% endfor %}
+  {% json_ld organization_schema %}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/brand/favicon.svg' %}">
+
+  <!-- Anti-FOUC script for instant theme restore -->
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('tintora_theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Storefront typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet">
+
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
+
+  <!-- Third-party Core: HTMX, Lenis Smooth Scroll -->
+  <script defer src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Tintora Client Application JS -->
+  <script defer src="{% static 'src/js/main.js' %}"></script>
+
+  {% block extra_head %}{% endblock %}
+
+  <!-- Alpine.js MUST be the last deferred script: it auto-starts in a
+       microtask immediately after loading (firing alpine:init and walking
+       every x-data). Any script needed by Alpine — stores registered in
+       main.js, window.latinCatalog, etc. — must execute before it. -->
+  <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
+</head>
+<body class="bg-paper dark:bg-ink text-ink dark:text-paper selection:bg-vermilion selection:text-paper transition-colors duration-200 min-h-screen flex flex-col font-sans"
+      x-data>
+
+  <!-- Screen reader skip link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-ink text-paper px-4 py-2 text-xs uppercase tracking-widest font-mono">
+    {% trans "Saltar al contenido principal" %}
+  </a>
+
+  {% if home_content.announcement_enabled %}
+  <!-- Top Announcement Bar (admin-managed via HomepageSettings) -->
+  <div class="bg-vermilion text-paper text-xs py-2 px-4 text-center font-medium flex items-center justify-between">
+    <div class="hidden md:flex items-center space-x-4 text-[11px] text-paper-400">
+      <span class="inline-flex items-center">
+        <span class="w-1.5 h-1.5 rounded-full bg-vermilion inline-block mr-2 animate-pulse"></span>
+        {{ COMPANY.ADDRESS }}
+      </span>
+      <span>&bull;</span>
+      <span>{{ COMPANY.OPENING_HOURS }}</span>
+    </div>
+    <div class="mx-auto md:mx-0 text-center font-medium">
+      {% if home_content.announcement_link_label and home_content.announcement_link %}
+        <a href="{% localize_url home_content.announcement_link %}" class="text-white font-bold hover:underline">
+          {{ home_content.announcement_link_label }}
+        </a>
+        {% if home_content.announcement_text %}&middot; <span class="text-paper-300">{{ home_content.announcement_text }}</span>{% endif %}
+      {% else %}
+        <span class="text-gold font-bold">{{ home_content.announcement_text }}</span>
+      {% endif %}
+    </div>
+    <div class="hidden md:flex items-center space-x-3 text-[11px]">
+      <a href="tel:{{ COMPANY.PHONE }}" class="hover:text-gold transition-colors">{{ COMPANY.PHONE }}</a>
+      <span class="text-ink-500">|</span>
+      <!-- Language Switcher -->
+      <form action="{% url 'set_language' %}" method="post" class="inline-flex items-center">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+        <select name="language" onchange="this.form.submit()" aria-label="{% trans 'Idioma' %}" class="bg-transparent text-paper-300 hover:text-paper text-xs border-none focus:ring-0 cursor-pointer p-0 pr-2">
+          {% get_current_language as CURRENT_LANG %}
+          {% get_available_languages as AVAIL_LANGS %}
+          {% for lang_code, lang_name in AVAIL_LANGS %}
+            <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANG %}selected{% endif %} class="bg-white text-ink">
+              {{ lang_code|upper }}
+            </option>
+          {% endfor %}
+        </select>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Main Navigation Header (includes the mega menu + mobile panel) -->
+  {% include 'components/header.html' %}
+
+  <!-- Page Content -->
+  <main id="main-content" class="flex-grow">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Site Footer -->
+  {% include 'components/footer.html' %}
+
+  <!-- Cookie Consent Banner (GDPR / LOPD-GDD Spain) -->
+  {% include 'components/cookie_banner.html' %}
+
+  <!-- WhatsApp Floating Madrid Concierge Button -->
+  {% include 'components/whatsapp_button.html' %}
+
+  <!-- Instant Search Modal (HTMX Autocomplete) -->
+  {% include 'components/search_modal.html' %}
+
+  <!-- ==============================================================
+       CART DRAWER — slides in after a quick-add (HTMX swaps the
+       content of #cart-drawer-content; Alpine handles open/close).
+       =============================================================== -->
+  <div id="cart-drawer"
+       x-data="{ openDrawer: false }"
+       x-init="$watch('openDrawer', v => { document.body.style.overflow = v ? 'hidden' : '' })"
+       @cart:open.window="openDrawer = true; if (!document.getElementById('cart-drawer-content').hasChildNodes()) { htmx.ajax('GET', '{% url 'cart:drawer' %}', { target: '#cart-drawer-content', swap: 'innerHTML' }); }"
+       @keydown.escape.window="openDrawer = false"
+       x-show="openDrawer"
+       x-cloak
+       class="fixed inset-0 z-50"
+       role="dialog"
+       aria-modal="true"
+       :aria-hidden="openDrawer ? 'false' : 'true'"
+       aria-label="{% trans 'Cesta de compra' %}">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-ink/60 backdrop-blur-sm"
+         @click="openDrawer = false"
+         x-transition.opacity
+         aria-hidden="true"></div>
+    <!-- Panel -->
+    <aside class="absolute right-0 top-0 h-full w-full max-w-md glass-drawer flex flex-col"
+           x-transition:enter="transition ease-out duration-300"
+           x-transition:enter-start="translate-x-full"
+           x-transition:enter-end="translate-x-0"
+           x-transition:leave="transition ease-in duration-200"
+           x-transition:leave-start="translate-x-0"
+           x-transition:leave-end="translate-x-full">
+      <div id="cart-drawer-content"
+           class="flex-1 overflow-y-auto"
+           hx-swap="innerHTML"
+           role="region"
+           aria-live="polite"></div>
+    </aside>
+  </div>
+
+  <!-- Django messages (coupons, wishlist, account actions) -->
+  {% if messages %}
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[92%] max-w-md space-y-2"
+       x-data x-init="setTimeout(() => { $el.style.display = 'none' }, 5000)">
+    {% for message in messages %}
+    <div class="px-4 py-3 text-xs font-mono shadow-2xl border {% if message.tags == 'error' %}bg-vermilion text-paper border-vermilion{% elif message.tags == 'success' %}bg-ink text-paper border-ink dark:bg-paper dark:text-ink dark:border-paper{% else %}bg-paper text-ink border-ink/20 dark:bg-surface-cardDark dark:text-paper dark:border-paper/20{% endif %}"
+         role="{% if message.tags == 'error' %}alert{% else %}status{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,135 @@
+{% load i18n static %}
+<footer class="bg-ink text-paper mt-auto hairline-t">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+
+    <!-- Top Editorial Header in Footer -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-14 border-b border-paper/10">
+      <div class="lg:col-span-6 space-y-4">
+        <!-- Logo SVG -->
+        <a href="{% url 'core:home' %}" class="inline-block">
+          <img src="{% static 'images/brand/tintora-logo-dark.svg' %}" alt="{% trans "Tintora" %}" class="h-10 w-auto">
+        </a>
+        <p class="font-serif italic text-2xl text-gold font-light tracking-wide">
+          {% trans '"Tinta que deja huella."' %}
+        </p>
+        <p class="text-xs text-paper-400 max-w-md leading-relaxed">
+          {% trans "Estudio de artes gráficas, sublimación avanzada, tienda de productos nostálgicos e ingeniería de software en Madrid. Cuidamos cada milímetro de papel y cada píxel de código con rigor editorial." %}
+        </p>
+        <div class="pt-2 text-xs font-mono text-paper-400 space-y-1">
+          <p class="flex items-center text-paper-300">
+            <span class="w-2 h-2 rounded-full bg-vermilion inline-block mr-2"></span>
+            {{ COMPANY.NAME }} &middot; {% trans "CIF" %} {{ COMPANY.NIF_CIF }}
+          </p>
+          <p>{{ COMPANY.ADDRESS }}</p>
+          <p>{{ COMPANY.OPENING_HOURS }}</p>
+          <p>
+            <a href="tel:{{ COMPANY.PHONE|cut:' ' }}" class="hover:text-gold transition-colors">{{ COMPANY.PHONE }}</a>
+            &middot;
+            <a href="mailto:{{ COMPANY.EMAIL }}" class="hover:text-gold transition-colors">{{ COMPANY.EMAIL }}</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup with Editorial Taste (real backend, GDPR consent) -->
+      <div class="lg:col-span-6 flex flex-col justify-between">
+        <div>
+          <span class="badge-vermilion-on-dark">{% trans "Gaceta Tintora" %}</span>
+          <div class="font-serif text-xl font-bold mt-2 text-paper">
+            {{ home_content.newsletter_title|default:"Papeles raros, trucos de preimpresión y ofertas exclusivas" }}
+          </div>
+          <p class="text-xs text-paper-400 mt-1">
+            {{ home_content.newsletter_text|default:"Enviamos una única carta mensual con novedades tipográficas y descuentos para profesionales en España." }}
+          </p>
+        </div>
+        <div class="mt-6 max-w-lg">
+          {% include 'components/newsletter_form.html' with newsletter_badge='footer' newsletter_dark=1 %}
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Columns Link Directory — every link resolves to a real route -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 py-12 border-b border-paper/10 text-xs">
+
+      <!-- Col 1 -->
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-widest text-gold mb-4">01. {% trans "Impresión" %}</div>
+        <ul class="space-y-2.5 text-paper-300">
+          <li><a href="{% url 'catalog:category_detail' 'tarjetas-de-visita' %}" class="hover:text-vermilion transition-colors">{% trans "Tarjetas de Visita" %}</a></li>
+          <li><a href="{% url 'catalog:category_detail' 'flyers-y-folletos' %}" class="hover:text-vermilion transition-colors">{% trans "Flyers & Folletos" %}</a></li>
+          <li><a href="{% url 'catalog:category_detail' 'carpetas-corporativas' %}" class="hover:text-vermilion transition-colors">{% trans "Carpetas Corporativas" %}</a></li>
+          <li><a href="{% url 'catalog:category_detail' 'rollups-y-gran-formato' %}" class="hover:text-vermilion transition-colors">{% trans "Roll-ups & Banners" %}</a></li>
+          <li><a href="{% url 'catalog:index' %}?area=impresion" class="hover:text-vermilion transition-colors">{% trans "Ver todo el catálogo" %}</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2 -->
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-widest text-gold mb-4">02. {% trans "Sublimación" %}</div>
+        <ul class="space-y-2.5 text-paper-300">
+          <li><a href="{% url 'catalog:category_detail' 'tazas-personalizadas' %}" class="hover:text-vermilion transition-colors">{% trans "Tazas Personalizadas" %}</a></li>
+          <li><a href="{% url 'catalog:category_detail' 'textil-y-camisetas' %}" class="hover:text-vermilion transition-colors">{% trans "Camisetas & Textil" %}</a></li>
+          <li><a href="{% url 'catalog:category_detail' 'gorras-y-accesorios' %}" class="hover:text-vermilion transition-colors">{% trans "Gorras & Accesorios" %}</a></li>
+          <li><a href="{% url 'catalog:index' %}?area=sublimacion" class="hover:text-vermilion transition-colors">{% trans "Ver todo el catálogo" %}</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-widest text-gold mb-4">03. {% trans "Latinos" %}</div>
+        <ul class="space-y-2.5 text-paper-300">
+          {% for cat in LATIN_CATEGORIES|dictsortreversed:"count"|slice:":5" %}
+          <li><a href="{% url 'latin_products:entry' cat.slug %}" class="hover:text-vermilion transition-colors">{{ cat.name }}</a></li>
+          {% endfor %}
+          <li><a href="{% url 'latin_products:index' %}" class="hover:text-vermilion transition-colors text-gold">{% trans "Ver catálogo completo" %}</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4 -->
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-widest text-gold mb-4">04. {% trans "Desarrollo" %}</div>
+        <ul class="space-y-2.5 text-paper-300">
+          <li><a href="{% url 'quotes:development' %}#paquetes" class="hover:text-vermilion transition-colors">{% trans "Paquetes web" %}</a></li>
+          <li><a href="{% url 'quotes:development' %}#comparativa" class="hover:text-vermilion transition-colors">{% trans "Comparar opciones" %}</a></li>
+          <li><a href="{% url 'quotes:development' %}#portfolio" class="hover:text-vermilion transition-colors">{% trans "Casos de estudio" %}</a></li>
+          <li><a href="{% url 'quotes:development' %}#solicitar-presupuesto" class="hover:text-vermilion transition-colors">{% trans "Solicitar Presupuesto" %}</a></li>
+          <li><a href="{% url 'blog:article_list' %}" class="hover:text-vermilion transition-colors">{% trans "Blog" %}</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Legal & Spain Requirements -->
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-widest text-gold mb-4">{% trans "Legal & Ayuda" %}</div>
+        <ul class="space-y-2.5 text-paper-300">
+          <li><a href="{% url 'core:legal' slug='aviso-legal' %}" class="hover:text-vermilion transition-colors">{% trans "Aviso Legal" %}</a></li>
+          <li><a href="{% url 'core:legal' slug='politica-privacidad' %}" class="hover:text-vermilion transition-colors">{% trans "Política de Privacidad" %}</a></li>
+          <li><a href="{% url 'core:legal' slug='politica-cookies' %}" class="hover:text-vermilion transition-colors">{% trans "Política de Cookies" %}</a></li>
+          <li><a href="{% url 'core:legal' slug='condiciones-venta' %}" class="hover:text-vermilion transition-colors">{% trans "Condiciones de Venta" %}</a></li>
+          <li><a href="{% url 'core:legal' slug='envios-devoluciones' %}" class="hover:text-vermilion transition-colors">{% trans "Envíos & Devoluciones" %}</a></li>
+          <li><a href="{% url 'core:faq' %}" class="hover:text-vermilion transition-colors">{% trans "Preguntas Frecuentes" %}</a></li>
+          <li><a href="{% url 'core:contact' %}" class="hover:text-vermilion transition-colors text-gold">{% trans "Contacto" %}</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Payments, Shipping, Tax notice & Copyright -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-paper-400 gap-4">
+      <div class="space-y-1 text-center md:text-left">
+        <p>&copy; {{ CURRENT_YEAR }} {{ COMPANY.NAME }}. {% trans "Todos los derechos reservados." %}</p>
+        <p class="font-mono text-[11px] text-paper-500">
+          {% trans "Precios mostrados con IVA (21%) incluido según la normativa fiscal española vigente." %}
+        </p>
+      </div>
+
+      <!-- Payment & Transport Badges (Text / Semantic Pills) -->
+      <div class="flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] uppercase">
+        <span class="px-2 py-1 bg-paper/5 border border-paper/10 text-paper-300">{% trans "Stripe" %}</span>
+        <span class="px-2 py-1 bg-paper/5 border border-paper/10 text-paper-300">{% trans "Bizum" %}</span>
+        <span class="px-2 py-1 bg-paper/5 border border-paper/10 text-paper-300">{% trans "Redsys" %}</span>
+        <span class="px-2 py-1 bg-paper/5 border border-paper/10 text-paper-300">{% trans "Correos / SEUR / MRW / GLS" %}</span>
+        <span class="px-2 py-1 bg-gold/15 border border-gold/30 text-gold-light">{% trans "Recogida en Madrid" %}</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

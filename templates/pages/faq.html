@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load i18n static seo_tags %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+  <!-- Page header -->
+  <header class="mb-12 hairline-b pb-10">
+    <p class="editorial-number mb-4">— {% trans "Ayuda" %}</p>
+    <h1 class="font-serif text-4xl md:text-5xl font-medium text-ink dark:text-paper mb-4">
+      {% trans "Preguntas Frecuentes" %}
+    </h1>
+    <p class="text-ink-500 dark:text-paper-400 max-w-2xl">
+      {% trans "Dudas sobre pedidos, impresión, envíos, diseños, pagos y devoluciones. Si no encuentras tu respuesta, escríbenos por WhatsApp o por email." %}
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="{% url 'core:contact' %}" class="btn-vermilion btn-sm">{% trans "Contactar" %}</a>
+      <a href="https://wa.me/{{ COMPANY.WHATSAPP|cut:' '|cut:'+' }}" target="_blank" rel="noopener"
+         class="btn-outline btn-sm">{% trans "WhatsApp" %}</a>
+    </div>
+  </header>
+
+  {% if faqs %}
+  <!-- Search + groups -->
+  <div class="mb-10" x-data="faqSearch()" x-init="init()">
+    <label for="faq-search" class="label-editorial">{% trans "Buscar en las preguntas" %}</label>
+    <input type="search"
+           id="faq-search"
+           x-model.debounce.250ms="query"
+           @input="filter()"
+           placeholder="{% trans 'Ej.: envíos, IVA, pruebas de impresión…' %}"
+           class="input-editorial"
+           autocomplete="off">
+    <p class="mt-2 font-mono text-[11px] text-ink-400 dark:text-paper-500 min-h-[16px]"
+       x-text="label" aria-live="polite"></p>
+
+    {% for group in groups %}
+    <div class="mt-10 faq-group" data-group="{{ group.key }}">
+      <h2 class="font-serif text-xl md:text-2xl text-ink dark:text-paper mb-4 flex items-center gap-3">
+        <span class="editorial-number">{{ forloop.counter|stringformat:'02d' }}</span>
+        {{ group.label }}
+      </h2>
+      <div class="divide-y divide-ink/10 dark:divide-paper/10 border-y border-ink/10 dark:border-paper/10">
+        {% for faq in group.items %}
+        <div class="faq-item" x-data="{ open: false }" data-group="{{ group.key }}" data-question="{{ faq.question|lower }}">
+          <button type="button"
+                  class="w-full flex items-start justify-between gap-4 py-4 text-left group"
+                  @click="open = !open"
+                  :aria-expanded="open ? 'true' : 'false'">
+            <span class="font-medium text-ink dark:text-paper group-hover:text-vermilion transition-colors">{{ faq.question }}</span>
+            <span class="shrink-0 mt-1 editorial-number" x-text="open ? '−' : '+'" aria-hidden="true"></span>
+          </button>
+          <div x-show="open" x-cloak class="pb-5 pr-8">
+            <div class="text-sm leading-relaxed text-ink-600 dark:text-paper-400 space-y-3">
+              {{ faq.answer|linebreaks }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- No results -->
+    <div class="mt-10 card-editorial p-8 text-center" x-show="noResults" x-cloak>
+      <p class="text-ink-500 dark:text-paper-400 mb-4">{% trans "Ninguna pregunta coincide con tu búsqueda." %}</p>
+      <a href="{% url 'core:contact' %}" class="btn-outline btn-sm">{% trans "Preguntar al equipo" %}</a>
+    </div>
+  </div>
+  {% else %}
+  <div class="card-editorial p-10 text-center">
+    <p class="text-ink-500 dark:text-paper-400 mb-4">{% trans "Las preguntas frecuentes estarán disponibles muy pronto." %}</p>
+    <a href="{% url 'core:contact' %}" class="btn-vermilion btn-sm">{% trans "Contactar" %}</a>
+  </div>
+  {% endif %}
+
+  {% if faq_schema %}{% json_ld faq_schema %}{% endif %}
+</section>
+
+<script>
+  function faqSearch() {
+    return {
+      query: '',
+      matches: 0,
+      total: 0,
+      label: '',
+      noResults: false,
+      init() {
+        this.total = document.querySelectorAll('.faq-item').length;
+      },
+      filter() {
+        const q = this.query.trim().toLowerCase();
+        let visible = 0;
+        const groupHasVisible = {};
+
+        document.querySelectorAll('.faq-item').forEach((item) => {
+          const haystack = (item.dataset.question || '') + ' ' + item.textContent.toLowerCase();
+          const match = !q || haystack.indexOf(q) !== -1;
+          item.style.display = match ? '' : 'none';
+          if (match) {
+            visible++;
+            groupHasVisible[item.dataset.group] = true;
+          }
+        });
+
+        document.querySelectorAll('.faq-group').forEach((group) => {
+          group.style.display = !q || groupHasVisible[group.dataset.group] ? '' : 'none';
+        });
+
+        this.matches = visible;
+        this.noResults = Boolean(q) && visible === 0;
+        this.label = q ? visible + ' / ' + this.total + ' resultado(s)' : '';
+      },
+    };
+  }
+</script>
+{% endblock %}

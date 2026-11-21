@@ -1,0 +1,11 @@
+{% load i18n %}
+<div id="product-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+  {% for product in products %}
+    {% include 'components/product_card.html' with product=product %}
+  {% empty %}
+    <div class="col-span-full py-16 text-center card-editorial p-8">
+      <span class="font-serif text-3xl font-light text-ink-400 dark:text-paper-500 italic">{% trans "No hay productos en esta selección" %}</span>
+      <p class="text-xs text-ink-500 dark:text-paper-400 mt-2">{% trans "Prueba cambiando los filtros o vuelve a todas las categorías." %}</p>
+    </div>
+  {% endfor %}
+</div>

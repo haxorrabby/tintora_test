@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+  <header class="mb-12 hairline-b pb-10 grid md:grid-cols-2 gap-8 items-end">
+    <div>
+      <p class="editorial-number mb-4">— {% trans "Hablemos" %}</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-medium text-ink dark:text-paper mb-4">
+        {% trans "Contacto" %}
+      </h1>
+      <p class="text-ink-500 dark:text-paper-400">
+        {% trans "Cuéntanos qué necesitas: te respondemos en horario laboral y te enviamos presupuesto sin compromiso." %}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3 md:justify-end">
+      <a href="https://wa.me/{{ COMPANY.WHATSAPP|cut:' '|cut:'+' }}" target="_blank" rel="noopener" class="btn-vermilion">
+        {% trans "Escribir por WhatsApp" %}
+      </a>
+      <a href="mailto:{{ COMPANY.EMAIL }}" class="btn-outline">{% trans "Enviar email" %}</a>
+    </div>
+  </header>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+    <!-- Phone / WhatsApp -->
+    <div class="card-editorial p-6">
+      <p class="editorial-number mb-3">01 · {% trans "Teléfono" %}</p>
+      <a href="tel:{{ COMPANY.PHONE|cut:' ' }}" class="font-serif text-xl text-ink dark:text-paper hover:text-vermilion transition-colors">
+        {{ COMPANY.PHONE }}
+      </a>
+      <p class="mt-2 text-sm text-ink-500 dark:text-paper-400">
+        {% trans "WhatsApp directo:" %} <a class="underline hover:text-vermilion" href="https://wa.me/{{ COMPANY.WHATSAPP|cut:' '|cut:'+' }}" target="_blank" rel="noopener">{{ COMPANY.WHATSAPP }}</a>
+      </p>
+    </div>
+
+    <!-- Email -->
+    <div class="card-editorial p-6">
+      <p class="editorial-number mb-3">02 · {% trans "Email" %}</p>
+      <a href="mailto:{{ COMPANY.EMAIL }}" class="font-serif text-xl text-ink dark:text-paper hover:text-vermilion transition-colors break-all">
+        {{ COMPANY.EMAIL }}
+      </a>
+      <p class="mt-2 text-sm text-ink-500 dark:text-paper-400">
+        {% trans "Para pedidos, facturas y protección de datos." %}
+      </p>
+    </div>
+
+    <!-- Address -->
+    <div class="card-editorial p-6">
+      <p class="editorial-number mb-3">03 · {% trans "Taller" %}</p>
+      <p class="font-serif text-xl text-ink dark:text-paper">{{ COMPANY.ADDRESS }}</p>
+      <p class="mt-2 text-sm text-ink-500 dark:text-paper-400">{{ COMPANY.OPENING_HOURS }}</p>
+    </div>
+  </div>
+
+  <!-- Quote CTA -->
+  <div class="mt-16 card-editorial p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <p class="editorial-number mb-3">{% trans "Presupuesto" %}</p>
+      <h2 class="font-serif text-2xl md:text-3xl text-ink dark:text-paper mb-3">
+        {% trans "¿Un proyecto a medida?" %}
+      </h2>
+      <p class="text-sm text-ink-500 dark:text-paper-400">
+        {% trans "Impresión, sublimación o desarrollo web: cuéntanos el proyecto y te respondemos con una propuesta detallada." %}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3 md:justify-end">
+      <a href="{% url 'quotes:development' %}#solicitar-presupuesto" class="btn-ink">{% trans "Solicitar presupuesto" %}</a>
+      <a href="{% url 'catalog:index' %}" class="btn-outline">{% trans "Ver productos" %}</a>
+    </div>
+  </div>
+
+  <!-- Quick links -->
+  <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink-500 dark:text-paper-400">
+    <a href="{% url 'core:faq' %}" class="hover:text-vermilion transition-colors">{% trans "Preguntas frecuentes" %}</a>
+    <a href="{% url 'customer:dashboard' %}" class="hover:text-vermilion transition-colors">{% trans "Mi cuenta" %}</a>
+    <a href="{% url 'core:legal' slug='envios-devoluciones' %}" class="hover:text-vermilion transition-colors">{% trans "Envíos y devoluciones" %}</a>
+    <a href="{% url 'core:legal' slug='politica-privacidad' %}" class="hover:text-vermilion transition-colors">{% trans "Protección de datos" %}</a>
+  </div>
+</section>
+{% endblock %}

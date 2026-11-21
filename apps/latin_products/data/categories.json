@@ -1,0 +1,208 @@
+[
+ {
+  "name": "Congelados",
+  "slug": "congelados",
+  "description": "Congelados del catálogo Goya 2026: 61 referencias.",
+  "subs": [],
+  "count": 61,
+  "sourcePages": [
+   4,
+   5,
+   6
+  ]
+ },
+ {
+  "name": "Refrigerados",
+  "slug": "refrigerados",
+  "description": "Refrigerados del catálogo Goya 2026: quesos, panelas, arepas, dulces, embutidos y maíz.",
+  "subs": [
+   "quesos",
+   "panelas",
+   "arepas",
+   "dulces",
+   "embutidos",
+   "maíz"
+  ],
+  "count": 11,
+  "sourcePages": [
+   8
+  ]
+ },
+ {
+  "name": "Granos",
+  "slug": "granos",
+  "description": "Granos del catálogo Goya 2026: leche en polvo.",
+  "subs": [
+   "leche en polvo"
+  ],
+  "count": 38,
+  "sourcePages": [
+   10,
+   11,
+   12
+  ]
+ },
+ {
+  "name": "Harinas y Fideos",
+  "slug": "harinas-y-fideos",
+  "description": "Harinas y Fideos del catálogo Goya 2026: agua de coco.",
+  "subs": [
+   "agua de coco"
+  ],
+  "count": 22,
+  "sourcePages": [
+   14
+  ]
+ },
+ {
+  "name": "Especias y Sazones",
+  "slug": "especias-y-sazones",
+  "description": "Especias y Sazones del catálogo Goya 2026: sazones y adobos, jugos, especias, gummy go, pastas y aguardiente.",
+  "subs": [
+   "sazones y adobos",
+   "jugos",
+   "especias",
+   "gummy go",
+   "pastas",
+   "aguardiente"
+  ],
+  "count": 32,
+  "sourcePages": [
+   16,
+   17
+  ]
+ },
+ {
+  "name": "Conservas",
+  "slug": "conservas",
+  "description": "Conservas del catálogo Goya 2026: legumbres y yerbamate.",
+  "subs": [
+   "legumbres",
+   "Yerbamate"
+  ],
+  "count": 35,
+  "sourcePages": [
+   19,
+   20,
+   21
+  ]
+ },
+ {
+  "name": "Mexicanos",
+  "slug": "mexicanos",
+  "description": "Mexicanos del catálogo Goya 2026: tortillas y snacks, chiles, salsas y pulpas.",
+  "subs": [
+   "tortillas y snacks",
+   "chiles",
+   "salsas",
+   "pulpas"
+  ],
+  "count": 26,
+  "sourcePages": [
+   23,
+   24
+  ]
+ },
+ {
+  "name": "Chifles y Snacks",
+  "slug": "chifles-y-snacks",
+  "description": "Chifles y Snacks del catálogo Goya 2026: chifles, vegetales, snacks, fruta entera, preparados y galletas dulces.",
+  "subs": [
+   "chifles",
+   "vegetales",
+   "snacks",
+   "fruta entera",
+   "preparados",
+   "galletas dulces"
+  ],
+  "count": 19,
+  "sourcePages": [
+   26
+  ]
+ },
+ {
+  "name": "Galletas, chocolates y dulces",
+  "slug": "galletas-chocolates-y-dulces",
+  "description": "Galletas, chocolates y dulces del catálogo Goya 2026: arepas, galletas saladas y chocolates.",
+  "subs": [
+   "arepas",
+   "galletas saladas",
+   "chocolates"
+  ],
+  "count": 33,
+  "sourcePages": [
+   28,
+   29
+  ]
+ },
+ {
+  "name": "Lácteos y Frutos secos",
+  "slug": "lacteos-y-frutos-secos",
+  "description": "Lácteos y Frutos secos del catálogo Goya 2026: arroz, leche condensada, quinuas y otros granos, leche evaporada, frijoles y otros granos, bebidas de avena, aceite y otros, frutos secos y harinas.",
+  "subs": [
+   "arroz",
+   "leche condensada",
+   "quinuas y otros granos",
+   "leche evaporada",
+   "frijoles y otros granos",
+   "bebidas de avena",
+   "aceite y otros",
+   "frutos secos",
+   "harinas"
+  ],
+  "count": 12,
+  "sourcePages": [
+   31
+  ]
+ },
+ {
+  "name": "Bebidas y Refrescos",
+  "slug": "bebidas-y-refrescos",
+  "description": "Bebidas y Refrescos del catálogo Goya 2026: almidones, aloe vera, avena, refrescos, fideos, maltas, casabe, bebida instantánea y en polvo.",
+  "subs": [
+   "almidones",
+   "aloe vera",
+   "avena",
+   "refrescos",
+   "fideos",
+   "maltas",
+   "casabe",
+   "bebida instantánea",
+   "en polvo"
+  ],
+  "count": 47,
+  "sourcePages": [
+   33,
+   34,
+   35
+  ]
+ },
+ {
+  "name": "Infusiones",
+  "slug": "infusiones",
+  "description": "Infusiones del catálogo Goya 2026: de pescado, café, de vegetales y de fruta.",
+  "subs": [
+   "de pescado",
+   "café",
+   "de vegetales",
+   "de fruta"
+  ],
+  "count": 17,
+  "sourcePages": [
+   37
+  ]
+ },
+ {
+  "name": "Velas",
+  "slug": "velas",
+  "description": "Velas del catálogo Goya 2026: velas y mermeladas.",
+  "subs": [
+   "velas",
+   "mermeladas"
+  ],
+  "count": 15,
+  "sourcePages": [
+   39
+  ]
+ }
+]

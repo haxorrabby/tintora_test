@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-label="Harina PAN">
+  <rect width="800" height="600" fill="#F4EFE6"/>
+  <!-- Bag Shadow -->
+  <ellipse cx="400" cy="480" rx="130" ry="20" fill="#0D0F14" opacity="0.12"/>
+  <!-- Bag Shape -->
+  <rect x="290" y="160" width="220" height="300" rx="10" fill="#FEDB00" stroke="#E5B200" stroke-width="3"/>
+  <rect x="290" y="160" width="220" height="40" fill="#E65100"/>
+  <!-- P.A.N. Brand Oval -->
+  <ellipse cx="400" cy="280" rx="80" ry="60" fill="#FFFFFF" stroke="#0033A0" stroke-width="4"/>
+  <text x="350" y="295" font-family="'Impact', sans-serif" font-size="44" font-weight="bold" fill="#0033A0" letter-spacing="4">P.A.N.</text>
+  <text x="345" y="380" font-family="'DM Sans', sans-serif" font-size="14" font-weight="bold" fill="#0033A0">MAÍZ AMARILLO</text>
+  <text x="365" y="405" font-family="'DM Sans', sans-serif" font-size="12" fill="#E65100">PESO NETO 1 KG</text>
+</svg>

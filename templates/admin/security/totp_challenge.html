@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="mx-auto max-w-lg rounded-lg border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+  <p class="text-xs font-semibold uppercase tracking-widest text-red-700">Tintora · {% trans "Segundo factor" %}</p>
+  <h1 class="mt-3 text-3xl font-semibold">{% trans "Confirma tu identidad" %}</h1>
+  <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">{% trans "Introduce el código actual de tu aplicación autenticadora para continuar." %}</p>
+  {% if error %}<p role="alert" class="mt-4 text-sm text-red-700">{{ error }}</p>{% endif %}
+  <form method="post" class="mt-6 space-y-4">
+    {% csrf_token %}
+    <label for="id_code" class="block text-sm font-medium">{% trans "Código de seis cifras" %}</label>
+    <input id="id_code" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required autofocus class="w-full max-w-xs rounded border border-gray-300 px-3 py-2 text-lg tracking-widest">
+    <button type="submit" class="block rounded bg-red-700 px-5 py-3 text-sm font-semibold text-white hover:bg-red-800">{% trans "Continuar al panel" %}</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load i18n %}
+{# HTMX cart summary fragment — returned by cart:add when no drawer target is set. #}
+{# Out-of-band badge keeps the header indicator in sync; the wrapper swaps into #}
+{# whatever summary container the trigger targets (e.g. #cart-summary). #}
+<span id="header-cart-badge"
+      hx-swap-oob="true"
+      class="absolute top-1 right-1 min-w-[16px] h-4 px-1 bg-vermilion text-paper text-[10px] font-mono font-bold items-center justify-center rounded-full {% if not cart.item_count %}hidden{% else %}flex{% endif %}"
+      aria-hidden="true">{{ cart.item_count|default:0 }}</span>
+
+<div id="cart-summary" class="flex items-center gap-3">
+  <a href="{% url 'cart:detail' %}"
+     class="font-mono text-[11px] uppercase tracking-widest text-ink-500 dark:text-paper-400 hover:text-vermilion transition-colors">
+    {% trans "Cesta" %} · {{ cart.item_count|default:0 }}
+  </a>
+  <span class="hidden sm:inline text-[10px] font-mono text-ink-400 dark:text-paper-500">
+    {{ cart.subtotal }}&euro; <span class="text-ink-300 dark:text-paper-600">{% trans "IVA incl." %}</span>
+  </span>
+</div>

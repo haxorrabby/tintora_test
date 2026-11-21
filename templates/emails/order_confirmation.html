@@ -1,0 +1,215 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% blocktrans with num=order.order_number %}Confirmación de Pedido {{ num }} · Tintora Madrid{% endblocktrans %}</title>
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; background-color: #F4EFE6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #0D0F14; }
+    a { color: #E8392B; text-decoration: none; }
+    .wrapper { max-width: 600px; margin: 32px auto; background-color: #ffffff; border: 1px solid #e2e0db; border-radius: 8px; overflow: hidden; }
+    .header { background-color: #0D0F14; padding: 28px 32px; border-bottom: 3px solid #E8392B; }
+    .logo-text { font-size: 30px; color: #F4EFE6; font-family: Georgia, 'Times New Roman', serif; font-weight: bold; letter-spacing: -0.02em; margin: 0; }
+    .logo-dot { color: #E8392B; }
+    .tagline { font-family: 'Courier New', monospace; font-size: 11px; color: #64748B; letter-spacing: 0.2em; text-transform: uppercase; margin: 4px 0 0; }
+    .hero-band { background: linear-gradient(135deg, #E8392B 0%, #c9301e 100%); padding: 28px 32px; text-align: center; }
+    .hero-icon { display: inline-block; width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.4); line-height: 52px; font-size: 28px; color: #ffffff; margin-bottom: 12px; }
+    .hero-title { font-size: 22px; color: #ffffff; margin: 0; font-family: Georgia, serif; }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin: 6px 0 0; }
+    .body-pad { padding: 32px; }
+    .section-title { font-family: Georgia, serif; font-size: 16px; font-weight: bold; color: #0D0F14; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #f1ece3; }
+    .info-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; }
+    .info-table td { padding: 8px 0; border-bottom: 1px solid #f8f5f0; color: #334155; vertical-align: top; }
+    .info-table td:first-child { color: #64748B; width: 40%; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .item-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .item-row td { padding: 10px 0; border-bottom: 1px solid #f8f5f0; }
+    .item-name { color: #0D0F14; font-weight: 600; }
+    .item-price { text-align: right; font-family: 'Courier New', monospace; font-weight: bold; white-space: nowrap; }
+    .totals-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+    .totals-table td { padding: 5px 0; }
+    .totals-table td:last-child { text-align: right; font-family: 'Courier New', monospace; }
+    .total-row td { font-size: 16px; font-weight: bold; color: #E8392B; padding-top: 10px; border-top: 2px solid #0D0F14; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 0.08em; background: #f1f5f9; color: #64748B; }
+    .badge-paid { background: #dcfce7; color: #166534; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .transfer-box { background: #fffbeb; border: 1px solid #f59e0b; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+    .transfer-box p { font-size: 13px; color: #78350f; margin: 0 0 12px; }
+    .iban-row { font-family: 'Courier New', monospace; font-size: 12px; color: #0D0F14; background: #fff; border-radius: 4px; padding: 8px 12px; margin: 4px 0; display: block; border: 1px solid #e2e8f0; }
+    .download-btn { display: block; text-align: center; background-color: #0D0F14; color: #F4EFE6; padding: 14px 32px; border-radius: 6px; font-size: 14px; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; margin: 0 auto 24px; }
+    .footer { background-color: #0D0F14; padding: 24px 32px; text-align: center; }
+    .footer p { color: #64748B; font-size: 11px; margin: 0 0 4px; }
+    .footer .gold { color: #C9A96A; }
+    @media (max-width: 600px) {
+      .body-pad { padding: 20px; }
+      .header { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <div class="header">
+      <p class="logo-text">{% trans "Tintora" %}<span class="logo-dot">.</span></p>
+      <p class="tagline">{% trans "Tinta que deja huella &middot; Madrid, España" %}</p>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero-band">
+      <div class="hero-icon">✓</div>
+      <h1 class="hero-title">{% blocktrans with name=order.first_name %}¡Gracias, {{ name }}!{% endblocktrans %}</h1>
+      <p class="hero-sub">{% trans "Tu pedido" %} <strong>{{ order.order_number }}</strong> {% trans "ha sido tramitado correctamente" %}</p>
+    </div>
+
+    <!-- Body -->
+    <div class="body-pad">
+      <p style="font-size: 14px; color: #334155; line-height: 1.7; margin: 0 0 24px;">
+        {% trans "Nuestro equipo de taller en" %} <strong>{{ company.ADDRESS }}</strong> {% trans "ha recibido tu encargo y está verificando los perfiles de color, sangrados y especificaciones técnicas. Te mantendremos informado en cada etapa del proceso." %}
+      </p>
+
+      <!-- Order details -->
+      <p class="section-title">{% trans "Detalles del Pedido" %}</p>
+      <table class="info-table">
+        <tr>
+          <td>{% trans "Producto" %}</td>
+          <td><strong style="font-family: 'Courier New', monospace;">{{ order.order_number }}</strong></td>
+        </tr>
+        <tr>
+          <td>{% trans "Estado" %}</td>
+          <td><span class="badge">{{ order.get_status_display }}</span></td>
+        </tr>
+        <tr>
+          <td>{% trans "Pago" %}</td>
+          <td>
+            {{ order.get_payment_method_display }} &nbsp;
+            {% if order.is_paid %}
+              <span class="badge badge-paid">{% trans "Pagado" %}</span>
+            {% else %}
+              <span class="badge badge-pending">{{ order.get_payment_status_display }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>{% trans "Transporte" %}</td>
+          <td>{{ order.shipping_method_name }} — {{ order.courier }}</td>
+        </tr>
+        <tr>
+          <td>{% trans "Entrega en" %}</td>
+          <td>{{ order.shipping_address_line1 }}, {{ order.shipping_postal_code }} {{ order.shipping_city }}</td>
+        </tr>
+        {% if order.nif_cif %}
+        <tr>
+          <td>{% trans "NIF / CIF" %}</td>
+          <td style="font-family: 'Courier New', monospace;">{{ order.nif_cif }}</td>
+        </tr>
+        {% endif %}
+      </table>
+
+      <!-- Bank transfer instructions -->
+      {% if order.payment_method == 'transfer' and not order.is_paid %}
+      <div class="transfer-box">
+        <p><strong>{% trans "⚡ Acción requerida:" %}</strong> {% trans "Para poner tu pedido en producción, realiza una transferencia bancaria por el importe indicado:" %}</p>
+        <span class="iban-row">{% trans "IBAN" %}: {{ bank_iban }}</span>
+        <span class="iban-row">{% trans "Titular" %}: {{ company.NAME }}</span>
+        <span class="iban-row">{% trans "Concepto" %}: {{ order.order_number }} · {% trans "Importe" %}: {{ order.total }}€</span>
+        <p style="margin-top: 12px; margin-bottom: 0; font-size: 12px;">{% trans "Una vez recibido el justificante, activaremos tu pedido inmediatamente." %}</p>
+      </div>
+      {% endif %}
+
+      <!-- Line items -->
+      <p class="section-title">{% trans "Artículos del Encargo" %}</p>
+      <table class="item-table">
+        {% for item in order.items.all %}
+        <tr class="item-row">
+          <td>
+            <div class="item-name">{{ item.quantity }}× {{ item.product_name }}</div>
+            <div class="item-detail">{% if item.variant_label %}{{ item.variant_label }} · {% endif %}{% if item.design_later %}{% trans "Arte pendiente" %}{% elif item.artwork_file %}{% trans "Arte subido ✓" %}{% endif %}{% if item.request_proof %} {% trans "· Prueba física solicitada" %}{% endif %}</div>
+          </td>
+          <td class="item-price">{{ item.line_total }} €</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <!-- Totals -->
+      <table class="totals-table" style="margin-top: 16px;">
+        <tr>
+          <td style="color: #64748B;">{% trans "Subtotal" %}</td>
+          <td style="color: #64748B;">{{ order.subtotal }} €</td>
+        </tr>
+        {% if order.discount_amount %}
+        <tr>
+          <td style="color: #16a34a;">{% trans "Descuento" %} {% if order.coupon_code %}({{ order.coupon_code }}){% endif %}</td>
+          <td style="color: #16a34a;">−{{ order.discount_amount }} €</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td style="color: #64748B;">{% trans "Portes" %}</td>
+          <td style="color: #64748B;">{% if order.shipping_cost %}{{ order.shipping_cost }} €{% else %}{% trans "Gratis" %}{% endif %}</td>
+        </tr>
+        <tr>
+          <td style="color: #94A3B8; font-size: 12px;">{% trans "Base Imponible" %}</td>
+          <td style="color: #94A3B8; font-size: 12px;">{{ order.taxable_base }} €</td>
+        </tr>
+        <tr>
+          <td style="color: #94A3B8; font-size: 12px;">{% blocktrans with pct=order.iva_percentage %}IVA ({{ pct }}%){% endblocktrans %}</td>
+          <td style="color: #94A3B8; font-size: 12px;">{{ order.iva_amount }} €</td>
+        </tr>
+        <tr class="total-row">
+          <td>{% trans "Total (IVA incluido)" %}</td>
+          <td>{{ order.total }} €</td>
+        </tr>
+      </table>
+
+      <!-- Invoice note -->
+      {% if order.invoice %}
+      <div style="margin-top: 28px; padding: 16px; background: #f8f5f0; border-radius: 8px; border: 1px solid #e8e3da;">
+        <p style="font-size: 13px; color: #334155; margin: 0 0 12px;">
+          {% trans "📎 Adjuntamos tu" %} <strong>{% blocktrans with num=order.invoice.invoice_number %}Factura Oficial {{ num }}{% endblocktrans %}</strong> {% trans "en formato PDF, emitida con numeración correlativa conforme al Real Decreto 1619/2012 de la AEAT." %}
+        </p>
+      </div>
+      {% endif %}
+
+      <!-- Process steps summary -->
+      <div style="margin-top: 28px;">
+        <p class="section-title">{% trans "¿Qué pasa ahora?" %}</p>
+        <table style="width: 100%; font-size: 13px;">
+          <tr>
+            <td style="padding: 8px 0; vertical-align: top; width: 32px; color: #E8392B; font-size: 16px;">①</td>
+            <td style="padding: 8px 0;"><strong>{% trans "Revisión de arte" %}</strong> {% trans "— Verificamos perfiles de color ICC (Fogra39), resolución y sangrados. Te contactamos si hay incidencias." %}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; vertical-align: top; color: #E8392B; font-size: 16px;">②</td>
+            <td style="padding: 8px 0;"><strong>{% trans "Producción" %}</strong> {% trans "— Tu trabajo entra en máquina. Impresión offset / digital gran formato según producto." %}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; vertical-align: top; color: #E8392B; font-size: 16px;">③</td>
+            <td style="padding: 8px 0;"><strong>{% trans "Envío" %}</strong> {% blocktrans with courier=order.courier %}— Entregamos a {{ courier }}. Recibirás un email con el número de seguimiento.{% endblocktrans %}</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Help -->
+      <div style="margin-top: 24px; padding: 16px; background: #fff4f4; border-radius: 8px; border-left: 3px solid #E8392B;">
+        <p style="font-size: 13px; color: #334155; margin: 0;">
+          {% trans "¿Tienes alguna consulta? Escríbenos a" %}
+          <a href="mailto:{{ company.EMAIL }}?subject=Pedido {{ order.order_number }}">{{ company.EMAIL }}</a>
+          {% trans "o por WhatsApp al" %}
+          <a href="https://wa.me/{{ company.WHATSAPP|cut:' '|cut:'+' }}">{{ company.WHATSAPP }}</a>
+          {% trans "indicando tu referencia" %} <strong style="font-family: 'Courier New', monospace;">{{ order.order_number }}</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>{{ company.NAME }} · {% trans "NIF" %}: {{ company.NIF_CIF }}</p>
+      <p>{{ company.ADDRESS }}</p>
+      <p>{{ company.PHONE }} · <a href="mailto:{{ company.EMAIL }}" style="color: #C9A96A;">{{ company.EMAIL }}</a></p>
+      <p class="gold" style="margin-top: 10px; font-size: 12px; font-style: italic;">{% trans "Tintora Madrid · Tinta que deja huella." %}</p>
+    </div>
+  </div>
+</body>
+</html>
