@@ -264,6 +264,18 @@ class CatalogViewsTestCase(TestCase):
         self.assertContains(response, "Tarjetas Letterpress Artesanales")
 
 
+class LoadPublicDemoCatalogCommandTestCase(TestCase):
+    def test_public_demo_catalog_command_imports_once(self):
+        call_command("load_public_demo_catalog", stdout=StringIO())
+        imported_count = Product.objects.count()
+        self.assertGreater(imported_count, 0)
+        self.assertTrue(Product.objects.filter(sku="TIN-LAT-PAN-001").exists())
+
+        call_command("load_public_demo_catalog", stdout=StringIO())
+
+        self.assertEqual(Product.objects.count(), imported_count)
+
+
 class GroupProductVariantsCommandTestCase(TestCase):
     def setUp(self):
         self.category = Category.objects.create(
