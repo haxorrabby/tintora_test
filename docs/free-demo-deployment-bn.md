@@ -30,13 +30,9 @@ Neon-এ Free project তৈরি করে connection string নিন (pooled
 2. Runtime হিসেবে **Docker** নির্বাচন করুন, root directory ফাঁকা রাখুন, instance
    plan **Free** দিন।
 3. Health Check Path হিসেবে `/healthz/` দিন।
-4. **Advanced → Docker Command**-এ command দিন। Docker service-এ এটিই
-   Dockerfile-এর `CMD`-কে override করে; একাধিক command চালাতে `/bin/sh -c`
-   ব্যবহার করুন:
-
-   ```sh
-   /bin/sh -c 'python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-10000} --workers 2 --threads 2 --timeout 120'
-   ```
+4. **Advanced → Docker Command** ফাঁকা রাখুন, যাতে Dockerfile-এর command চলে।
+   `deploy/render-start.sh` startup-এর সময় database migration ও static files
+   collect করে, তারপর Render-এর `PORT`-এ Gunicorn চালায়।
 
 5. Environment Variables-এ যোগ করুন:
 
